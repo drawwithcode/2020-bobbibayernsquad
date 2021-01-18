@@ -1,0 +1,142 @@
+@font-face {
+  font-family: "braille";
+  src: url("assets/BRAILLE1.ttf");
+}
+@font-face {
+  font-family: "latin";
+  src: url("assets/AHAMONO-Monospaced.otf");
+}
+
+body{
+  background-color: black;
+}
+
+.texts h1 {
+  position: absolute;
+  top: 5%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-family: latin;
+  font-size: 14px;
+  overflow: hidden;
+}
+
+.beach {
+  border: none;
+  background-color: #323232;
+  width: 175px;
+  height: 57.5px;
+  border: 0.8px solid #6E6E6E;
+  position: absolute;
+  color: white;
+  top: 25%;
+  left: 40%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  font-size: 12px;
+  cursor: pointer;
+  font-family: braille;
+  transition: 0.2s ease-in-out;
+}
+
+.ocean {
+  border: none;
+  background-color: #323232;
+  width: 175px;
+  height: 57.5px;
+  border: 0.8px solid #6E6E6E;
+  position: absolute;
+  color: white;
+  top: 25%;
+  left: 60%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  font-size: 12px;
+  cursor: pointer;
+  font-family: braille;
+  transition: 0.2s ease-in-out;
+}
+
+.jungle {
+  border: none;
+  background-color: #323232;
+  width: 175px;
+  height: 57.5px;
+  border: 0.8px solid #6E6E6E;
+  position: absolute;
+  color: white;
+  top: 50%;
+  left: 40%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  font-size: 12px;
+  cursor: pointer;
+  font-family: braille;
+  transition: 0.2s ease-in-out;
+}
+
+.city {
+  border: none;
+  background-color: #323232;
+  width: 175px;
+  height: 57.5px;
+  border: 0.8px solid #6E6E6E;
+  position: absolute;
+  color: white;
+  top: 50%;
+  left: 60%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  font-size: 12px;
+  cursor: pointer;
+  font-family: braille;
+  transition: 0.2s ease-in-out;
+}
+
+.town {
+  border: none;
+  background-color: #323232;
+  width: 175px;
+  height: 57.5px;
+  border: 0.8px solid #6E6E6E;
+  position: absolute;
+  color: white;
+  top: 75%;
+  left: 40%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  font-size: 12px;
+  cursor: pointer;
+  font-family: braille;
+  transition: 0.2s ease-in-out;
+}
+
+.school {
+  border: none;
+  background-color: #323232;
+  width: 175px;
+  height: 57.5px;
+  border: 0.8px solid #6E6E6E;
+  position: absolute;
+  color: white;
+  top: 75%;
+  left: 60%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  font-size: 12px;
+  cursor: pointer;
+  font-family: braille;
+  transition: 0.2s ease-in-out;
+}
+
+.btn:hover {
+  transition: 0.2s ease-in-out;
+  background-color: #585858;
+  color: white;
+  width: 175px;
+  height: 57.5px;
+  font-size: 12px;
+  border: 1.25px solid #fff;
+  font-family: latin;
+}
