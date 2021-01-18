@@ -30,7 +30,7 @@ function setup() {
   button.style("text-align", "center");
   button.mousePressed(function() {
     console.log("button pressed");
-    window.open("./Maurizio/index.html", "_self");
+    window.open("/Maurizio/index.html", "_self");
   });
 }
 
