@@ -33,9 +33,10 @@ function newConnection(socket) {
     // send the data to all the other clients
     socket.broadcast.emit("mouseBroadcast", data);
   }
-}
 
-//disconnection
-socket.on('disconnect', function () {
-  console.log("disconnection: "+ socket.client.id);
-});
+
+  //disconnection
+  socket.on('disconnect', function () {
+    console.log("disconnection: "+ socket.client.id);
+  });
+}
