@@ -34,7 +34,6 @@ function newConnection(socket) {
     socket.broadcast.emit("mouseBroadcast", data);
   }
 
-
   //disconnection
   socket.on('disconnect', function () {
     console.log("disconnection: "+ socket.client.id);

@@ -1,3 +1,11 @@
+// Create a new connection using socket.io (imported in index.html)
+let socket = io();
+
+// define the function that will be called on a new newConnection
+socket.on("connect", function () {
+  console.log("your id:", socket.id);
+});
+
 let windowDiagonal;
 
 function preload(){
