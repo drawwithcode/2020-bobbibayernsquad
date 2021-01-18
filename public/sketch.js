@@ -18,6 +18,7 @@ function setup() {
   background("red");
 
   //Button
+  let diagonal = pow(pow(windowWidth,2)+pow(windowHeight,2), 0.5);
   button = createButton("OPEN LABYRINTH");
   let xSizeB = windowWidth/6;
   let ySizeB = windowHeight/13;
@@ -28,6 +29,7 @@ function setup() {
   button.style('background-color', color("#38b000"));
   button.style("text-align", "center");
   button.mousePressed(function() {
+    console.log("button pressed");
     window.open("Maurizio/index.html", "_self");
   });
 }
@@ -35,7 +37,7 @@ function setup() {
 // Callback function called when a new message comes from the server
 // Data parameters will contain the received data
 function otherMouse(data) {
-  console.log("received:", data);
+  //console.log("received:", data);
   noStroke();
   fill("yellow");
   ellipse(data.x, data.y, 20);
