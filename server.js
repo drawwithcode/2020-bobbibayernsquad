@@ -17,6 +17,7 @@ let socket = require("socket.io");
 let io = socket(server);
 
 
+
 // define which function should be called when a new connection is opened from client
 io.on("connection", newConnection);
 
@@ -24,15 +25,6 @@ io.on("connection", newConnection);
 function newConnection(socket) {
   //when a new connection is created, print its id
   console.log("socket:", socket.id);
-
-  //define what to do on different kind of messages
-  socket.on("mouse", mouseMessage);
-
-  // create the mouseMessage function
-  function mouseMessage(data) {
-    // send the data to all the other clients
-    socket.broadcast.emit("mouseBroadcast", data);
-  }
 
   //disconnection
   socket.on('disconnect', function () {
