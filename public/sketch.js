@@ -16,6 +16,20 @@ socket.on("mouseBroadcast", otherMouse);
 function setup() {
   createCanvas(windowWidth, windowHeight);
   background("red");
+
+  //Button
+  button = createButton("OPEN LABYRINTH");
+  let xSizeB = windowWidth/6;
+  let ySizeB = windowHeight/13;
+  button.size(xSizeB, ySizeB);
+  button.position(windowWidth/2-xSizeB/2, windowHeight*2/3-ySizeB/2);
+  button.style("font-size", diagonal/60+"px");
+  button.style("font-family", "Comic Sans MS");
+  button.style('background-color', color("#38b000"));
+  button.style("text-align", "center");
+  button.mousePressed(function() {
+    window.open("Maurizio/index.html", "_self");
+  });
 }
 
 // Callback function called when a new message comes from the server
@@ -31,7 +45,6 @@ function mouseDragged() {
   console.log("sending: ", mouseX, mouseY);
   noStroke();
   fill(255);
-
   // create an object containing the mouse position
   let message = {
     x: mouseX,
