@@ -1,3 +1,5 @@
+console.log("node server is running");
+
 // load express library
 let express = require("express");
 // create the app
@@ -13,11 +15,12 @@ app.use(express.static("public"));
 let socket = require("socket.io");
 // create a socket connection
 let io = socket(server);
-// define which function should be called
-// when a new connection is opened from client
+
+
+// define which function should be called when a new connection is opened from client
 io.on("connection", newConnection);
-// callback function: the paramenter (in this case socket)
-// will contain all the information on the new connection
+
+// callback function: the paramenter (in this case socket) will contain all the information on the new connection
 function newConnection(socket) {
   //when a new connection is created, print its id
   console.log("socket:", socket.id);
@@ -29,9 +32,5 @@ function newConnection(socket) {
   function mouseMessage(data) {
     // send the data to all the other clients
     socket.broadcast.emit("mouseBroadcast", data);
-    // log the sent data
-    console.log(socket.id, data);
   }
 }
-
-console.log("node server is running");
