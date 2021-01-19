@@ -79,6 +79,7 @@ function draw() {
     gif_loading.position((windowWidth-gif_loading.width)/2, (windowHeight-gif_loading.height)/2);
   }
   else {
+    gif_loading.hide();
     // Draw map
     push();
     imageMode(CENTER);
