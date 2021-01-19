@@ -39,7 +39,6 @@ function preload(){
   //Load loading gif
   gif_loading = createImg("assets/Images/loading.gif");
   gif_loading.hide();
-
 }
 
 function setup() {
@@ -65,6 +64,7 @@ function setup() {
   main.pinOn();
 
   background("black");
+  gif_loading.show();
 
   //main.printGrid(); //DEBUG, uncomment this line and comment function draw
 }
