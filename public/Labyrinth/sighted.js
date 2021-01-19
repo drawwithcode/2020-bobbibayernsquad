@@ -71,7 +71,7 @@ function setup() {
 function draw() {
   if (preLobby) {
     background("black");
-    gif_loading.position(windowWidth/2, windowHeight/2);
+    gif_loading.position(windowHeight/2, windowWidth/2);
   }
   else {
     //Update window diagonal
