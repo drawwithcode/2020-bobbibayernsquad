@@ -69,16 +69,17 @@ function setup() {
 }
 
 function draw() {
+  //Update window diagonal
+  windowDiagonal = pow(pow(windowHeight,2)+pow(windowWidth,2),0.5);
+  background("black");
+
   if (preLobby) {
-    background("black");
-    gif_loading.position(windowHeight/2, windowWidth/2);
+    let gifWidth=windowDiagonal/100
+    let gifHeight=gifWidth/gif_loading.width*gif_loading.height;
+    gif_loading.size(gifWidth,gifHeight);
+    gif_loading.position((windowWidth-gif_loading.width)/2, (windowHeight-gif_loading.height)/2);
   }
   else {
-    //Update window diagonal
-    windowDiagonal = pow(pow(windowHeight,2)+pow(windowWidth,2),0.5);
-
-    background("black");
-
     // Draw map
     push();
     imageMode(CENTER);
