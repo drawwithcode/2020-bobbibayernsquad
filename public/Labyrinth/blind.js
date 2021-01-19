@@ -1,9 +1,14 @@
 //BLIND SIDE
-
+let sightedId = undefined;
+let windowDiagonal;
+let preLobby = true;
+let labyrinth;
+let main;
+let gif_loading;
 
 // Create a new connection using socket.io (imported in index.html)
 let socket = io();
-let sightedId = undefined;
+
 
 // define the function that will be called on a new newConnection
 socket.on("connect", function () {
@@ -19,15 +24,11 @@ socket.on("connect", function () {
 socket.on("start", setSightedId);
 function setSightedId(id) {
   sightedId = id;
+  console.log(sightedId);
   console.log("START BLIND!!!!");
 }
 
 
-
-
-
-
-let windowDiagonal;
 
 function preload(){
   windowDiagonal = pow(pow(windowHeight,2)+pow(windowWidth,2),0.5);
@@ -35,7 +36,9 @@ function preload(){
   labyrinth = loadImage("assets/Images/Blind/labyrinth.png");
   //Load characters sprites & sounds
   main = new character("assets/Images/Blind/Sprites","assets/Sounds/wall_bump.m4a","assets/Sounds/pin.mp3");
-
+  //Load loading gif
+  gif_loading = createImg("assets/Images/loading.gif");
+  gif_loading.hide();
 }
 
 function setup() {
@@ -60,6 +63,8 @@ function setup() {
   main.loadCollisions();
   main.pinOn();
 
+  background("black");
+  ù
   //main.printGrid(); //DEBUG, uncomment this line and comment function draw
 }
 
@@ -70,35 +75,45 @@ function draw() {
 
   background("black");
 
-  // Draw map
-  push();
-  imageMode(CENTER);
-  let mapCenter_x = windowWidth/2;
-  let mapCenter_y = windowHeight/2;
-  let map_diagonal = windowDiagonal/10*7;
-  let map_height = map_diagonal/pow(pow(labyrinth.height,2)+pow(labyrinth.width,2),0.5)*labyrinth.height;
-  let map_width = labyrinth.width/labyrinth.height*map_height;
-  image(labyrinth, mapCenter_x, mapCenter_y, map_width, map_height);
-  pop();
+  if (preLobby) {
+    let gifWidth=windowDiagonal/3;
+    let gifHeight=gifWidth/gif_loading.width*gif_loading.height;
+    gif_loading.size(gifWidth,gifHeight);
+    gif_loading.position((windowWidth-gif_loading.width)/2, (windowHeight-gif_loading.height)/2);
+    gif_loading.show();
+  }
+  else {
+    gif_loading.hide();
+    // Draw map
+    push();
+    imageMode(CENTER);
+    let mapCenter_x = windowWidth/2;
+    let mapCenter_y = windowHeight/2;
+    let map_diagonal = windowDiagonal/10*7;
+    let map_height = map_diagonal/pow(pow(labyrinth.height,2)+pow(labyrinth.width,2),0.5)*labyrinth.height;
+    let map_width = labyrinth.width/labyrinth.height*map_height;
+    image(labyrinth, mapCenter_x, mapCenter_y, map_width, map_height);
+    pop();
 
-  //Draw pin
-  main.displayPin(1);
+    //Draw pin
+    main.displayPin(1);
 
-  //Draw character
-  let mapTopLeft_x = mapCenter_x-map_width/2;
-  let mapTopLeft_y = mapCenter_y-map_height/2;
-  let mapDownRight_x = mapCenter_x+map_width/2;
-  let mapDownRight_y = mapCenter_y+map_height/2;
-  main.updateDimensions(mapTopLeft_x, mapTopLeft_y, mapDownRight_x, mapDownRight_y, windowDiagonal/45);
-  main.move_lC();
-  main.display();
-  main.timeOn();
+    //Draw character
+    let mapTopLeft_x = mapCenter_x-map_width/2;
+    let mapTopLeft_y = mapCenter_y-map_height/2;
+    let mapDownRight_x = mapCenter_x+map_width/2;
+    let mapDownRight_y = mapCenter_y+map_height/2;
+    main.updateDimensions(mapTopLeft_x, mapTopLeft_y, mapDownRight_x, mapDownRight_y, windowDiagonal/45);
+    main.move_lC();
+    main.display();
+    main.timeOn();
 
-  //Win check
-  main.victoryCheck();
+    //Win check
+    main.victoryCheck();
 
-  // Draw hole
-  hole(main.getPosition()[0], main.getPosition()[1], windowDiagonal/30);
+    // Draw hole
+    hole(main.getPosition()[0], main.getPosition()[1], windowDiagonal/30);
+  }
 }
 
 class character {

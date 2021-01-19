@@ -2,6 +2,9 @@
 let blindId = undefined;
 let windowDiagonal;
 let preLobby = true;
+let labyrinth;
+let main;
+let gif_loading;
 
 // Create a new connection using socket.io (imported in index.html)
 let socket = io();
