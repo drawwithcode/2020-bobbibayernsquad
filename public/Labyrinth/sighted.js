@@ -1,9 +1,10 @@
 //SIGHTED SIDE
-
+let blindId = undefined;
+let windowDiagonal;
+let preLobby = true;
 
 // Create a new connection using socket.io (imported in index.html)
 let socket = io();
-let blindId = undefined;
 
 // define the function that will be called on a new newConnection
 socket.on("connect", function () {
@@ -19,16 +20,13 @@ socket.on("connect", function () {
 socket.on("start", setBlindId);
 function setBlindId(id) {
   blindId = id;
+  preLobby = false;
+  console.log(blindId);
   console.log("START SIGHTED!!!!");
 }
 
 
 
-
-
-
-let windowDiagonal;
-let preLobby = true;
 
 function preload(){
   windowDiagonal = pow(pow(windowHeight,2)+pow(windowWidth,2),0.5);
