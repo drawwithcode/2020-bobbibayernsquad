@@ -74,7 +74,7 @@ function draw() {
   background("black");
 
   if (preLobby) {
-    let gifWidth=windowDiagonal/100
+    let gifWidth=windowDiagonal/10;
     let gifHeight=gifWidth/gif_loading.width*gif_loading.height;
     gif_loading.size(gifWidth,gifHeight);
     gif_loading.position((windowWidth-gif_loading.width)/2, (windowHeight-gif_loading.height)/2);
