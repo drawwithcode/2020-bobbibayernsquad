@@ -62,7 +62,6 @@ body{
 }
 
 .again {
-  border: none;
   background-color: #323232;
   width: 150px;
   height: 50px;
@@ -83,7 +82,6 @@ body{
 }
 
 .ready {
-  border: none;
   background-color: #323232;
   width: 150px;
   height: 50px;
