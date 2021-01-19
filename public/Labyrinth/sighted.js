@@ -1,10 +1,31 @@
+//SIGHTED SIDE
+
+
 // Create a new connection using socket.io (imported in index.html)
 let socket = io();
+let blindId = undefined;
 
 // define the function that will be called on a new newConnection
 socket.on("connect", function () {
   console.log("your id:", socket.id);
+  //emit welcome information
+  let message = {
+    room: "labyrinth",
+    side: "sighted",
+  };
+  socket.emit("welcome", message);
 });
+
+socket.on("start", setBlindId);
+function setBlindId(id) {
+  blindId = id;
+  console.log("START SIGHTED!!!!");
+}
+
+
+
+
+
 
 let windowDiagonal;
 
