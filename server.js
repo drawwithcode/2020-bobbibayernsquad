@@ -46,7 +46,7 @@ function newConnection(socket) {
           }
           // Otherwise i create a new lobby
           if (!matched) {
-            let el = { blind: socket.id; }
+            let el = { blind: socket.id}
             labyrinth.push(el);
           }
         }
@@ -64,7 +64,7 @@ function newConnection(socket) {
           }
           // Otherwise i create a new lobby
           if (!matched) {
-            let el = { sighted: socket.id; }
+            let el = { sighted: socket.id}
             labyrinth.push(el);
           }
         }
