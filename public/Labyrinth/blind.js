@@ -64,7 +64,7 @@ function setup() {
   main.pinOn();
 
   background("black");
-  ù
+  
   //main.printGrid(); //DEBUG, uncomment this line and comment function draw
 }
 
