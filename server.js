@@ -17,6 +17,7 @@ let socket = require("socket.io");
 let io = socket(server);
 
 
+let labyrinth_preLobby = [];
 let labyrinth = [];
 
 

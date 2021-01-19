@@ -28,13 +28,16 @@ function setBlindId(id) {
 
 
 let windowDiagonal;
+let preLobby = true;
 
 function preload(){
   windowDiagonal = pow(pow(windowHeight,2)+pow(windowWidth,2),0.5);
   //Load map
-  labyrinth = loadImage("assets/Images/Sighted/labyrinth.png");
+  labyrinth = loadImage("assets/Images/Blind/labyrinth.png");
   //Load characters sprites & sounds
-  main = new character("assets/Images/Sighted/Sprites","assets/Sounds/wall_bump.m4a","assets/Sounds/pin.mp3");
+  main = new character("assets/Images/Blind/Sprites","assets/Sounds/wall_bump.m4a","assets/Sounds/pin.mp3");
+  //Load loading gif
+  gif_loading = createImg("assets/Images/loading.gif");
 
 }
 
@@ -60,45 +63,53 @@ function setup() {
   main.loadCollisions();
   main.pinOn();
 
+  background("black");
+
   //main.printGrid(); //DEBUG, uncomment this line and comment function draw
 }
 
 function draw() {
+  if (preLobby) {
+    background("black");
+    gif_loading.position(windowWidth/2, windowHeight/2);
+  }
+  else {
+    //Update window diagonal
+    windowDiagonal = pow(pow(windowHeight,2)+pow(windowWidth,2),0.5);
 
-  //Update window diagonal
-  windowDiagonal = pow(pow(windowHeight,2)+pow(windowWidth,2),0.5);
+    background("black");
 
-  background("white");
+    // Draw map
+    push();
+    imageMode(CENTER);
+    let mapCenter_x = windowWidth/2;
+    let mapCenter_y = windowHeight/2;
+    let map_diagonal = windowDiagonal/10*7;
+    let map_height = map_diagonal/pow(pow(labyrinth.height,2)+pow(labyrinth.width,2),0.5)*labyrinth.height;
+    let map_width = labyrinth.width/labyrinth.height*map_height;
+    image(labyrinth, mapCenter_x, mapCenter_y, map_width, map_height);
+    pop();
 
-  // Draw map
-  push();
-  imageMode(CENTER);
-  let mapCenter_x = windowWidth/2;
-  let mapCenter_y = windowHeight/2;
-  let map_diagonal = windowDiagonal/10*7;
-  let map_height = map_diagonal/pow(pow(labyrinth.height,2)+pow(labyrinth.width,2),0.5)*labyrinth.height;
-  let map_width = labyrinth.width/labyrinth.height*map_height;
-  image(labyrinth, mapCenter_x, mapCenter_y, map_width, map_height);
-  pop();
+    //Draw pin
+    main.displayPin(1);
 
-  //Draw pin
-  main.displayPin(1);
+    //Draw character
+    let mapTopLeft_x = mapCenter_x-map_width/2;
+    let mapTopLeft_y = mapCenter_y-map_height/2;
+    let mapDownRight_x = mapCenter_x+map_width/2;
+    let mapDownRight_y = mapCenter_y+map_height/2;
+    main.updateDimensions(mapTopLeft_x, mapTopLeft_y, mapDownRight_x, mapDownRight_y, windowDiagonal/45);
+    main.move_lC();
+    main.display();
+    main.timeOn();
 
-  //Draw character
-  let mapTopLeft_x = mapCenter_x-map_width/2;
-  let mapTopLeft_y = mapCenter_y-map_height/2;
-  let mapDownRight_x = mapCenter_x+map_width/2;
-  let mapDownRight_y = mapCenter_y+map_height/2;
-  main.updateDimensions(mapTopLeft_x, mapTopLeft_y, mapDownRight_x, mapDownRight_y, windowDiagonal/45);
-  main.move_lC();
-  main.display();
-  main.timeOn();
+    //Win check
+    main.victoryCheck();
 
-  //Win check
-  main.victoryCheck();
+    // Draw hole
+    //hole(main.getPosition()[0], main.getPosition()[1], windowDiagonal/30);
+  }
 
-  // Draw hole
-  //hole(main.getPosition()[0], main.getPosition()[1], windowDiagonal/30);
 }
 
 class character {
