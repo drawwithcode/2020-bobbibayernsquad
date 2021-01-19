@@ -32,9 +32,9 @@ let windowDiagonal;
 function preload(){
   windowDiagonal = pow(pow(windowHeight,2)+pow(windowWidth,2),0.5);
   //Load map
-  labyrinth = loadImage("assets/labyrinth.png");
+  labyrinth = loadImage("assets/Images/Blind/labyrinth.png");
   //Load characters sprites & sounds
-  main = new character("assets/Sprites","assets/Sounds/wall_bump.m4a","assets/Sounds/pin.mp3");
+  main = new character("assets/Images/Blind/Sprites","assets/Sounds/wall_bump.m4a","assets/Sounds/pin.mp3");
 
 }
 
