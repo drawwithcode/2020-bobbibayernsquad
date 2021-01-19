@@ -62,7 +62,6 @@ function setup() {
   main.pinOn();
 
   background("black");
-  gif_loading.show();
 
   //main.printGrid(); //DEBUG, uncomment this line and comment function draw
 }
@@ -77,6 +76,7 @@ function draw() {
     let gifHeight=gifWidth/gif_loading.width*gif_loading.height;
     gif_loading.size(gifWidth,gifHeight);
     gif_loading.position((windowWidth-gif_loading.width)/2, (windowHeight-gif_loading.height)/2);
+    gif_loading.show();
   }
   else {
     gif_loading.hide();
