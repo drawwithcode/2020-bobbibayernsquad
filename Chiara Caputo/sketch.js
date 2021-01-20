@@ -63,6 +63,7 @@ function centerCanvas() {
 function setup() {
   ////////// CANVAS SETTINGS //////////
   cnv = createCanvas(windowWidth,windowHeight);
+  cnv.style("z-index", "-1");
   centerCanvas();
   //cnv.style('background-color', 'white');
 
