@@ -64,7 +64,7 @@ function setup() {
   ////////// CANVAS SETTINGS //////////
   cnv = createCanvas(windowWidth,windowHeight);
   centerCanvas();
-  cnv.style('background-color', 'white');
+  //cnv.style('background-color', 'white');
 
   ////////// SCENE SETTING //////////
   items[0] = new Item(imgBell);
