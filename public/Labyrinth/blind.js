@@ -536,7 +536,7 @@ class character {
         j : this.sprites_j,
         imgMsg : this.pImageMessage
       }
-      io.to(recipientId).emit("spritesInfo", message);
+      socket.to(recipientId).emit("spritesInfo", message);
     }
   }
   displaySharedSprite(spriteInfo){
