@@ -6,6 +6,7 @@ let firstLobbyFrame = true;
 let labyrinth;
 let main;
 let gif_loading;
+let spriteInfo = undefined;
 
 // Create a new connection using socket.io (imported in index.html)
 let socket = io();
@@ -28,6 +29,11 @@ function setBlindId(id) {
   console.log(blindId);
   console.log("START SIGHTED!!!!");
 }
+
+socket.on("spritesInfo", function (message) {
+  console.log("sprites info received");
+  spriteInfo=message;
+});
 
 
 
@@ -85,7 +91,6 @@ function draw() {
       main.gridOn(160, 120, mapTopLeft_x, mapTopLeft_y, mapDownRight_x, mapDownRight_y); //initialize grid
       //main.spritesOn(80, 3, windowDiagonal/45, 6); //uncomment this to start near the finish
       main.spritesOn(80, 119, windowDiagonal/45, 6); //initialize sprites
-      main.loadCollisions(); //load the collision map
       firstLobbyFrame=false;
     }
 
@@ -94,15 +99,7 @@ function draw() {
 
     //Draw character
     main.updateDimensions(mapTopLeft_x, mapTopLeft_y, mapDownRight_x, mapDownRight_y, windowDiagonal/45);
-    main.move();
-    main.display();
-    main.timeOn();
-
-    //Win check
-    main.victoryCheck();
-
-    // Draw hole
-    //hole(main.getPosition()[0], main.getPosition()[1], windowDiagonal/30);
+    main.displaySharedSprite(spriteInfo);
   }
 
 }
@@ -156,6 +153,8 @@ class character {
     this.pKey = "UP_ARROW"; //previous key
     this.pLeg = false; //previous leg, 1:right 0:left
     this.pImage = this.back[0];
+    this.pImageMessage = [0,0]; //1st number 0:back, 1:front, 2:left, 3:right
+                                //2nd number 0:std, 1:right foot, 2:std, 3:left foot
     // Set time and pause
     this.t = 0;
     this.pause = animationPause;
@@ -384,36 +383,44 @@ class character {
       if (keyIsDown(LEFT_ARROW)) {
         if (this.pKey == "LEFT_ARROW" && this.sprites_i!=0) {
           this.pImage = this.left[this.spritesFrame];
+          this.pImageMessage = [2,this.spritesFrame];
         } else {
           this.pImage = this.left[0];
+          this.pImageMessage = [2,0];
         }
         this.pKey = "LEFT_ARROW";
       }
       else if (keyIsDown(RIGHT_ARROW)) {
         if (this.pKey == "RIGHT_ARROW" && this.sprites_i!=this.gridNodesX-1) {
           this.pImage = this.right[this.spritesFrame];
+          this.pImageMessage = [3,this.spritesFrame];
         } else {
           this.pImage = this.right[0];
+          this.pImageMessage = [3,0];
         }
         this.pKey = "RIGHT_ARROW";
       }
       else if (keyIsDown(UP_ARROW)) {
         if (this.pKey == "UP_ARROW" && this.sprites_j!=0) {
           this.pImage = this.back[this.spritesFrame];
+          this.pImageMessage = [0,this.spritesFrame];
         } else {
           this.pImage = this.back[0];
+          this.pImageMessage = [0,0];
         }
         this.pKey = "UP_ARROW";
       }
       else if (keyIsDown(DOWN_ARROW)) {
         if (this.pKey == "DOWN_ARROW" && this.sprites_j!=this.gridNodesY-1) {
           this.pImage = this.front[this.spritesFrame];
+          this.pImageMessage = [1,this.spritesFrame];
         } else {
           this.pImage = this.front[0];
+          this.pImageMessage = [1,0];
         }
         this.pKey = "DOWN_ARROW";
       }
-      else {
+      else { //if no key is pressed
         if (this.pLeg) {
           this.spritesFrame = 0;
         }
@@ -424,15 +431,19 @@ class character {
         switch (this.pKey) {
           case "LEFT_ARROW":
             this.pImage = this.left[this.spritesFrame];
+            this.pImageMessage = [2,this.spritesFrame];
             break;
           case "RIGHT_ARROW":
             this.pImage = this.right[this.spritesFrame];
+            this.pImageMessage = [3,this.spritesFrame];
             break;
           case "UP_ARROW":
             this.pImage = this.back[this.spritesFrame];
+            this.pImageMessage = [0,this.spritesFrame];
             break;
           case "DOWN_ARROW":
             this.pImage = this.front[this.spritesFrame];
+            this.pImageMessage = [1,this.spritesFrame];
             break;
         }
       }
@@ -511,6 +522,40 @@ class character {
         }
       }
     }
+  }
+  shareSpriteCoords(recipientId){
+    if (this.t > this.pause) {
+      let message = {
+        i : this.sprites_i,
+        j : this.sprites_j,
+        imgMsg : this.pImageMessage
+      }
+      io.to(recipientId).emit("spritesInfo", message);
+    }
+  }
+  displaySharedSprite(spriteInfo){
+    let spritesWidth = this.spritesHeight / this.front[0].height * this.front[0].width;
+    let x = this.gridX[spriteInfo.i]-spritesWidth/20;
+    let y = this.gridY[spriteInfo.j]-this.spritesHeight/3;
+    let img;
+    switch (spriteInfo.imgMsg[0]) {
+      case 0:
+        img=this.back[spriteInfo.imgMsg[1]];
+      break;
+      case 1:
+        img=this.front[spriteInfo.imgMsg[1]];
+      break;
+      case 2:
+        img=this.left[spriteInfo.imgMsg[1]];
+      break;
+      case 3:
+        img=this.right[spriteInfo.imgMsg[1]];
+      break;
+    }
+    push();
+    imageMode(CENTER);
+    image(img, x, y, spritesWidth, this.spritesHeight);
+    pop();
   }
 }
 
