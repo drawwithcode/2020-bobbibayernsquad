@@ -30,7 +30,7 @@ function setBlindId(id) {
   console.log("START SIGHTED!!!!");
 }
 
-socket.on("spritesInfo", function (message) {
+socket.on("spriteInfo", function (message) {
   console.log("sprites info received");
   spriteInfo=message;
 });

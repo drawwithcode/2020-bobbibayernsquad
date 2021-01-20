@@ -79,7 +79,10 @@ function newConnection(socket) {
 
   });
 
-  socket.on("forwardMsg", message);
+  socket.on("forwardMsg", function (message){
+    let newMessage = message;
+    io.to(message.recipient).emit("spriteInfo", newMessage);
+  });
 
   //disconnection
   socket.on('disconnect', function () {
