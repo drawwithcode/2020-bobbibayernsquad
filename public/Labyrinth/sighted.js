@@ -48,7 +48,6 @@ function preload(){
 
 function setup() {
   createCanvas(windowWidth,windowHeight);
-
 }
 
 function draw() {
@@ -56,13 +55,17 @@ function draw() {
   windowDiagonal = pow(pow(windowHeight,2)+pow(windowWidth,2),0.5);
   background("black");
 
+  //Pre Lobby
   if (preLobby) {
     let gifWidth=windowDiagonal/3;
     let gifHeight=gifWidth/gif_loading.width*gif_loading.height;
     gif_loading.size(gifWidth,gifHeight);
     gif_loading.position((windowWidth-gif_loading.width)/2, (windowHeight-gif_loading.height)/2);
   }
+
+  //Main Lobby
   else {
+    // Compute map parameters
     let mapCenter_x = windowWidth/2;
     let mapCenter_y = windowHeight/2;
     let map_diagonal = windowDiagonal/10*7;
@@ -87,7 +90,6 @@ function draw() {
       //main.spritesOn(80, 3, windowDiagonal/45, 6); //uncomment this to start near the finish
       main.spritesOn(80, 119, windowDiagonal/45, 6); //initialize sprites
       main.loadCollisions(); //load the collision map
-      
       firstLobbyFrame=false;
     }
 
@@ -534,7 +536,6 @@ function hole (x,y,radius) {
   noFill();
   circle(x, y, radius_circle*2);
   pop();
-
 }
 
 // Lock scrolling on the page with DOWN_ARROW
