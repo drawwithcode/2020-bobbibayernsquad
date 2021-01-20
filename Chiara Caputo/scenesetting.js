@@ -26,26 +26,21 @@ class Item {
   intersects(other) {
   }
 
-  turn() {
-  }
-
-  clicked(snd) {
-    //let d = dist(mouseX, mouseY, this.x, this.y);
+  clicked() {
     if (
       mouseX > this.x - this.w/2 &&
       mouseX < this.x + this.w/2 &&
       mouseY > this.y - this.h/2 &&
       mouseY < this.y + this.h/2
-      //!snd.isPlaying() //if a sound isn't already playing
     ) {
-      snd.play();
+      return true;
+    } else {
+      return false;
     }
-    // else {
-    //   sndTable.play();
-    // }
-   }
+  }
 
-  update() {
+  play(snd) {
+    snd.play();
   }
 
 }

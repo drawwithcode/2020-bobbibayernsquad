@@ -83,18 +83,30 @@ function setup() {
 }
 
 function mousePressed() {
-  items[0].clicked(sndBell);
-  items[1].clicked(sndCoins);
-  items[2].clicked(sndCupStanding);
-  items[3].clicked(sndGlasses);
-  items[4].clicked(sndKeys);
-  items[5].clicked(sndNotepad);
-  items[6].clicked(sndPapers);
-  items[7].clicked(sndPc);
-  items[8].clicked(sndPens);
-
-  //let anySndTable = random(sndTable); //voglio che anySndTable venga riprodotto quando clicco su parti vuote del canvas
-
+  //whenever an object is clicked, its specific sound is played
+  if (items[0].clicked()) {
+    items[0].play(sndBell);
+  } else if (items[1].clicked()) {
+    items[1].play(sndCoins);
+  } else if (items[2].clicked()) {
+    items[2].play(sndCupStanding);
+  } else if (items[3].clicked()) {
+    items[3].play(sndGlasses);
+  } else if (items[4].clicked()) {
+    items[4].play(sndKeys);
+  } else if (items[5].clicked()) {
+    items[5].play(sndNotepad);
+  } else if (items[6].clicked()) {
+    items[6].play(sndPapers);
+  } else if (items[7].clicked()) {
+    items[7].play(sndPc);
+  } else if (items[8].clicked()) {
+    items[8].play(sndPens);
+  } else {
+  //whenever the user clicks elsewhere, the sound of the table being touched is played
+    let anySndTable = random(sndTable);
+    anySndTable.play();
+  }
 }
 
 function draw() {
