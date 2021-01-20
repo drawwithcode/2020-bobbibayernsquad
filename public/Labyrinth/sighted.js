@@ -37,9 +37,6 @@ function preload(){
   labyrinth = loadImage("assets/Images/Blind/labyrinth.png");
   //Load characters sprites & sounds
   main = new character("assets/Images/Blind/Sprites","assets/Sounds/wall_bump.m4a","assets/Sounds/pin.mp3");
-  //Load loading gif
-  gif_loading = createImg("assets/Images/loading.gif");
-  gif_loading.hide();
 }
 
 function setup() {
@@ -64,8 +61,8 @@ function setup() {
   main.loadCollisions();
   main.pinOn();
 
-  //Show loading GIF
-  gif_loading.show();
+  //Load loading gif
+  gif_loading = createImg("assets/Images/loading.gif");
   let gifWidth=windowDiagonal/3;
   let gifHeight=gifWidth/gif_loading.width*gif_loading.height;
   gif_loading.size(gifWidth,gifHeight);
