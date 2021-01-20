@@ -10,7 +10,7 @@ let spriteSharedInfo = undefined;
 let key = undefined;
 let mousePointing = [];
 let pinSound;
-let fps = 20;
+let fps = 40;
 
 // Create a new connection using socket.io (imported in index.html)
 let socket = io();
