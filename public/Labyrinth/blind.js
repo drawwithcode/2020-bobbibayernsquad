@@ -102,7 +102,7 @@ function draw() {
     main.victoryCheck();
 
     // Draw hole
-    //hole(main.getPosition()[0], main.getPosition()[1], windowDiagonal/30);
+    hole(main.getPosition()[0], main.getPosition()[1], windowDiagonal/30);
   }
 
 }
