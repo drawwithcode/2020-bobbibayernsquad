@@ -654,7 +654,7 @@ function mouseClicked(){
     mousePointing.splice(isdel,1);
   }
   else {
-    mousePointing.push(new mousePointer(mouseX+camPos[0],mouseY+camPos[1]));
+    mousePointing.push(new mousePointer(mouseX,mouseY));
   }
 
 }
