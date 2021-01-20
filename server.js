@@ -79,6 +79,8 @@ function newConnection(socket) {
 
   });
 
+  socket.on("forwardMsg", message);
+
   //disconnection
   socket.on('disconnect', function () {
     console.log("disconnection: "+ socket.id);

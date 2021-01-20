@@ -534,12 +534,10 @@ class character {
       let message = {
         i : this.sprites_i,
         j : this.sprites_j,
-        imgMsg : this.pImageMessage
+        imgMsg : this.pImageMessage,
+        recipient : recipientId
       }
-
-      socket.to("ciao").emit("spritesInfo", message);
-        //
-
+      socket.emit("forwardMsg", message);
     }
   }
   displaySharedSprite(spriteInfo){
