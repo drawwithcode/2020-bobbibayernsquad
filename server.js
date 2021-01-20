@@ -81,6 +81,6 @@ function newConnection(socket) {
 
   //disconnection
   socket.on('disconnect', function () {
-    console.log("disconnection: "+ socket.client.id);
+    console.log("disconnection: "+ socket.id);
   });
 }

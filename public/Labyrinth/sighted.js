@@ -31,10 +31,6 @@ function setBlindId(id) {
 
 
 
-
-
-
-
 function preload(){
   windowDiagonal = pow(pow(windowHeight,2)+pow(windowWidth,2),0.5);
   //Load map
