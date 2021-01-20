@@ -84,6 +84,11 @@ function newConnection(socket) {
     io.to(message.recipient).emit("spriteInfo", newMessage);
   });
 
+  socket.on("forwardKey", function (message){
+    let key = message.key;
+    io.to(message.recipient).emit("keyInfo", key);
+  });
+
   //disconnection
   socket.on('disconnect', function () {
     console.log("disconnection: "+ socket.id);

@@ -99,7 +99,8 @@ function draw() {
     main.timeOn();
 
     //Share sprite info
-    main.shareSpriteCoords(sightedId);
+    //main.shareSpriteCoords(sightedId);
+    main.shareKeys(sightedId);
 
     //Win check
     main.victoryCheck();
@@ -563,6 +564,22 @@ class character {
     imageMode(CENTER);
     image(img, x, y, spritesWidth, this.spritesHeight);
     pop();
+  }
+  shareKeys(recipientId){
+    if (this.t > this.pause) {
+      let key;
+      if (keyIsDown(LEFT_ARROW)) {key=2}
+      else if (keyIsDown(RIGHT_ARROW)) {key=3}
+      else if (keyIsDown(UP_ARROW)) {key=0}
+      else if (keyIsDown(DOWN_ARROW)) {key=1}
+      else {key=-1}
+      let message = {
+        key : key,
+        recipient : recipientId
+      }
+      socket.emit("forwardKey", mesage);
+    }
+
   }
 }
 
