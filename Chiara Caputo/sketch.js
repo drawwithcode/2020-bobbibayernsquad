@@ -1,7 +1,5 @@
 ////////// GLOBAL VARIABLES FOR PAGE ELEMENTS //////////
 let cnv; //canvas
-let a; //instructions in the middle of the page
-let p; //other instructions
 
 ////////// GLOBAL VARIABLES FOR THE ITEMS ON THE TABLE //////////
 //images
@@ -80,21 +78,7 @@ function setup() {
   items[8] = new Item(imgPens);
 
   ////////// PAGE ELEMENTS //////////
-  //click to...
-  p = createP('Click to feel the table');
-  p.style("font-family", "Inconsolata");
-  p.style("font-size", "14px");
-  p.style("text-transform", "uppercase");
-  p.position(50,100);
-
-  //instructions in the middle of the page
-  a = createDiv("<p>There is a table in front of you...</p><p>Try to find the bell</p>");
-  a.style("font-family", "Work Sans");
-  a.style("font-weight", "400");
-  a.style("font-size", "18px");
-  a.style("line-height", "14px");
-  a.style("text-align", "center");
-  a.position(300,100);
+  //...
 
 }
 
