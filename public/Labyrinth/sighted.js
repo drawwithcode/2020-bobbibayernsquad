@@ -30,6 +30,11 @@ function setBlindId(id) {
 }
 
 
+
+
+
+
+
 function preload(){
   windowDiagonal = pow(pow(windowHeight,2)+pow(windowWidth,2),0.5);
   //Load map
@@ -43,29 +48,7 @@ function preload(){
 
 function setup() {
   createCanvas(windowWidth,windowHeight);
-  push();
-  imageMode(CENTER);
-  let mapCenter_x = windowWidth/2;
-  let mapCenter_y = windowHeight/2;
-  let map_diagonal = windowDiagonal/10*7;
-  let map_height = map_diagonal/pow(pow(labyrinth.height,2)+pow(labyrinth.width,2),0.5)*labyrinth.height;
-  let map_width = labyrinth.width/labyrinth.height*map_height;
-  image(labyrinth, mapCenter_x, mapCenter_y, map_width, map_height);
-  pop();
 
-  let mapTopLeft_x = mapCenter_x-map_width/2;
-  let mapTopLeft_y = mapCenter_y-map_height/2;
-  let mapDownRight_x = mapCenter_x+map_width/2;
-  let mapDownRight_y = mapCenter_y+map_height/2;
-  main.gridOn(160, 120, mapTopLeft_x, mapTopLeft_y, mapDownRight_x, mapDownRight_y);
-  //main.spritesOn(80, 3, windowDiagonal/45, 6);
-  main.spritesOn(80, 119, windowDiagonal/45, 6);
-  main.loadCollisions();
-  main.pinOn();
-
-  background("black");
-
-  //main.printGrid(); //DEBUG, uncomment this line and comment function draw
 }
 
 function draw() {
@@ -82,28 +65,38 @@ function draw() {
     gif_loading.position((windowWidth-gif_loading.width)/2, (windowHeight-gif_loading.height)/2);
   }
   else {
-    if (firstLobbyFrame) {gif_loading.remove();}
-    // Draw map
-    push();
-    imageMode(CENTER);
     let mapCenter_x = windowWidth/2;
     let mapCenter_y = windowHeight/2;
     let map_diagonal = windowDiagonal/10*7;
     let map_height = map_diagonal/pow(pow(labyrinth.height,2)+pow(labyrinth.width,2),0.5)*labyrinth.height;
     let map_width = labyrinth.width/labyrinth.height*map_height;
+    let mapTopLeft_x = mapCenter_x-map_width/2;
+    let mapTopLeft_y = mapCenter_y-map_height/2;
+    let mapDownRight_x = mapCenter_x+map_width/2;
+    let mapDownRight_y = mapCenter_y+map_height/2;
+
+    // Draw map
+    push();
+    imageMode(CENTER);
     image(labyrinth, mapCenter_x, mapCenter_y, map_width, map_height);
     pop();
+
+    //If it is the first frame of the lobby
+    if (firstLobbyFrame) {
+      gif_loading.remove(); //remove GIF
+      main.pinOn(); //start pin
+      main.gridOn(160, 120, mapTopLeft_x, mapTopLeft_y, mapDownRight_x, mapDownRight_y); //initialize grid
+      //main.spritesOn(80, 3, windowDiagonal/45, 6); //uncomment this to start near the finish
+      main.spritesOn(80, 119, windowDiagonal/45, 6); //initialize sprites
+      main.loadCollisions(); //load the collision map
+    }
 
     //Draw pin
     main.displayPin(1);
 
     //Draw character
-    let mapTopLeft_x = mapCenter_x-map_width/2;
-    let mapTopLeft_y = mapCenter_y-map_height/2;
-    let mapDownRight_x = mapCenter_x+map_width/2;
-    let mapDownRight_y = mapCenter_y+map_height/2;
     main.updateDimensions(mapTopLeft_x, mapTopLeft_y, mapDownRight_x, mapDownRight_y, windowDiagonal/45);
-    main.move_lC();
+    main.move();
     main.display();
     main.timeOn();
 
@@ -178,11 +171,6 @@ class character {
         let x = xStart+n*dx;
         let col = get(x,y);
         if (col[0]==255 && col[1]==255 && col[2]==255) {return 1;}
-/*        push();
-        stroke('red');
-        strokeWeight(1);
-        point(x,y);
-        pop();*/
       }
       return 0;
     }
@@ -192,11 +180,6 @@ class character {
         let y = yStart+n*dy;
         let col = get(x,y);
         if (col[0]==255 && col[1]==255 && col[2]==255) {return 1;}
-        /*push();
-        stroke('red');
-        strokeWeight(1);
-        point(x,y);
-        pop();*/
       }
       return 0;
     }
@@ -299,7 +282,7 @@ class character {
     this.pin_x=map(this.pin_x,oldGridX[1],oldGridX[oldGridX.length-1],this.gridX[1],this.gridX[this.gridX.length-1]);
     this.pin_y=map(this.pin_y,oldGridY[1],oldGridY[oldGridY.length-1],this.gridY[1],this.gridY[this.gridY.length-1]);
   }
-  move_lC () {
+  move () {
     if (this.t > this.pause) {
       if (keyIsDown(LEFT_ARROW) && this.pKey == "LEFT_ARROW") {
         if (this.collisionGrid[this.sprites_i][this.sprites_j][2]){
@@ -349,22 +332,6 @@ class character {
         } else {
           this.sprites_j = min(this.sprites_j + 1, this.gridNodesY - 1);
         }
-      }
-    }
-  }
-  move_ulC () { //move without uploading the collision first, [still to be implemented!!!]
-    if (this.t > this.pause) {
-      if (keyIsDown(LEFT_ARROW) && this.pKey == "LEFT_ARROW" ){ //&& !this.collisionGrid[this.sprites_i][this.sprites_j][2]) {
-        this.sprites_i = max(this.sprites_i - 1, 0);
-      }
-      else if (keyIsDown(RIGHT_ARROW) && this.pKey == "RIGHT_ARROW" ){ //&& !this.collisionGrid[this.sprites_i][this.sprites_j][3]) {
-        this.sprites_i = min(this.sprites_i + 1, this.gridNodesX - 1);
-      }
-      else if (keyIsDown(UP_ARROW) && this.pKey == "UP_ARROW" ){ //&& !this.collisionGrid[this.sprites_i][this.sprites_j][0]) {
-        this.sprites_j = max(this.sprites_j - 1, 0);
-      }
-      else if (keyIsDown(DOWN_ARROW) && this.pKey == "DOWN_ARROW" ){ //&& !this.collisionGrid[this.sprites_i][this.sprites_j][1]) {
-        this.sprites_j = min(this.sprites_j + 1, this.gridNodesY - 1);
       }
     }
   }
