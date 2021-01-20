@@ -577,7 +577,7 @@ class character {
         key : key,
         recipient : recipientId
       }
-      socket.emit("forwardKey", mesage);
+      socket.emit("forwardKey", message);
     }
 
   }
