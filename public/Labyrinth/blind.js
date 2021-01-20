@@ -537,8 +537,8 @@ class character {
         imgMsg : this.pImageMessage
       }
 
-      socket.emit("spritesInfo", message);
-        //.to(recipientId)
+      socket.to("ciao").emit("spritesInfo", message);
+        //
 
     }
   }
