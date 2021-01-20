@@ -38,6 +38,7 @@ function preload(){
   main = new character("assets/Images/Blind/Sprites","assets/Sounds/wall_bump.m4a","assets/Sounds/pin.mp3");
   //Load loading GIF
   gif_loading = createImg("assets/Images/loading.gif");
+  gif_loading.size(1,1);
   //gif_loading.hide();
 }
 
