@@ -92,6 +92,9 @@ function mousePressed() {
   items[6].clicked(sndPapers);
   items[7].clicked(sndPc);
   items[8].clicked(sndPens);
+
+  //let anySndTable = random(sndTable); //voglio che anySndTable venga riprodotto quando clicco su parti vuote del canvas
+
 }
 
 function draw() {
