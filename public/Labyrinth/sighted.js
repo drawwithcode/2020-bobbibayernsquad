@@ -38,8 +38,7 @@ function preload(){
   main = new character("assets/Images/Blind/Sprites","assets/Sounds/wall_bump.m4a","assets/Sounds/pin.mp3");
   //Load loading GIF
   gif_loading = createImg("assets/Images/loading.gif");
-  gif_loading.position(windowWidth,windowHeight);
-  
+  gif_loading.position(windowWidth,windowHeight); //move GIF outside the screen so that it is not visible while loading
 }
 
 function setup() {
@@ -64,6 +63,7 @@ function setup() {
   main.loadCollisions();
   main.pinOn();
 
+  background("black");
 
   //main.printGrid(); //DEBUG, uncomment this line and comment function draw
 }
