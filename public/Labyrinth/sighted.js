@@ -8,6 +8,9 @@ let main;
 let gif_loading;
 let spriteSharedInfo = undefined;
 let key = undefined;
+let mousePointing = [];
+let pinSound;
+let fps = 20;
 
 // Create a new connection using socket.io (imported in index.html)
 let socket = io();
@@ -47,6 +50,9 @@ function preload(){
   //Load loading GIF
   gif_loading = createImg("assets/Images/loading.gif");
   gif_loading.position(windowWidth,windowHeight); //move GIF outside the screen so that it is not visible while loading
+  //Load sound
+  pinSound = loadSound("assets/Sounds/pin.mp3");
+  cowBell = loadSound('assets/Sounds/cartoon_cowbell.ogg');
 }
 
 function setup() {
@@ -88,7 +94,7 @@ function draw() {
     //If it is the first frame of the lobby
     if (firstLobbyFrame) {
       gif_loading.remove(); //remove GIF
-      main.pinOn(); //start pin
+      //main.pinOn(); //start pin
       main.gridOn(160, 120, mapTopLeft_x, mapTopLeft_y, mapDownRight_x, mapDownRight_y); //initialize grid
       //main.spritesOn(80, 3, windowDiagonal/45, 6); //uncomment this to start near the finish
       main.spritesOn(80, 119, windowDiagonal/45, 6); //initialize sprites
@@ -96,13 +102,27 @@ function draw() {
     }
 
     //Draw pin
-    main.displayPin(1);
+    //main.displayPin(1);
 
     //Draw character
     main.updateDimensions(mapTopLeft_x, mapTopLeft_y, mapDownRight_x, mapDownRight_y, windowDiagonal/45);
     main.displaySharedInfo(spriteSharedInfo);
     main.timeOn();
-  }
+
+
+
+    let shift = -1;
+    mousePointing.forEach((mp, i) => {
+      mp.display();
+      if (distXY(main.getPosition(),mp.pos)<main.spritesHeight) {
+        shift = i;
+        cowBell.play();
+      }
+    });
+    if(shift>=0) mousePointing.splice(shift,1);
+
+
+    }
 
 }
 
@@ -574,8 +594,69 @@ class character {
   }
 }
 
+class mousePointer {
+  constructor(x,y) {
+    this.pos = [x,y];
+    this.t = 0;
+    this.lastBeep = -1000;
+    this.sound = pinSound;
+    this.sound.setVolume(0.5);
+    this.sound.play();
+  }
+  display() {
+    let volume = (1-this.distwithmain()/dist(0,0,windowWidth,windowHeight))**2;
+    this.sound.setVolume(volume);
+    if (abs(this.t-this.lastBeep)>(1-volume)*2){
+      let dd = distanceDir(main.getPosition(),this.pos);
+      this.sound.rate(dd/4+0.5);
+      this.sound.play();
+      this.lastBeep = this.t;
+    }
+    push();
+    stroke(255,0,0);
+    fill(200,0,0,100);
+    strokeWeight(2);
+    ellipse(this.pos[0],this.pos[1],main.spritesHeight*sin(this.t*PI));
+    pop();
+    this.t += 1/fps;
+  }
+  distwithmain() {
+    return dist(this.pos[0],this.pos[1],main.getPosition()[0],main.getPosition()[1]);
+  }
+}
+function distanceDir(posMain,posObj) {
+  let distX = posMain[0]-posObj[0];
+  let distY = posMain[1]-posObj[1];
+  if(distX>=distY && distX>=-distY) {
+    return 1;
+  }
+  else if (distX>=distY && distX<-distY) {
+    return 2;
+  }
+  else if (distX<distY && distX>=-distY) {
+    return 0;
+  }
+  else if (distX<distY && distX<-distY) {
+    return 3;
+  }
+}
+function distXY(pos1,pos2) {
+  return dist(pos1[0],pos1[1],pos2[0],pos2[1]);
+}
 function mouseClicked(){
-  main.pushPinCoords();
+  let isdel = -1;
+  mousePointing.forEach((mp, i) => {
+    if (distXY(mp.pos,[mouseX,mouseY])<main.spritesHeight) {
+      isdel = i;
+    }
+  });
+  if (isdel>=0) {
+    mousePointing.splice(isdel,1);
+  }
+  else {
+    mousePointing.push(new mousePointer(mouseX+camPos[0],mouseY+camPos[1]));
+  }
+
 }
 
 function windowResized() {
