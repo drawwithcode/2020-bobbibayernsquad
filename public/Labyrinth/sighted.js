@@ -110,6 +110,7 @@ function draw() {
     //main.displaySharedSprite(spriteInfo);
     main.moveSharedKey (key);
     main.displaySharedKey(key);
+    main.timeOn();
   }
 
 }
