@@ -57,8 +57,6 @@ function draw() {
   background("black");
 
   if (preLobby) {
-    //gif_loading.show();
-    console.log("shown");
     let gifWidth=windowDiagonal/3;
     let gifHeight=gifWidth/gif_loading.width*gif_loading.height;
     gif_loading.size(gifWidth,gifHeight);
@@ -89,6 +87,8 @@ function draw() {
       //main.spritesOn(80, 3, windowDiagonal/45, 6); //uncomment this to start near the finish
       main.spritesOn(80, 119, windowDiagonal/45, 6); //initialize sprites
       main.loadCollisions(); //load the collision map
+      
+      firstLobbyFrame=false;
     }
 
     //Draw pin
