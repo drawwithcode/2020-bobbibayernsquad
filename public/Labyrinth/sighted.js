@@ -2,6 +2,7 @@
 let blindId = undefined;
 let windowDiagonal;
 let preLobby = true;
+let firstLobbyFrame = true;
 let labyrinth;
 let main;
 let gif_loading;
@@ -29,17 +30,15 @@ function setBlindId(id) {
 }
 
 
-
-
 function preload(){
   windowDiagonal = pow(pow(windowHeight,2)+pow(windowWidth,2),0.5);
   //Load map
   labyrinth = loadImage("assets/Images/Blind/labyrinth.png");
   //Load characters sprites & sounds
   main = new character("assets/Images/Blind/Sprites","assets/Sounds/wall_bump.m4a","assets/Sounds/pin.mp3");
-  //Load loading gif
+  //Load loading GIF
   gif_loading = createImg("assets/Images/loading.gif");
-  gif_loading.hide();
+  gif_loading.position(windowWidth,windowHeight); //move GIF outside the screen so that it is not visible while loading
 }
 
 function setup() {
@@ -65,12 +64,6 @@ function setup() {
   main.pinOn();
 
   background("black");
-  gif_loading.show();
-  let gifWidth=windowDiagonal/3;
-  let gifHeight=gifWidth/gif_loading.width*gif_loading.height;
-  gif_loading.size(gifWidth,gifHeight);
-  gif_loading.position((windowWidth-gif_loading.width)/2, (windowHeight-gif_loading.height)/2);
-
 
   //main.printGrid(); //DEBUG, uncomment this line and comment function draw
 }
@@ -81,14 +74,15 @@ function draw() {
   background("black");
 
   if (preLobby) {
-    gif_loading.show();
+    //gif_loading.show();
+    console.log("shown");
     let gifWidth=windowDiagonal/3;
     let gifHeight=gifWidth/gif_loading.width*gif_loading.height;
     gif_loading.size(gifWidth,gifHeight);
     gif_loading.position((windowWidth-gif_loading.width)/2, (windowHeight-gif_loading.height)/2);
   }
   else {
-    gif_loading.hide();
+    if (firstLobbyFrame) {gif_loading.remove();}
     // Draw map
     push();
     imageMode(CENTER);
