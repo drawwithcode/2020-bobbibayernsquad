@@ -25,7 +25,6 @@ socket.on("connect", function () {
 socket.on("start", setBlindId);
 function setBlindId(id) {
   blindId = id;
-  preLobby = false;
   console.log(blindId);
   console.log("START SIGHTED!!!!");
 }
@@ -33,6 +32,7 @@ function setBlindId(id) {
 socket.on("spriteInfo", function (message) {
   console.log("sprites info received");
   spriteInfo=message;
+  preLobby=false;
 });
 
 
