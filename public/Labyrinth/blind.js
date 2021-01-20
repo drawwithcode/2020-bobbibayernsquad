@@ -99,8 +99,7 @@ function draw() {
     main.timeOn();
 
     //Share sprite info
-    //main.shareSpriteCoords(sightedId);
-    main.shareKeys(sightedId);
+    main.shareSpriteInfo(sightedId);
 
     //Win check
     main.victoryCheck();
@@ -162,6 +161,7 @@ class character {
     this.pImage = this.back[0];
     this.pImageMessage = [0,0]; //1st number 0:back, 1:front, 2:left, 3:right
                                 //2nd number 0:std, 1:right foot, 2:std, 3:left foot
+    this.soundMessage = false;
     // Set time and pause
     this.t = 0;
     this.pause = animationPause;
@@ -288,10 +288,12 @@ class character {
   }
   move () {
     if (this.t > this.pause) {
+      this.soundMessage = false;
       if (keyIsDown(LEFT_ARROW) && this.pKey == "LEFT_ARROW") {
         if (this.collisionGrid[this.sprites_i][this.sprites_j][2]){
           if (this.collisionSound[2]!=1) {
             this.wallSound.play();
+            this.soundMessage = true;
             this.collisionSound = [0,0,1,0];
           } else {
             this.collisionSound = [0,0,0,0];
@@ -305,6 +307,7 @@ class character {
         if (this.collisionGrid[this.sprites_i][this.sprites_j][3]) {
           if (this.collisionSound[3]!=1) {
             this.wallSound.play();
+            this.soundMessage = true;
             this.collisionSound = [0,0,0,1];
           } else {
             this.collisionSound = [0,0,0,0];
@@ -317,6 +320,7 @@ class character {
         if (this.collisionGrid[this.sprites_i][this.sprites_j][0]) {
           if (this.collisionSound[0]!=1) {
             this.wallSound.play();
+            this.soundMessage = true;
             this.collisionSound = [1,0,0,0];
           } else {
             this.collisionSound = [0,0,0,0];
@@ -329,6 +333,7 @@ class character {
         if (this.collisionGrid[this.sprites_i][this.sprites_j][1]) {
           if (this.collisionSound[1]!=1) {
             this.wallSound.play();
+            this.soundMessage = true;
             this.collisionSound = [0,1,0,0];
           } else {
             this.collisionSound = [0,0,0,0];
@@ -530,21 +535,24 @@ class character {
       }
     }
   }
-  shareSpriteCoords(recipientId){
+  shareSpriteInfo(recipientId){
     if (this.t > this.pause) {
       let message = {
         i : this.sprites_i,
         j : this.sprites_j,
         imgMsg : this.pImageMessage,
+        sound : this.soundMessage,
         recipient : recipientId
       }
       socket.emit("forwardMsg", message);
     }
   }
-  displaySharedSprite(spriteInfo){
+  displaySharedInfo(spriteInfo){
     let spritesWidth = this.spritesHeight / this.front[0].height * this.front[0].width;
     let x = this.gridX[spriteInfo.i]-spritesWidth/20;
+    this.sprites_i = spriteInfo.i; //needed for the pin to work
     let y = this.gridY[spriteInfo.j]-this.spritesHeight/3;
+    this.sprites_j = spriteInfo.j; //needed for the pin to work
     let img;
     switch (spriteInfo.imgMsg[0]) {
       case 0:
@@ -564,22 +572,9 @@ class character {
     imageMode(CENTER);
     image(img, x, y, spritesWidth, this.spritesHeight);
     pop();
-  }
-  shareKeys(recipientId){
-    if (this.t > this.pause) {
-      let key;
-      if (keyIsDown(LEFT_ARROW)) {key=2}
-      else if (keyIsDown(RIGHT_ARROW)) {key=3}
-      else if (keyIsDown(UP_ARROW)) {key=0}
-      else if (keyIsDown(DOWN_ARROW)) {key=1}
-      else {key=-1}
-      let message = {
-        key : key,
-        recipient : recipientId
-      }
-      socket.emit("forwardKey", message);
+    if (spriteInfo.sound && this.t > this.pause) {
+      this.wallSound.play();
     }
-
   }
 }
 

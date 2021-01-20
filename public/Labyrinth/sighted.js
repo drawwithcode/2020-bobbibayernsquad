@@ -6,7 +6,7 @@ let firstLobbyFrame = true;
 let labyrinth;
 let main;
 let gif_loading;
-let spriteInfo = undefined;
+let spriteSharedInfo = undefined;
 let key = undefined;
 
 // Create a new connection using socket.io (imported in index.html)
@@ -30,16 +30,10 @@ function setBlindId(id) {
   console.log("START SIGHTED!!!!");
 }
 
-socket.on("spriteInfo", function (message) {
+socket.on("spriteInfo", function (info) {
   console.log("sprites info received");
-  spriteInfo=message;
+  spriteSharedInfo=info;
   preLobby=false; //exit from the prelobby when the first message arrives
-});
-
-socket.on("keyInfo", function (sharedKey) {
-  console.log(sharedKey);
-  key=sharedKey;
-  preLobby=false; //exit from the prelobby when the first key arrives
 });
 
 
@@ -98,7 +92,6 @@ function draw() {
       main.gridOn(160, 120, mapTopLeft_x, mapTopLeft_y, mapDownRight_x, mapDownRight_y); //initialize grid
       //main.spritesOn(80, 3, windowDiagonal/45, 6); //uncomment this to start near the finish
       main.spritesOn(80, 119, windowDiagonal/45, 6); //initialize sprites
-      main.loadCollisions(); //load the collision map
       firstLobbyFrame=false;
     }
 
@@ -107,9 +100,7 @@ function draw() {
 
     //Draw character
     main.updateDimensions(mapTopLeft_x, mapTopLeft_y, mapDownRight_x, mapDownRight_y, windowDiagonal/45);
-    //main.displaySharedSprite(spriteInfo);
-    main.moveSharedKey (key);
-    main.displaySharedKey(key);
+    main.displaySharedInfo(spriteSharedInfo);
     main.timeOn();
   }
 
@@ -166,6 +157,7 @@ class character {
     this.pImage = this.back[0];
     this.pImageMessage = [0,0]; //1st number 0:back, 1:front, 2:left, 3:right
                                 //2nd number 0:std, 1:right foot, 2:std, 3:left foot
+    this.soundMessage = false;
     // Set time and pause
     this.t = 0;
     this.pause = animationPause;
@@ -292,10 +284,12 @@ class character {
   }
   move () {
     if (this.t > this.pause) {
+      this.soundMessage = false;
       if (keyIsDown(LEFT_ARROW) && this.pKey == "LEFT_ARROW") {
         if (this.collisionGrid[this.sprites_i][this.sprites_j][2]){
           if (this.collisionSound[2]!=1) {
             this.wallSound.play();
+            this.soundMessage = true;
             this.collisionSound = [0,0,1,0];
           } else {
             this.collisionSound = [0,0,0,0];
@@ -309,6 +303,7 @@ class character {
         if (this.collisionGrid[this.sprites_i][this.sprites_j][3]) {
           if (this.collisionSound[3]!=1) {
             this.wallSound.play();
+            this.soundMessage = true;
             this.collisionSound = [0,0,0,1];
           } else {
             this.collisionSound = [0,0,0,0];
@@ -321,6 +316,7 @@ class character {
         if (this.collisionGrid[this.sprites_i][this.sprites_j][0]) {
           if (this.collisionSound[0]!=1) {
             this.wallSound.play();
+            this.soundMessage = true;
             this.collisionSound = [1,0,0,0];
           } else {
             this.collisionSound = [0,0,0,0];
@@ -333,6 +329,7 @@ class character {
         if (this.collisionGrid[this.sprites_i][this.sprites_j][1]) {
           if (this.collisionSound[1]!=1) {
             this.wallSound.play();
+            this.soundMessage = true;
             this.collisionSound = [0,1,0,0];
           } else {
             this.collisionSound = [0,0,0,0];
@@ -534,20 +531,24 @@ class character {
       }
     }
   }
-  shareSpriteCoords(recipientId){
+  shareSpriteInfo(recipientId){
     if (this.t > this.pause) {
       let message = {
         i : this.sprites_i,
         j : this.sprites_j,
-        imgMsg : this.pImageMessage
+        imgMsg : this.pImageMessage,
+        sound : this.soundMessage,
+        recipient : recipientId
       }
-      io.to(recipientId).emit("spritesInfo", message);
+      socket.emit("forwardMsg", message);
     }
   }
-  displaySharedSprite(spriteInfo){
+  displaySharedInfo(spriteInfo){
     let spritesWidth = this.spritesHeight / this.front[0].height * this.front[0].width;
     let x = this.gridX[spriteInfo.i]-spritesWidth/20;
+    this.sprites_i = spriteInfo.i; //needed for the pin to work
     let y = this.gridY[spriteInfo.j]-this.spritesHeight/3;
+    this.sprites_j = spriteInfo.j; //needed for the pin to work
     let img;
     switch (spriteInfo.imgMsg[0]) {
       case 0:
@@ -567,142 +568,9 @@ class character {
     imageMode(CENTER);
     image(img, x, y, spritesWidth, this.spritesHeight);
     pop();
-  }
-
-  moveSharedKey (sharedKey) {
-    if (this.t > this.pause) {
-      if (sharedKey==2 && this.pKey == "LEFT_ARROW") {
-        if (this.collisionGrid[this.sprites_i][this.sprites_j][2]){
-          if (this.collisionSound[2]!=1) {
-            this.wallSound.play();
-            this.collisionSound = [0,0,1,0];
-          } else {
-            this.collisionSound = [0,0,0,0];
-          }
-        }
-        else{
-          this.sprites_i = max(this.sprites_i - 1, 0);
-        }
-      }
-      else if (sharedKey==3 && this.pKey == "RIGHT_ARROW") {
-        if (this.collisionGrid[this.sprites_i][this.sprites_j][3]) {
-          if (this.collisionSound[3]!=1) {
-            this.wallSound.play();
-            this.collisionSound = [0,0,0,1];
-          } else {
-            this.collisionSound = [0,0,0,0];
-          }
-        } else {
-          this.sprites_i = min(this.sprites_i + 1, this.gridNodesX - 1);
-        }
-      }
-      else if (sharedKey==0 && this.pKey == "UP_ARROW") {
-        if (this.collisionGrid[this.sprites_i][this.sprites_j][0]) {
-          if (this.collisionSound[0]!=1) {
-            this.wallSound.play();
-            this.collisionSound = [1,0,0,0];
-          } else {
-            this.collisionSound = [0,0,0,0];
-          }
-        } else {
-          this.sprites_j = max(this.sprites_j - 1, 0);
-        }
-      }
-      else if (sharedKey==1 && this.pKey == "DOWN_ARROW") {
-        if (this.collisionGrid[this.sprites_i][this.sprites_j][1]) {
-          if (this.collisionSound[1]!=1) {
-            this.wallSound.play();
-            this.collisionSound = [0,1,0,0];
-          } else {
-            this.collisionSound = [0,0,0,0];
-          }
-        } else {
-          this.sprites_j = min(this.sprites_j + 1, this.gridNodesY - 1);
-        }
-      }
+    if (spriteInfo.sound && this.t > this.pause) {
+      this.wallSound.play();
     }
-  }
-  displaySharedKey(sharedKey) {
-    let spritesWidth = this.spritesHeight / this.front[0].height * this.front[0].width;
-    let x = this.gridX[this.sprites_i]-spritesWidth/20;
-    let y = this.gridY[this.sprites_j]-this.spritesHeight/3;
-
-    if (this.t > this.pause) {
-      if (sharedKey==2) {
-        if (this.pKey == "LEFT_ARROW" && this.sprites_i!=0) {
-          this.pImage = this.left[this.spritesFrame];
-          this.pImageMessage = [2,this.spritesFrame];
-        } else {
-          this.pImage = this.left[0];
-          this.pImageMessage = [2,0];
-        }
-        this.pKey = "LEFT_ARROW";
-      }
-      else if (sharedKey==3) {
-        if (this.pKey == "RIGHT_ARROW" && this.sprites_i!=this.gridNodesX-1) {
-          this.pImage = this.right[this.spritesFrame];
-          this.pImageMessage = [3,this.spritesFrame];
-        } else {
-          this.pImage = this.right[0];
-          this.pImageMessage = [3,0];
-        }
-        this.pKey = "RIGHT_ARROW";
-      }
-      else if (sharedKey==0) {
-        if (this.pKey == "UP_ARROW" && this.sprites_j!=0) {
-          this.pImage = this.back[this.spritesFrame];
-          this.pImageMessage = [0,this.spritesFrame];
-        } else {
-          this.pImage = this.back[0];
-          this.pImageMessage = [0,0];
-        }
-        this.pKey = "UP_ARROW";
-      }
-      else if (sharedKey==1) {
-        if (this.pKey == "DOWN_ARROW" && this.sprites_j!=this.gridNodesY-1) {
-          this.pImage = this.front[this.spritesFrame];
-          this.pImageMessage = [1,this.spritesFrame];
-        } else {
-          this.pImage = this.front[0];
-          this.pImageMessage = [1,0];
-        }
-        this.pKey = "DOWN_ARROW";
-      }
-      else { //if no key is pressed
-        if (this.pLeg) {
-          this.spritesFrame = 0;
-        }
-        else {
-          this.spritesFrame = 2;
-        }
-        this.pLeg = !this.pLeg; //alternate starting leg
-        switch (this.pKey) {
-          case "LEFT_ARROW":
-            this.pImage = this.left[this.spritesFrame];
-            this.pImageMessage = [2,this.spritesFrame];
-            break;
-          case "RIGHT_ARROW":
-            this.pImage = this.right[this.spritesFrame];
-            this.pImageMessage = [3,this.spritesFrame];
-            break;
-          case "UP_ARROW":
-            this.pImage = this.back[this.spritesFrame];
-            this.pImageMessage = [0,this.spritesFrame];
-            break;
-          case "DOWN_ARROW":
-            this.pImage = this.front[this.spritesFrame];
-            this.pImageMessage = [1,this.spritesFrame];
-            break;
-        }
-      }
-      this.t=0;
-      this.spritesFrame++;
-      if (this.spritesFrame>3) {this.spritesFrame = 0;}
-    }
-    push();
-    imageMode(CENTER);
-    image(this.pImage, x, y, spritesWidth, this.spritesHeight);
-    pop();
   }
 }
 

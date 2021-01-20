@@ -80,13 +80,13 @@ function newConnection(socket) {
   });
 
   socket.on("forwardMsg", function (message){
-    let newMessage = message;
-    io.to(message.recipient).emit("spriteInfo", newMessage);
-  });
-
-  socket.on("forwardKey", function (message){
-    let key = message.key;
-    io.to(message.recipient).emit("keyInfo", key);
+    let info = {
+      i : message.i,
+      j : message.j,
+      imgMsg : message.imgMsg,
+      sound : message.sound
+    };
+    io.to(message.recipient).emit("spriteInfo", info);
   });
 
   //disconnection
