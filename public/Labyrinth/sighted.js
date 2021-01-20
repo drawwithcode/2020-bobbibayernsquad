@@ -37,6 +37,9 @@ function preload(){
   labyrinth = loadImage("assets/Images/Blind/labyrinth.png");
   //Load characters sprites & sounds
   main = new character("assets/Images/Blind/Sprites","assets/Sounds/wall_bump.m4a","assets/Sounds/pin.mp3");
+  //Load loading GIF
+  gif_loading = createImg("assets/Images/loading.gif");
+  gif_loading.hide();
 }
 
 function setup() {
@@ -61,12 +64,9 @@ function setup() {
   main.loadCollisions();
   main.pinOn();
 
-  //Load loading gif
-  gif_loading = createImg("assets/Images/loading.gif");
-  let gifWidth=windowDiagonal/3;
-  let gifHeight=gifWidth/gif_loading.width*gif_loading.height;
-  gif_loading.size(gifWidth,gifHeight);
-  gif_loading.position((windowWidth-gif_loading.width)/2, (windowHeight-gif_loading.height)/2);
+
+  background("black");
+
 
   //main.printGrid(); //DEBUG, uncomment this line and comment function draw
 }
@@ -77,7 +77,7 @@ function draw() {
   background("black");
 
   if (preLobby) {
-    //gif_loading.show();
+    gif_loading.show();
     let gifWidth=windowDiagonal/3;
     let gifHeight=gifWidth/gif_loading.width*gif_loading.height;
     gif_loading.size(gifWidth,gifHeight);
