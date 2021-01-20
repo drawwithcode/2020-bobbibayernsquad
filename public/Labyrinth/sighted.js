@@ -78,6 +78,7 @@ function draw() {
 
   if (preLobby) {
     gif_loading.show();
+    console.log("shown");
     let gifWidth=windowDiagonal/3;
     let gifHeight=gifWidth/gif_loading.width*gif_loading.height;
     gif_loading.size(gifWidth,gifHeight);
