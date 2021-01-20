@@ -37,7 +37,7 @@ socket.on("spriteInfo", function (message) {
 });
 
 socket.on("keyInfo", function (sharedKey) {
-  console.log("key info received");
+  console.log(sharedKey);
   key=sharedKey;
   preLobby=false; //exit from the prelobby when the first key arrives
 });
