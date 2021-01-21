@@ -19,7 +19,7 @@ let io = socket(server);
 
 let labyrinth = [];
 let labyrinthMain = [];
-let myDictionary = createStringDict();
+let myDictionary;
 
 
 
