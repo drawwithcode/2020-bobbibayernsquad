@@ -517,7 +517,7 @@ class character {
         //The smaller the distance, the higher the frequency
         this.maxPinCount = map(distance,0,mapDiagonal,2,20);
         //Direction determine the sound rate
-        let dd = distanceDir(this.getPosition(),[this.pin_x,pin_y]);
+        let dd = distanceDir(this.getPosition(),[this.pin_x,this.pin_y]);
         this.pinSound.rate(dd/4+0.5);
         //Play sound
         this.pinSound.play();
