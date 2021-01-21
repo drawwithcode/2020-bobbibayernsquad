@@ -588,7 +588,7 @@ class character {
       this.wallSound.play();
     }
   }
-  sharePingInfo() {
+  sharePingInfo(recipientId) {
     let message = {
       x: this.pin_x,
       y: this.pin_y,
@@ -618,7 +618,7 @@ function distanceDir(posMain,posObj) {
 
 function mouseClicked(){
   main.pushPinCoords();
-  main.sharePingInfo();
+  main.sharePingInfo(blindId);
 }
 
 function windowResized() {

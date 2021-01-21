@@ -598,7 +598,7 @@ class character {
       this.wallSound.play();
     }
   }
-  sharePingInfo() {
+  sharePingInfo(recipientId) {
     let message = {
       x: this.pin_x,
       y: this.pin_y,
