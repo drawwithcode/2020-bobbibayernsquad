@@ -111,7 +111,7 @@ function draw() {
 }
 
 class character {
-  constructor(spritesFolder, wallSound_Path, pinSound_Path, cowSound_Path) {
+  constructor(spritesFolder, wallSound_Path, pinSound_Path) {
     // Upload sprites
     this.front = [loadImage(spritesFolder+"/front.png"),
                   loadImage(spritesFolder+"/front - right foot.png"),
@@ -132,7 +132,6 @@ class character {
     // Upload sounds
     this.wallSound = loadSound(wallSound_Path);
     this.pinSound = loadSound(pinSound_Path);
-    this.cowSound = loadSound(cowSound_Path);
   }
   gridOn(gridNodesX, gridNodesY, gridTopLeft_x, gridTopLeft_y, gridDownRight_x, gridDownRight_y) {
     // Set grid parameters
@@ -480,15 +479,9 @@ class character {
     this.showPin=false;
   }
   pushPinCoords(){
-    //If click close enough then delete the pin
-    let distance = pow(pow(mouseX-this.pin_x,2)+
-                       pow(mouseY-this.pin_y,2),0.5);
-    if (distance<this.spritesHeight){
-      this.showPin=0;
-    }
     // Pin only inside the map
-    else if (mouseX>this.gridX[1] && mouseX<this.gridX[this.gridX.length-1] &&
-             mouseY>this.gridY[1] && mouseY<this.gridY[this.gridY.length-1]) {
+    if (mouseX>this.gridX[1] && mouseX<this.gridX[this.gridX.length-1] &&
+        mouseY>this.gridY[1] && mouseY<this.gridY[this.gridY.length-1]) {
           this.pin_x=mouseX;
           this.pin_y=mouseY;
           this.showPin=1;
@@ -502,22 +495,15 @@ class character {
     if(this.showPin){
       let mapDiagonal = pow(pow(this.gridX[0]-this.gridX[this.gridX.length-1],2)+
                             pow(this.gridY[0]-this.gridY[this.gridY.length-1],2),0.5);
-      let distance = pow(pow(this.gridX[this.sprites_i]-this.pin_x,2)+
-                         pow(this.gridY[this.sprites_j]-this.pin_y,2),0.5);
 
-      if (distance<this.spritesHeight){
-        this.cowSound.play()
-        this.showPin=0;
-      }
-      else if (this.pinCount==0){
+      if (this.pinCount==0){
+        let distance = pow(pow(this.gridX[this.sprites_i]-this.pin_x,2)+
+                           pow(this.gridY[this.sprites_j]-this.pin_y,2),0.5);
         //The smaller the distance, the higher the volume
         let volume = map(distance,0,mapDiagonal,1,0);
         this.pinSound.setVolume(volume);
         //The smaller the distance, the higher the frequency
-        this.maxPinCount = map(distance,0,mapDiagonal,1,15);
-        //Direction determine the sound rate
-        let dd = distanceDir(this.getPosition(),[this.pin_x,this.pin_y]);
-        this.pinSound.rate(dd/4+0.5);
+        this.maxPinCount = map(distance,0,mapDiagonal,2,20);
         //Play sound
         this.pinSound.play();
       }
@@ -527,9 +513,8 @@ class character {
         let circleRadius = this.pinCount/this.maxPinCount*this.spritesHeight;
         push();
         stroke(255, 0, 0);
-        fill(200,0,0,100);
         strokeWeight(strokeW);
-        //noFill();
+        noFill();
         circle(this.pin_x, this.pin_y, circleRadius*2);
         pop();
       }
@@ -590,23 +575,6 @@ class character {
     if (spriteInfo.sound && this.t > this.pause) {
       this.wallSound.play();
     }
-  }
-}
-
-function distanceDir(posMain,posObj) {
-  let distX = posMain[0]-posObj[0];
-  let distY = posMain[1]-posObj[1];
-  if(distX>=distY && distX>=-distY) {
-    return 1;
-  }
-  else if (distX>=distY && distX<-distY) {
-    return 2;
-  }
-  else if (distX<distY && distX>=-distY) {
-    return 0;
-  }
-  else if (distX<distY && distX<-distY) {
-    return 3;
   }
 }
 
