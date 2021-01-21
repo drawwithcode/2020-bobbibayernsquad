@@ -491,6 +491,12 @@ class character {
     this.showPin=false;
   }
   pushPinCoords(){
+    //If click close enough then delete the pin
+    let distance = pow(pow(mouseX-this.pin_x,2)+
+                       pow(mouseY-this.pin_y,2),0.5);
+    if (distance<this.spritesHeight){
+      this.showPin=0;
+    }
     // Pin only inside the map
     if (mouseX>this.gridX[1] && mouseX<this.gridX[this.gridX.length-1] &&
         mouseY>this.gridY[1] && mouseY<this.gridY[this.gridY.length-1]) {
@@ -507,10 +513,14 @@ class character {
     if(this.showPin){
       let mapDiagonal = pow(pow(this.gridX[0]-this.gridX[this.gridX.length-1],2)+
                             pow(this.gridY[0]-this.gridY[this.gridY.length-1],2),0.5);
+      let distance = pow(pow(this.gridX[this.sprites_i]-this.pin_x,2)+
+                         pow(this.gridY[this.sprites_j]-this.pin_y,2),0.5);
 
-      if (this.pinCount==0){
-        let distance = pow(pow(this.gridX[this.sprites_i]-this.pin_x,2)+
-                           pow(this.gridY[this.sprites_j]-this.pin_y,2),0.5);
+      if (distance<this.spritesHeight){
+        this.cowSound.play()
+        this.showPin=0;
+      }
+      else if (this.pinCount==0){
         //The smaller the distance, the higher the volume
         let volume = map(distance,0,mapDiagonal,1,0);
         this.pinSound.setVolume(volume);
