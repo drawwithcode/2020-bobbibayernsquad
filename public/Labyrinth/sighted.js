@@ -105,8 +105,7 @@ function draw() {
     main.displaySharedSpriteInfo(spriteSharedInfo);
     main.timeOn();
 
-    console.log([main.sprites_i, main.sprites_j]);
-    console.log(main.collisionGrid[main.sprites_i][main.sprites_j]);
+
     //main.victoryCheck();
     }
 
