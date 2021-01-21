@@ -102,21 +102,6 @@ function draw() {
     main.updateDimensions(mapTopLeft_x, mapTopLeft_y, mapDownRight_x, mapDownRight_y, windowDiagonal/45);
     main.displaySharedInfo(spriteSharedInfo);
     main.timeOn();
-
-
-    /*
-    let shift = -1;
-    mousePointing.forEach((mp, i) => {
-      mp.display();
-      if (distXY(main.getPosition(),mp.pos)<main.spritesHeight) {
-        shift = i;
-        cowBell.play();
-      }
-    });
-    if(shift>=0) mousePointing.splice(shift,1);
-    */
-
-
     }
 
 }
@@ -525,7 +510,7 @@ class character {
         let volume = map(distance,0,mapDiagonal,1,0);
         this.pinSound.setVolume(volume);
         //The smaller the distance, the higher the frequency
-        this.maxPinCount = map(distance,0,mapDiagonal,2,20);
+        this.maxPinCount = map(distance,0,mapDiagonal,1,15);
         //Direction determine the sound rate
         let dd = distanceDir(this.getPosition(),[this.pin_x,this.pin_y]);
         this.pinSound.rate(dd/4+0.5);
@@ -538,8 +523,9 @@ class character {
         let circleRadius = this.pinCount/this.maxPinCount*this.spritesHeight;
         push();
         stroke(255, 0, 0);
+        fill(200,0,0,100);
         strokeWeight(strokeW);
-        noFill();
+        //noFill();
         circle(this.pin_x, this.pin_y, circleRadius*2);
         pop();
       }
