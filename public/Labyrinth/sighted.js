@@ -498,8 +498,8 @@ class character {
       this.showPin=0;
     }
     // Pin only inside the map
-    if (mouseX>this.gridX[1] && mouseX<this.gridX[this.gridX.length-1] &&
-        mouseY>this.gridY[1] && mouseY<this.gridY[this.gridY.length-1]) {
+    else if (mouseX>this.gridX[1] && mouseX<this.gridX[this.gridX.length-1] &&
+             mouseY>this.gridY[1] && mouseY<this.gridY[this.gridY.length-1]) {
           this.pin_x=mouseX;
           this.pin_y=mouseY;
           this.showPin=1;
