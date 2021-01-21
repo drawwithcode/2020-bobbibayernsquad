@@ -136,7 +136,7 @@ function newConnection(socket) {
           for (let i = 0; i < labyrinthMain.length; i++) {
             if (labyrinthMain[i].blind == socket.id) {
               if (sendWarning) {
-                io.to(labyrinthMain[index].sighted).emit("warning");
+                io.to(labyrinthMain[i].sighted).emit("warning");
               }
               labyrinthMain.splice(i, 1);
             }
@@ -147,7 +147,7 @@ function newConnection(socket) {
           for (let i = 0; i < labyrinthMain.length; i++) {
             if (labyrinthMain[i].sighted == socket.id) {
               if (sendWarning) {
-                io.to(labyrinthMain[index].blind).emit("warning");
+                io.to(labyrinthMain[i].blind).emit("warning");
               }
               labyrinthMain.splice(i, 1);
             }
@@ -162,15 +162,10 @@ function newConnection(socket) {
   }
 
   function find_queue () {
-    console.log(room);
-
     switch (room) {
       case "labyrinth":
-      console.log(side);
         if (side == "blind") {
-
           for (let i = 0; i < labyrinth.length; i++) {
-            console.log(labyrinth[i].blind == socket.id);
             if (labyrinth[i].blind == socket.id) {
               labyrinth.splice(i, 1);
             }
