@@ -118,7 +118,7 @@ function newConnection(socket) {
 
     //Unexpected disconnection
     if (!experienceEnded) {
-      let found_in_queue = find_queue;
+      let found_in_queue = find_queue();
       if (!found_in_queue) {
         find_main(true);
       }
