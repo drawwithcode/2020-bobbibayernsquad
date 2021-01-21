@@ -19,20 +19,13 @@ let io = socket(server);
 
 let labyrinth = [];
 let labyrinthMain = [];
-let myDictionary;
-
-let first=true;
+let myDictionary = new p5.TypedDict();
 
 // define which function should be called when a new connection is opened from client
 io.on("connection", newConnection);
 
 // callback function: the paramenter (in this case socket) will contain all the information on the new connection
 function newConnection(socket) {
-
-  if(first){
-    myDictionary=createStringDict();
-    first=false;
-  }
 
   //add socket to the dictionary
   myDictionary.create(socket.id, dataReceived.room+"_"+dataReceived.side);
