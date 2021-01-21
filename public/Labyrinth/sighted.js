@@ -106,6 +106,7 @@ function draw() {
     main.timeOn();
 
     console.log([main.sprites_i, main.sprites_j]);
+    console.log(main.collisionGrid[main.sprites_i][main.sprites_j]);
     //main.victoryCheck();
     }
 
@@ -266,9 +267,12 @@ class character {
     }
 
     //Labyrinth Exit
+    this.collisionGrid[0][77] = [0,0,1,0];  //up, down, left, right
+    this.collisionGrid[0][82] = [0,0,0,1];
     this.collisionGrid[1][77] = [0,0,1,0];  //up, down, left, right
     this.collisionGrid[1][82] = [0,0,0,1];
     for (let i=78; i<82; i++) {
+      this.collisionGrid[0][i] = [0,0,0,0];
       this.collisionGrid[1][i] = [0,0,0,0];
     }
   }
