@@ -16,6 +16,7 @@ let socket = require("socket.io");
 // create a socket connection
 let io = socket(server);
 
+import p5 from 'p5';
 
 let labyrinth = [];
 let labyrinthMain = [];
