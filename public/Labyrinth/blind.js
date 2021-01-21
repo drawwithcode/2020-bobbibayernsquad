@@ -116,10 +116,10 @@ function draw() {
     console.log(main.collisionGrid[main.sprites_i][main.sprites_j]);
 
     //Win check
-    //main.victoryCheck();
+    main.victoryCheck();
 
     // Draw hole
-    //hole(main.getPosition()[0], main.getPosition()[1], windowDiagonal/30);
+    hole(main.getPosition()[0], main.getPosition()[1], windowDiagonal/30);
   }
 }
 

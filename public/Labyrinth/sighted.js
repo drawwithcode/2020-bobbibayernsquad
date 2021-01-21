@@ -105,7 +105,6 @@ function draw() {
     main.displaySharedSpriteInfo(spriteSharedInfo);
     main.timeOn();
 
-
     main.victoryCheck();
     }
 
