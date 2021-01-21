@@ -16,11 +16,12 @@ let socket = require("socket.io");
 // create a socket connection
 let io = socket(server);
 
-import p5 from 'p5';
+
 
 let labyrinth = [];
 let labyrinthMain = [];
-let myDictionary = new p5.TypedDict();
+//let myDictionary = new p5.TypedDict();
+//let myDictionary = [];
 
 // define which function should be called when a new connection is opened from client
 io.on("connection", newConnection);
@@ -29,16 +30,22 @@ io.on("connection", newConnection);
 function newConnection(socket) {
 
   //add socket to the dictionary
-  myDictionary.create(socket.id, dataReceived.room+"_"+dataReceived.side);
+  //myDictionary.create(socket.id, dataReceived.room+"_"+dataReceived.side);
+  //myDictionary.push([socket.id, dataReceived.room+"_"+dataReceived.side]);
+
+  let room;
+  let side;
 
   socket.on("welcome", function (dataReceived){
     switch (dataReceived.room) {
       case "labyrinth":
+        room="labyrinth";
         let matched = false;
         let index=NaN;
         //blind side
         if (dataReceived.side == "blind") {
           console.log("labyrinth blind socket:", socket.id);
+          side="blind";
           // If there is someone waiting then I pair them
           for (let i = 0; i < labyrinth.length; i++) {
             if (labyrinth[i].blind == undefined) {
@@ -57,6 +64,7 @@ function newConnection(socket) {
         //sighted side
         if (dataReceived.side == "sighted") {
           console.log("labyrinth sighted socket:", socket.id);
+          side="sighted";
           // If there is someone waiting then I pair them
           for (let i = 0; i < labyrinth.length; i++) {
             if (labyrinth[i].sighted == undefined) {
@@ -126,10 +134,21 @@ function newConnection(socket) {
     console.log(labyrinthMain);
   });
 
+/*function find_dictionary(){
+  for(let i=0; i<myDictionary.length; i++){
+    if (myDictionary[i][0]==socket.id){
+      return i;
+    }
+  }
+  return -1;
+}*/
+
   function find_main (sendWarning) {
-    let room_side = myDictionary.get(socket.id);
+    //let room_side = myDictionary.get(socket.id);
+/*
+    let room_side = myDictionary[index][1];
     let side = split(room_side, "_")[1];
-    let room = split(room_side, "_")[0];
+    let room = split(room_side, "_")[0];*/
     switch (room) {
       case "labyrinth":
         if (side == "blind") {
@@ -162,9 +181,9 @@ function newConnection(socket) {
   }
 
   function find_queue () {
-    let room_side = myDictionary.get(socket.id);
-    let side = split(room_side, "_")[1];
-    let room = split(room_side, "_")[0];
+    //let room_side = myDictionary.get(socket.id);
+    /*let side = split(room_side, "_")[1];
+    let room = split(room_side, "_")[0];*/
 
     switch (room) {
       case "labyrinth":
