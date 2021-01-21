@@ -91,8 +91,8 @@ function newConnection(socket) {
 
   socket.on("forwardPingMsg", function (message){
     let info = {
-      x: this.pin_x,
-      y: this.pin_y,
+      x: this.x,
+      y: this.y,
       showPin: this.showPin
     };
     io.to(message.recipient).emit("pingInfo", info);
