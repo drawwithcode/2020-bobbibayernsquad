@@ -126,3 +126,16 @@ body{
   border: 1.25px solid #fff;
   font-family: latin;
 }
+
+.texts h1 {
+  position: absolute;
+  top: 5%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: black;
+  font-family: latin;
+  font-size: 14px;
+  overflow: hidden;
+  cursor: default;
+  user-select: none;
+}

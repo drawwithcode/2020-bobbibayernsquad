@@ -135,3 +135,16 @@ body{
   font-size: 12px;
   font-family: latin;
 }
+
+.texts h1 {
+  position: absolute;
+  top: 5%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-family: latin;
+  font-size: 14px;
+  overflow: hidden;
+  cursor: default;
+  user-select: none;
+}
