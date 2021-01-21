@@ -1,0 +1,138 @@
+@font-face {
+  font-family: "braille";
+  src: url("assets/BRAILLE1.ttf");
+}
+@font-face {
+  font-family: "latin";
+  src: url("assets/AHAMONO-Monospaced.otf");
+}
+
+body{
+  background-color: black;
+}
+
+.typewriter h1 {
+  position: absolute;
+  top: 46%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: grey;
+  font-family: latin;
+  font-size: 12px;
+  overflow: hidden; /* Ensures the content is not revealed until the animation */
+  white-space: nowrap; /* Keeps the content on a single line */
+  margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+  letter-spacing: .075em; /* Adjust as needed */
+  animation:
+    typing 2s steps(15, end),
+    blink-caret .13s step-end;
+}
+
+.typewriter h2 {
+  position: absolute;
+  top: 49%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-family: braille;
+  font-size: 10px;
+  overflow: hidden; /* Ensures the content is not revealed until the animation */
+  white-space: nowrap; /* Keeps the content on a single line */
+  margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+  letter-spacing: .075em; /* Adjust as needed */
+  animation:
+    typing1 2s steps(15, end),
+    blink-caret .13s step-end;
+}
+
+
+/* The typing effect */
+@keyframes typing {
+  from { width: 0 }
+  to { width: 9% }
+}
+
+@keyframes typing1 {
+  from { width: 0 }
+  to { width: 11% }
+}
+
+/* The typewriter cursor effect */
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+  50% { border-color: grey }
+}
+
+
+.blind {
+  border: none;
+  background-color: #323232;
+  width: 10%;
+  height: 5%;
+  border: 0.8px solid #6E6E6E;
+  position: absolute;
+  color: white;
+  top: 55%;
+  left: 45%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  font-size: 8px;
+  cursor: pointer;
+  font-family: braille;
+  transition: 0.2s ease-in-out;
+  animation:2.5s ease 0s normal forwards 1 fadein;
+  -webkit-animation:2.5s ease 0s normal forwards 1 fadein;
+}
+
+.blind:hover {
+  transition: 0.2s ease-in-out;
+  background-color: #585858;
+  color: white;
+  width: 10%;
+  height: 5%;
+  font-size: 8px;
+  border: 1.25px solid #fff;
+  font-family: latin;
+}
+
+.assistant {
+  border: none;
+  background-color: #d2d2d2;
+  width: 10%;
+  height: 5%;
+  border: 0.8px solid #ffffff;
+  position: absolute;
+  color: #323232;
+  top: 55%;
+  left: 55%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  font-size: 8px;
+  cursor: pointer;
+  font-family: braille;
+  transition: 0.2s ease-in-out;
+  animation:2.5s ease 0s normal forwards 1 fadein;
+  -webkit-animation:2.5s ease 0s normal forwards 1 fadein;
+}
+
+.assistant:hover {
+  transition: 0.2s ease-in-out;
+  background-color: #ffffff;
+  color: #323232;
+  width: 10%;
+  height: 5%;
+  font-size: 8px;
+  border: 1.25px solid #fff;
+  font-family: latin;
+}
+
+@keyframes fadein{
+0% {opacity:0}
+90% {opacity:0}
+100%{opacity:1}
+}
+
+@-webkit-keyframes fadein{0% {opacity:0}
+90% {opacity:0}
+100%{opacity:1}
+}

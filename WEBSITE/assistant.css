@@ -1,0 +1,327 @@
+@font-face {
+  font-family: "braille";
+  src: url("assets/BRAILLE1.ttf");
+}
+@font-face {
+  font-family: "latin";
+  src: url("assets/AHAMONO-Monospaced.otf");
+}
+
+body{
+  background-color: white;
+}
+
+.typewriter h1 {
+  position: absolute;
+  top: 46%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #323232;
+  font-family: latin;
+  font-size: 12px;
+  overflow: hidden; /* Ensures the content is not revealed until the animation */
+  white-space: nowrap; /* Keeps the content on a single line */
+  margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+  letter-spacing: .075em; /* Adjust as needed */
+}
+
+.typewriter h2 {
+  position: absolute;
+  top: 48.5%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: grey;
+  font-family: braille;
+  font-size: 10px;
+  overflow: hidden; /* Ensures the content is not revealed until the animation */
+  white-space: nowrap; /* Keeps the content on a single line */
+  margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+  letter-spacing: .075em; /* Adjust as needed */
+}
+
+
+.blind {
+  border: none;
+  background-color: #323232;
+  width: 10%;
+  height: 5%;
+  border: 0.8px solid #6E6E6E;
+  position: absolute;
+  color: white;
+  top: 55%;
+  left: 45%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  font-size: 8px;
+  cursor: pointer;
+  font-family: braille;
+  transition: 0.2s ease-in-out;
+}
+
+.blind:hover {
+  transition: 0.2s ease-in-out;
+  background-color: #585858;
+  color: white;
+  width: 10%;
+  height: 5%;
+  font-size: 8px;
+  border: 1.25px solid #fff;
+  font-family: latin;
+}
+
+.assistant {
+  border: none;
+  background-color: #d2d2d2;
+  width: 10%;
+  height: 5%;
+  border: 0.8px solid #ffffff;
+  position: absolute;
+  color: #323232;
+  top: 55%;
+  left: 55%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  font-size: 8px;
+  cursor: pointer;
+  font-family: braille;
+  transition: 0.2s ease-in-out;
+}
+
+.assistant:hover {
+  transition: 0.2s ease-in-out;
+  background-color: #ffffff;
+  color: #323232;
+  width: 10%;
+  height: 5%;
+  font-size: 8px;
+  border: 1.25px solid #d2d2d2;
+  font-family: latin;
+}
+
+.exp1 {
+  border: none;
+  background-color: #323232;
+  width: 170px;
+  height: 50px;
+  border: 0.8px solid #6E6E6E;
+  position: absolute;
+  color: white;
+  top: 25%;
+  left: 25%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  font-size: 12px;
+  cursor: pointer;
+  font-family: braille;
+  opacity:0.2;
+}
+
+.exp2 {
+  border: none;
+  background-color: #323232;
+  width: 170px;
+  height: 50px;
+  border: 0.8px solid #6E6E6E;
+  position: absolute;
+  color: white;
+  top: 25%;
+  left: 75%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  font-size: 12px;
+  cursor: pointer;
+  font-family: braille;
+  transition: 0.2s ease-in-out;
+  opacity:0.2;
+}
+
+
+
+.exp3 {
+  border: none;
+  background-color: #323232;
+  width: 170px;
+  height: 50px;
+  border: 0.8px solid #6E6E6E;
+  position: absolute;
+  color: white;
+  top: 75%;
+  left: 25%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  font-size: 12px;
+  cursor: pointer;
+  font-family: braille;
+  transition: 0.2s ease-in-out;
+
+}
+
+.exp3:hover {
+  transition: 0.2s ease-in-out;
+  background-color: #585858;
+  color: white;
+  width: 175;
+  height: 52px;
+  font-size: 12px;
+  border: 1.25px solid #fff;
+  font-family: latin;
+}
+
+.exp4 {
+  border: none;
+  background-color: #323232;
+  width: 170px;
+  height: 50px;
+  border: 0.8px solid #6E6E6E;
+  position: absolute;
+  color: white;
+  top: 75%;
+  left: 75%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  font-size: 12px;
+  cursor: pointer;
+  font-family: braille;
+  transition: 0.2s ease-in-out;
+}
+
+.exp4:hover {
+  transition: 0.2s ease-in-out;
+  background-color: #585858;
+  color: white;
+  width: 175;
+  height: 52px;
+  font-size: 12px;
+  border: 1.25px solid #fff;
+  font-family: latin;
+}
+
+
+
+@keyframes fadein{
+  0% {opacity:0}
+  90% {opacity:0}
+  100%{opacity:1}
+}
+
+@-webkit-keyframes fadein{0% {opacity:0}
+90% {opacity:0}
+100%{opacity:1}
+}
+
+#infoBtn{
+  background-color: transparent;
+
+  border: transparent;
+  position: absolute;
+  color: #323232;
+  top: 7%;
+  left: 90%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  font-size: 12px;
+  cursor: pointer;
+  font-family: latin;
+  transition: 0.2s ease-in-out;
+}
+
+#infoBtn:hover {
+  transition: 0.2s ease-in-out;
+  background-color: transparent;
+  color: #323232;
+  font-size: 12px;
+  border: transparent;
+  font-family: latin;
+}
+
+.popup {
+  display: none; /* Hidden by default */
+  position: absolute; /* Stay in place */
+  padding-top: 500px; /* Location of the box */
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: white;
+}
+
+/* Modal Content */
+.popup-content {
+  position: absolute;
+  left: 50%;
+  top: 45%;
+  transform: translate(-50%, -50%);
+  background-color: #323232;
+  margin: auto;
+  padding: 0;
+  border: 0.8px solid white;
+  width: 500px;
+  height: 165px;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+  animation-name: text;
+  animation-duration: 1s;
+}
+
+@keyframes text{
+  0% {opacity: 0;}
+  100% {opacity: 1;}
+}
+
+/* The Close Button */
+.close {
+  padding-right: 5px;
+  color: white;
+  float: right;
+  font-size: 28px;
+
+}
+
+.close:hover,
+.close:focus {
+  color: white;
+  cursor: pointer;
+}
+
+.popup-header {
+  padding-top: 2px;
+  padding-left: 5px;
+  font-family: latin;
+  font-size: 11px;
+  color: white;
+}
+
+.popup-body {
+  padding-right: 5px;
+  padding-left: 5px;
+  font-family: latin;
+  font-size: 11px;
+  color: white;
+  font-weight: 25;
+}
+
+.back{
+  background-color: transparent;
+  border: transparent;
+  position: absolute;
+  color: #323232;
+  top: 7%;
+  left: 10%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  font-size: 12px;
+  cursor: pointer;
+  font-family: latin;
+  transition: 0.2s ease-in-out;
+}
+
+.back:hover {
+  transition: 0.2s ease-in-out;
+  background-color: transparent;
+  border: transparent;
+  color: #323232;
+  font-size: 12px;
+  border: 1.25px solid #fff;
+  font-family: latin;
+}

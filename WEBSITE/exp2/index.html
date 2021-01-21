@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0>
+    <style> body {padding: 0; margin: 0;} </style>
+    <script src="p5.min.js"></script>
+    <script src="p5.sound.min.js"></script>
+    <script src="sketch1.js"></script>
+    <script>
+      function beep() {
+        var beep = document.getElementById("beep");
+        beep.play();
+      }
+    </script>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <audio id="beep" src="assets/sounds/beep.mp3"></audio>
+  </head>
+  <body>
+  </body>
+  <div class="texts">
+    <h1> LOSS OF SENSES </h1>
+    <instructions1> There's a desk full of objects in front of you. By moving the mouse around the screen and listening to the sounds, find the bell. </instructions1>
+    <instructions> There's a desk full of objects in front of you. By moving the mouse around the screen and listening to the sounds, find the bell.  </instructions>
+  </div>
+  <button class="btn start" onclick="beep(); window.open('round1.html', '_self');">start</button>
+  <button class="btn start" onclick="beep(); window.open('round1.html', '_self');">start</button>
+  <button class="btn back" onclick="beep(); window.open('file:///Users/chiaracozzarini/Desktop/simulation_Loss%20of%20Senses/welcome_screen/blind.html', '_self');">⬅ BACK</button>
+</html>
