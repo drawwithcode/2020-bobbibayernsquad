@@ -35,7 +35,7 @@ socket.on("spriteInfo", function (info) {
 });
 
 socket.on("warning", function () {
-  window.open("/warning.html", "_self");
+  window.open("warning.html", "_self");
 });
 
 
@@ -547,7 +547,7 @@ class character {
     if (this.t > this.pause) {
       if (77<=this.sprites_i<=82 && this.sprites_j== 1) {
         socket.emit("finished");
-        window.open("/end.html", "_self");
+        window.open("end.html", "_self");
       }
     }
   }
