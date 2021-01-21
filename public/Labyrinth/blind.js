@@ -49,7 +49,7 @@ function preload(){
   //Load characters sprites & sounds
   main = new character("assets/Images/Blind/Sprites","assets/Sounds/wall_bump.m4a","assets/Sounds/pin.mp3","assets/Sounds/cartoon_cowbell.ogg");
   //Load loading GIF
-  gif_loading = createImg("assets/Images/loading.gif");
+  gif_loading = createImg("assets/Images/Blind/loading.gif");
   gif_loading.position(windowWidth,windowHeight); //move GIF outside the screen so that it is not visible while loading
 }
 
@@ -111,9 +111,6 @@ function draw() {
 
     //Share sprite info
     main.shareSpriteInfo(sightedId);
-
-    console.log([main.sprites_i, main.sprites_j]);
-    console.log(main.collisionGrid[main.sprites_i][main.sprites_j]);
 
     //Win check
     main.victoryCheck();

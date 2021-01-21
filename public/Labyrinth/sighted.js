@@ -43,11 +43,11 @@ socket.on("warning", function () {
 function preload(){
   windowDiagonal = pow(pow(windowHeight,2)+pow(windowWidth,2),0.5);
   //Load map
-  labyrinth = loadImage("assets/Images/Blind/labyrinth.png");
+  labyrinth = loadImage("assets/Images/Sighted/labyrinth.png");
   //Load characters sprites & sounds
-  main = new character("assets/Images/Blind/Sprites","assets/Sounds/wall_bump.m4a","assets/Sounds/pin.mp3","assets/Sounds/cartoon_cowbell.ogg");
+  main = new character("assets/Images/Sighted/Sprites","assets/Sounds/wall_bump.m4a","assets/Sounds/pin.mp3","assets/Sounds/cartoon_cowbell.ogg");
   //Load loading GIF
-  gif_loading = createImg("assets/Images/loading.gif");
+  gif_loading = createImg("assets/Images/Sighted/loading.gif");
   gif_loading.position(windowWidth,windowHeight); //move GIF outside the screen so that it is not visible while loading
 }
 
@@ -58,7 +58,7 @@ function setup() {
 function draw() {
   //Update window diagonal
   windowDiagonal = pow(pow(windowHeight,2)+pow(windowWidth,2),0.5);
-  background("black");
+  background("white");
 
   //Pre Lobby
   if (preLobby) {
