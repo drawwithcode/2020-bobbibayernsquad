@@ -6,6 +6,8 @@ let theX = 1;
 let theY = 1;
 let easing = 0.1;
 
+let echos = [];
+
 ////////// GLOBAL VARIABLES FOR THE ITEMS ON THE TABLE //////////
 let items = [];
 let itemsPosition = [];
@@ -78,8 +80,14 @@ function setup() {
   }
 
   ////////// PAGE ELEMENTS //////////
-  //...
-
+  //pat animation at the bottom
+  var animation = bodymovin.loadAnimation({
+    container: document.getElementById('anim'),
+    renderer: 'svg',
+    loop: true,
+    autoplay: true,
+    path: 'pat-animation-wh.json'
+  })
 }
 
 function mousePressed() {
@@ -95,8 +103,16 @@ function mousePressed() {
         //the page changes since the activity has finished
         success = true;
         //document.getElementById("t").style.color = "black";
-        let a = select('#t');
-        a.style('color', 'black');
+        let t = select('#t');
+        t.style('color', 'black');
+        let ia = select('#ia');
+        ia.hide();
+        let ib = select('#ib');
+        ib.hide();
+        let pat = select('#pat');
+        pat.style('filter', 'invert(100%)');
+        let anim = select('#anim');
+        anim.style('filter', 'invert(100%)');
       }
     }
   }
@@ -104,13 +120,20 @@ function mousePressed() {
     let anySndTable = random(sndTable);
     anySndTable.play();
   }
+
+  //new sound echo shows on touch
+  let clickEcho = new Echo();
+  echos.push(clickEcho);
+  if (echos.length > 20) {
+    echos.splice(0, 1);
+  }
 }
 
 function draw() {
   ////////// SCENE SETTING //////////
   background("white");
 
-  //first drawing the objects that are more likely to be overlapped by others in a real desk setting, then the others
+  //drawing the objects
   for (let i=0; i<items.length; i++) {
     items[i].scale();
     items[i].show();
@@ -118,13 +141,22 @@ function draw() {
 
   //covering the canvas so that the user does not see the items on the table
   if (!success) {
-    //fill("black");
-    //rect(0, 0, windowWidth*2, windowHeight*2);
+    fill("black");
+    //fill('rgba(0,0,0,0.2)'); //for testing
+    rect(0, 0, windowWidth*2, windowHeight*2);
+  }
+
+  //echos
+  for (var i = 0; i < echos.length; i++) {
+    let clickEcho = echos[i];
+    clickEcho.display();
   }
 
   //ellipse following the mouse
   push();
-  stroke("white");
+  if (!success) {
+    stroke("white");
+  } else { stroke("black") };
   strokeWeight(1);
   noFill();
   let targetX = mouseX;
@@ -135,7 +167,6 @@ function draw() {
   theY += pastY * easing;
   ellipse(theX,theY,60);
   pop();
-
 }
 
 function checkOverlaps (x,y) {
@@ -171,9 +202,6 @@ function getXY (margin, i) {
     console.log(j);
   }
   return [x,y];
-
-
-
 }
 
 function windowResized() {
