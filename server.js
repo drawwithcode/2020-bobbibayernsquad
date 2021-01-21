@@ -20,18 +20,12 @@ let io = socket(server);
 
 let labyrinth = [];
 let labyrinthMain = [];
-//let myDictionary = new p5.TypedDict();
-//let myDictionary = [];
 
 // define which function should be called when a new connection is opened from client
 io.on("connection", newConnection);
 
 // callback function: the paramenter (in this case socket) will contain all the information on the new connection
 function newConnection(socket) {
-
-  //add socket to the dictionary
-  //myDictionary.create(socket.id, dataReceived.room+"_"+dataReceived.side);
-  //myDictionary.push([socket.id, dataReceived.room+"_"+dataReceived.side]);
 
   let room;
   let side;
@@ -134,21 +128,8 @@ function newConnection(socket) {
     console.log(labyrinthMain);
   });
 
-/*function find_dictionary(){
-  for(let i=0; i<myDictionary.length; i++){
-    if (myDictionary[i][0]==socket.id){
-      return i;
-    }
-  }
-  return -1;
-}*/
 
   function find_main (sendWarning) {
-    //let room_side = myDictionary.get(socket.id);
-/*
-    let room_side = myDictionary[index][1];
-    let side = split(room_side, "_")[1];
-    let room = split(room_side, "_")[0];*/
     switch (room) {
       case "labyrinth":
         if (side == "blind") {
@@ -181,10 +162,6 @@ function newConnection(socket) {
   }
 
   function find_queue () {
-    //let room_side = myDictionary.get(socket.id);
-    /*let side = split(room_side, "_")[1];
-    let room = split(room_side, "_")[0];*/
-
     switch (room) {
       case "labyrinth":
         if (side == "blind") {
