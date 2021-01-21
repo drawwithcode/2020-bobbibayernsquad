@@ -99,7 +99,7 @@ function draw() {
 
     //Draw character
     main.updateDimensions(mapTopLeft_x, mapTopLeft_y, mapDownRight_x, mapDownRight_y, windowDiagonal/45);
-    main.displaySharedInfo(spriteSharedInfo);
+    main.displaySharedSpriteInfo(spriteSharedInfo);
     main.timeOn();
     }
 
@@ -473,6 +473,8 @@ class character {
   pinOn() {
     this.pinCount=0;
     this.showPin=false;
+    this.pin_x=2*windowWidth;
+    this.pin_y=2*windowHeight;
   }
   pushPinCoords(){
     //If click close enough then delete the pin
@@ -554,10 +556,10 @@ class character {
         sound : this.soundMessage,
         recipient : recipientId
       }
-      socket.emit("forwardMsg", message);
+      socket.emit("forwardSpriteMsg", message);
     }
   }
-  displaySharedInfo(spriteInfo){
+  displaySharedSpriteInfo(spriteInfo){
     let spritesWidth = this.spritesHeight / this.front[0].height * this.front[0].width;
     let x = this.gridX[spriteInfo.i]-spritesWidth/20;
     this.sprites_i = spriteInfo.i; //needed for the pin to work
@@ -586,6 +588,15 @@ class character {
       this.wallSound.play();
     }
   }
+  sharePingInfo() {
+    let message = {
+      x: this.pin_x,
+      y: this.pin_y,
+      showPin: this.showPin,
+      recipient: recipientId
+    }
+    socket.emit("forwardPingMsg", message);
+  }
 }
 
 function distanceDir(posMain,posObj) {
@@ -607,6 +618,7 @@ function distanceDir(posMain,posObj) {
 
 function mouseClicked(){
   main.pushPinCoords();
+  main.sharePingInfo();
 }
 
 function windowResized() {

@@ -79,7 +79,7 @@ function newConnection(socket) {
 
   });
 
-  socket.on("forwardMsg", function (message){
+  socket.on("forwardSpriteMsg", function (message){
     let info = {
       i : message.i,
       j : message.j,
@@ -87,6 +87,15 @@ function newConnection(socket) {
       sound : message.sound
     };
     io.to(message.recipient).emit("spriteInfo", info);
+  });
+
+  socket.on("forwardPingMsg", function (message){
+    let info = {
+      x: this.pin_x,
+      y: this.pin_y,
+      showPin: this.showPin
+    };
+    io.to(message.recipient).emit("pingInfo", info);
   });
 
   //disconnection

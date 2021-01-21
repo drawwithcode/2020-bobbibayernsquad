@@ -29,6 +29,11 @@ function setSightedId(id) {
   console.log("START BLIND!!!!");
 }
 
+socket.on("pingInfo", function (info) {
+  console.log("ping info received");
+  main.pushSharedPingInfo(info);
+});
+
 
 
 function preload(){
@@ -478,6 +483,8 @@ class character {
   pinOn() {
     this.pinCount=0;
     this.showPin=false;
+    this.pin_x=2*windowWidth;
+    this.pin_y=2*windowHeight;
   }
   pushPinCoords(){
     //If click close enough then delete the pin
@@ -559,10 +566,10 @@ class character {
         sound : this.soundMessage,
         recipient : recipientId
       }
-      socket.emit("forwardMsg", message);
+      socket.emit("forwardSpriteMsg", message);
     }
   }
-  displaySharedInfo(spriteInfo){
+  displaySharedSpriteInfo(spriteInfo){
     let spritesWidth = this.spritesHeight / this.front[0].height * this.front[0].width;
     let x = this.gridX[spriteInfo.i]-spritesWidth/20;
     this.sprites_i = spriteInfo.i; //needed for the pin to work
@@ -591,11 +598,22 @@ class character {
       this.wallSound.play();
     }
   }
+  sharePingInfo() {
+    let message = {
+      x: this.pin_x,
+      y: this.pin_y,
+      showPin: this.showPin,
+      recipient: recipientId
+    }
+    socket.emit("forwardPingMsg", message);
+  }
+  pushSharedPingInfo(pingInfo){
+    this.showPin=pingInfo.showPin;
+    this.pin_x=pingInfo.x;
+    this.pin_y=pingInfo.y;
+  }
 }
 
-function mouseClicked(){
-  main.pushPinCoords();
-}
 
 function windowResized() {
   resizeCanvas(windowWidth, windowHeight);
