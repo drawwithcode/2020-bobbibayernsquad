@@ -166,6 +166,7 @@ function newConnection(socket) {
       case "labyrinth":
         if (side == "blind") {
           for (let i = 0; i < labyrinth.length; i++) {
+            console.log(labyrinth[i].blind == socket.id);
             if (labyrinth[i].blind == socket.id) {
               labyrinth.splice(i, 1);
             }
