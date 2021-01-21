@@ -517,6 +517,7 @@ class character {
         this.showPin=0;
       }
       else if (this.pinCount==0){
+        console.log("sono qui al play ping")
         //The smaller the distance, the higher the volume
         let volume = map(distance,0,mapDiagonal,1,0);
         this.pinSound.setVolume(volume);
