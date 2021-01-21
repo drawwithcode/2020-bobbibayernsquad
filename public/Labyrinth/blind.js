@@ -278,12 +278,9 @@ class character {
     }
 
     //Labyrinth Exit
-    //this.collisionGrid[77][0] = [0,0,1,0];  //up, down, left, right
-    //this.collisionGrid[82][0] = [0,0,0,1];
     this.collisionGrid[77][1] = [0,0,1,0];  //up, down, left, right
     this.collisionGrid[82][1] = [0,0,0,1];
     for (let i=78; i<82; i++) {
-      //this.collisionGrid[i][0] = [0,0,0,0];
       this.collisionGrid[i][1] = [0,0,0,0];
     }
   }
@@ -568,7 +565,7 @@ class character {
   }
   victoryCheck(){
     if (this.t > this.pause) {
-      if (77<=this.sprites_i<=82 && this.sprites_j== 1) {
+      if (77<=this.sprites_i<=82 && this.sprites_j==0) {
         socket.emit("finished");
         window.open("end.html", "_self");
       }
