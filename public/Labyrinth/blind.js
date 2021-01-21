@@ -112,7 +112,7 @@ function draw() {
     main.victoryCheck();
 
     // Draw hole
-    //hole(main.getPosition()[0], main.getPosition()[1], windowDiagonal/30);
+    hole(main.getPosition()[0], main.getPosition()[1], windowDiagonal/30);
   }
 
 }
@@ -519,7 +519,6 @@ class character {
         this.showPin=0;
       }
       else if (this.pinCount==0){
-        console.log("sono qui al play ping")
         //The smaller the distance, the higher the volume
         let volume = map(distance,0,mapDiagonal,1,0);
         this.pinSound.setVolume(volume);
@@ -554,9 +553,7 @@ class character {
   victoryCheck(){
     if (this.t > this.pause) {
       if (77<=this.sprites_i<=82 && this.sprites_j== 1) {
-        if (keyIsDown(UP_ARROW) && this.pKey == "UP_ARROW") {
-          console.log("YOU WON!");
-        }
+          window.open("/end.html", "_self");
       }
     }
   }
@@ -603,8 +600,8 @@ class character {
   }
   sharePingInfo(recipientId) {
     let message = {
-      x: this.pin_x,
-      y: this.pin_y,
+      x: map(this.pin_x,this.gridX[1],this.gridX[this.gridX.length-1],0,1),
+      y: map(this.pin_y,this.gridY[1],this.gridY[this.gridY.length-1],0,1),
       showPin: this.showPin,
       recipient: recipientId
     }
@@ -612,8 +609,8 @@ class character {
   }
   pushSharedPingInfo(pingInfo){
     this.showPin=pingInfo.showPin;
-    this.pin_x=pingInfo.x;
-    this.pin_y=pingInfo.y;
+    this.pin_x=map(pingInfo.x,0,1,this.gridX[1],this.gridX[this.gridX.length-1]);
+    this.pin_y=map(pingInfo.y,0,1,this.gridY[1],this.gridY[this.gridY.length-1]);
   }
 }
 
@@ -633,7 +630,6 @@ function distanceDir(posMain,posObj) {
     return 3;
   }
 }
-
 
 function windowResized() {
   resizeCanvas(windowWidth, windowHeight);

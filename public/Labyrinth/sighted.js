@@ -101,6 +101,8 @@ function draw() {
     main.updateDimensions(mapTopLeft_x, mapTopLeft_y, mapDownRight_x, mapDownRight_y, windowDiagonal/45);
     main.displaySharedSpriteInfo(spriteSharedInfo);
     main.timeOn();
+
+    main.victoryCheck();
     }
 
 }
@@ -541,9 +543,7 @@ class character {
   victoryCheck(){
     if (this.t > this.pause) {
       if (77<=this.sprites_i<=82 && this.sprites_j== 1) {
-        if (keyIsDown(UP_ARROW) && this.pKey == "UP_ARROW") {
-          console.log("YOU WON!");
-        }
+          window.open("/end.html", "_self");
       }
     }
   }
@@ -590,12 +590,17 @@ class character {
   }
   sharePingInfo(recipientId) {
     let message = {
-      x: this.pin_x,
-      y: this.pin_y,
+      x: map(this.pin_x,this.gridX[1],this.gridX[this.gridX.length-1],0,1),
+      y: map(this.pin_y,this.gridY[1],this.gridY[this.gridY.length-1],0,1),
       showPin: this.showPin,
       recipient: recipientId
     }
     socket.emit("forwardPingMsg", message);
+  }
+  pushSharedPingInfo(pingInfo){
+    this.showPin=pingInfo.showPin;
+    this.pin_x=map(pingInfo.x,0,1,this.gridX[1],this.gridX[this.gridX.length-1]);
+    this.pin_y=map(pingInfo.y,0,1,this.gridY[1],this.gridY[this.gridY.length-1]);
   }
 }
 
