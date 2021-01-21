@@ -110,7 +110,7 @@ function draw() {
     main.victoryCheck();
 
     // Draw hole
-    hole(main.getPosition()[0], main.getPosition()[1], windowDiagonal/30);
+    //hole(main.getPosition()[0], main.getPosition()[1], windowDiagonal/30);
   }
 
 }
@@ -611,6 +611,23 @@ class character {
     this.showPin=pingInfo.showPin;
     this.pin_x=pingInfo.x;
     this.pin_y=pingInfo.y;
+  }
+}
+
+function distanceDir(posMain,posObj) {
+  let distX = posMain[0]-posObj[0];
+  let distY = posMain[1]-posObj[1];
+  if(distX>=distY && distX>=-distY) {
+    return 1;
+  }
+  else if (distX>=distY && distX<-distY) {
+    return 2;
+  }
+  else if (distX<distY && distX>=-distY) {
+    return 0;
+  }
+  else if (distX<distY && distX<-distY) {
+    return 3;
   }
 }
 
