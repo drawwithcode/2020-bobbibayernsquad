@@ -162,9 +162,13 @@ function newConnection(socket) {
   }
 
   function find_queue () {
+    console.log(room);
+
     switch (room) {
       case "labyrinth":
+      console.log(side);
         if (side == "blind") {
+
           for (let i = 0; i < labyrinth.length; i++) {
             console.log(labyrinth[i].blind == socket.id);
             if (labyrinth[i].blind == socket.id) {
