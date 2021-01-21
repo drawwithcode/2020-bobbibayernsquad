@@ -6,6 +6,7 @@ let firstLobbyFrame = true;
 let labyrinth;
 let main;
 let gif_loading;
+let pingSharedInfo;
 
 // Create a new connection using socket.io (imported in index.html)
 let socket = io();
@@ -31,7 +32,8 @@ function setSightedId(id) {
 
 socket.on("pingInfo", function (info) {
   console.log("ping info received");
-  main.pushSharedPingInfo(info);
+  pingSharedInfo=info;
+  main.pushSharedPingInfo(pingSharedInfo);
 });
 
 
