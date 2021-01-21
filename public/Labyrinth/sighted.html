@@ -3,12 +3,66 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0>
-    <style> body {padding: 0; margin: 0;} </style>
+    <style>
+      body {
+        padding: 0;
+        margin: 0;
+      }
+    </style>
     <script src="/socket.io/socket.io.js"></script>
     <script src="p5.min.js"></script>
     <script src="p5.sound.min.js"></script>
     <script src="sighted.js"></script>
-  </head>
-  <body>
-  </body>
-</html>
+    <link rel="stylesheet" type="text/css" href="buttons_assistant.css">
+    </head>
+
+    <body>
+
+      <button id="infoBtn">HELP</button>
+
+      <div id="myPopup" class="popup">
+
+        <div class="popup-content">
+          <div class="popup-header">
+            <span class="close">&times;</span>
+            <h2>HELP</h2>
+          </div>
+          <div class="popup-body">
+            <p>write help info here</p>
+          </div>
+        </div>
+
+      </div>
+
+      <script>
+        // Get the pop-up
+        var modal = document.getElementById("myPopup");
+
+        // Get the button that opens the pop-up
+        var btn = document.getElementById("infoBtn");
+
+        // Get the <span> element that closes the pop-up
+        var span = document.getElementsByClassName("close")[0];
+
+        // When the user clicks the button, open the pop-up
+        btn.onclick = function() {
+          modal.style.display = "block";
+        }
+
+        // When the user clicks on <span> (x), close the pop-up
+        span.onclick = function() {
+          modal.style.display = "none";
+        }
+
+        // When the user clicks anywhere outside of the pop-up, close it
+        window.onclick = function(event) {
+          if (event.target == modal) {
+            modal.style.display = "none";
+          }
+        }
+      </script>
+    </body>
+
+    <button class="btn back" onclick="window.open('index.html', '_self')">⬅ BACK</button>
+
+    </html>
