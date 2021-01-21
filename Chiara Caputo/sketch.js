@@ -78,6 +78,16 @@ function setup() {
     itemsPosition.push([items[i].x, items[i].y]);
     itemsDimensions.push([items[i].w, items[i].h]);
   }
+
+  ////////// PAGE ELEMENTS //////////
+  //pat animation at the bottom
+  var animation = bodymovin.loadAnimation({
+    container: document.getElementById('anim'),
+    renderer: 'svg',
+    loop: true,
+    autoplay: true,
+    path: 'pat-animation-wh.json'
+  })
 }
 
 function mousePressed() {
@@ -99,6 +109,10 @@ function mousePressed() {
         ia.hide();
         let ib = select('#ib');
         ib.hide();
+        let pat = select('#pat');
+        pat.style('filter', 'invert(100%)');
+        let anim = select('#anim');
+        anim.style('filter', 'invert(100%)');
       }
     }
   }
@@ -119,7 +133,7 @@ function draw() {
   ////////// SCENE SETTING //////////
   background("white");
 
-  //first drawing the objects that are more likely to be overlapped by others in a real desk setting, then the others
+  //drawing the objects
   for (let i=0; i<items.length; i++) {
     items[i].scale();
     items[i].show();
@@ -128,6 +142,7 @@ function draw() {
   //covering the canvas so that the user does not see the items on the table
   if (!success) {
     fill("black");
+    //fill('rgba(0,0,0,0.2)'); //for testing
     rect(0, 0, windowWidth*2, windowHeight*2);
   }
 
