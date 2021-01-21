@@ -113,7 +113,7 @@ function draw() {
     main.shareSpriteInfo(sightedId);
 
     //Win check
-    main.victoryCheck();
+    //main.victoryCheck();
 
     // Draw hole
     //hole(main.getPosition()[0], main.getPosition()[1], windowDiagonal/30);

@@ -105,7 +105,8 @@ function draw() {
     main.displaySharedSpriteInfo(spriteSharedInfo);
     main.timeOn();
 
-    main.victoryCheck();
+    console.log([main.sprites_i, main.sprites_j]);
+    //main.victoryCheck();
     }
 
 }
