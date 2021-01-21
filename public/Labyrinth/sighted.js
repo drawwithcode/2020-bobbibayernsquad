@@ -7,7 +7,6 @@ let labyrinth;
 let main;
 let gif_loading;
 let spriteSharedInfo = undefined;
-let key = undefined;
 
 // Create a new connection using socket.io (imported in index.html)
 let socket = io();
@@ -588,7 +587,6 @@ class character {
     }
   }
 }
-
 
 function distanceDir(posMain,posObj) {
   let distX = posMain[0]-posObj[0];
