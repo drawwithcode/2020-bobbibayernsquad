@@ -1,0 +1,75 @@
+@font-face {
+  font-family: "braille";
+  src: url("assets/BRAILLE1.ttf");
+}
+@font-face {
+  font-family: "latin";
+  src: url("assets/AHAMONO-Monospaced.otf");
+}
+
+body{
+  background-color: white;
+  cursor: grab;
+}
+
+.texts h1 {
+  position: absolute;
+  top: 5%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  mix-blend-mode: exclusion;
+  color: white;
+  font-family: latin;
+  font-size: 14px;
+  overflow: hidden;
+  user-select: none;
+}
+
+.texts instructions {
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-family: braille;
+  font-size: 14px;
+  overflow: hidden;
+  white-space: nowrap; /* Keeps the content on a single line */
+  margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+  letter-spacing: .075em; /* Adjust as needed */
+  animation:
+    typing 7s steps(70, end),
+    blink-caret .13s step-end;
+  user-select: none;
+}
+.texts instructions1 {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: grey;
+  font-family: latin;
+  font-size: 14px;
+  overflow: hidden;
+  white-space: nowrap; /* Keeps the content on a single line */
+  margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+  letter-spacing: .075em; /* Adjust as needed */
+  animation:
+    typing1 7s steps(70, end),
+    blink-caret .13s step-end;
+  user-select: none;
+}
+
+/* The typing effect */
+@keyframes typing {
+  from { width: 0 }
+  to { width: 48% }
+}
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+  50% { border-color: grey }
+}
+@keyframes typing1 {
+  from { width: 0 }
+  to { width: 39% }
+}
