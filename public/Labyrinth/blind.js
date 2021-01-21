@@ -31,7 +31,6 @@ function setSightedId(id) {
 }
 
 socket.on("pingInfo", function (info) {
-  console.log(info);
   pingSharedInfo=info;
   main.pushSharedPingInfo(pingSharedInfo);
 });

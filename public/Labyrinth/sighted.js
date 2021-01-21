@@ -30,7 +30,6 @@ function setBlindId(id) {
 }
 
 socket.on("spriteInfo", function (info) {
-  console.log("sprites info received");
   spriteSharedInfo=info;
   preLobby=false; //exit from the prelobby when the first message arrives
 });
