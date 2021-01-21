@@ -34,6 +34,10 @@ socket.on("spriteInfo", function (info) {
   preLobby=false; //exit from the prelobby when the first message arrives
 });
 
+socket.on("warning", function () {
+  window.open("/warning.html", "_self");
+});
+
 
 
 function preload(){
@@ -542,7 +546,8 @@ class character {
   victoryCheck(){
     if (this.t > this.pause) {
       if (77<=this.sprites_i<=82 && this.sprites_j== 1) {
-          window.open("/end.html", "_self");
+        socket.emit("finished");
+        window.open("/end.html", "_self");
       }
     }
   }

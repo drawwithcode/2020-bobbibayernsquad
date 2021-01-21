@@ -17,8 +17,9 @@ let socket = require("socket.io");
 let io = socket(server);
 
 
-let labyrinth_preLobby = [];
 let labyrinth = [];
+let labyrinthMain = [];
+let myDictionary = createStringDict();
 
 
 
@@ -27,6 +28,9 @@ io.on("connection", newConnection);
 
 // callback function: the paramenter (in this case socket) will contain all the information on the new connection
 function newConnection(socket) {
+
+  //add socket to the dictionary
+  myDictionary.create(socket.id, dataReceived.room+"_"+dataReceived.side);
 
   socket.on("welcome", function (dataReceived){
     switch (dataReceived.room) {
@@ -73,6 +77,8 @@ function newConnection(socket) {
         if (matched) {
           io.to(labyrinth[index].blind).emit("start", labyrinth[index].sighted);
           io.to(labyrinth[index].sighted).emit("start", labyrinth[index].blind);
+          labyrinthMain.push(labyrinth[index]); //add pair to the main lobby
+          labyrinth.splice(index,1); //delete pair from the queue
         }
         break;
     }
@@ -98,8 +104,97 @@ function newConnection(socket) {
     io.to(message.recipient).emit("pingInfo", info);
   });
 
-  //disconnection
+  let experienceEnded = false;
+  socket.on("finished", function (){
+    experienceEnded=true;
+    //Remove pair from the main lobby
+    find_main(false);
+  });
+
+
   socket.on('disconnect', function () {
     console.log("disconnection: "+ socket.id);
+
+    //Unexpected disconnection
+    if (!experienceEnded) {
+      let found_in_queue = find_queue;
+      if (!found_in_queue) {
+        find_main(true);
+      }
+    }
+
+    console.log(labyrinth);
+    console.log(labyrinthMain);
   });
+
+  function find_main (sendWarning) {
+    let room_side = myDictionary.get(socket.id);
+    let side = split(room_side, "_")[1];
+    let room = split(room_side, "_")[0];
+    switch (room) {
+      case "labyrinth":
+        if (side == "blind") {
+          for (let i = 0; i < labyrinthMain.length; i++) {
+            if (labyrinthMain[i].blind == socket.id) {
+              if (sendWarning) {
+                io.to(labyrinthMain[index].sighted).emit("warning");
+              }
+              labyrinthMain.splice(i, 1);
+            }
+            return 1;
+          }
+        }
+        if (side == "sighted") {
+          for (let i = 0; i < labyrinthMain.length; i++) {
+            if (labyrinthMain[i].sighted == socket.id) {
+              if (sendWarning) {
+                io.to(labyrinthMain[index].blind).emit("warning");
+              }
+              labyrinthMain.splice(i, 1);
+            }
+            return 1;
+          }
+        }
+        break;
+
+        default:
+          return 0;
+    }
+  }
+
+  function find_queue () {
+    let room_side = myDictionary.get(socket.id);
+    let side = split(room_side, "_")[1];
+    let room = split(room_side, "_")[0];
+
+    switch (room) {
+      case "labyrinth":
+        if (side == "blind") {
+          for (let i = 0; i < labyrinth.length; i++) {
+            if (labyrinth[i].blind == socket.id) {
+              labyrinth.splice(i, 1);
+            }
+            found_in_queue = true;
+            return 1;
+          }
+        }
+        if (side == "sighted") {
+          for (let i = 0; i < labyrinth.length; i++) {
+            if (labyrinth[i].sighted == socket.id) {
+              labyrinth.splice(i, 1);
+            }
+            found_in_queue = true;
+            return 1;
+          }
+        }
+        break;
+
+        default:
+          return 0;
+    }
+  }
+
+
+  }
+
 }

@@ -36,6 +36,11 @@ socket.on("pingInfo", function (info) {
 });
 
 
+socket.on("warning", function () {
+  window.open("/warning.html", "_self");
+});
+
+
 
 function preload(){
   windowDiagonal = pow(pow(windowHeight,2)+pow(windowWidth,2),0.5);
@@ -552,7 +557,8 @@ class character {
   victoryCheck(){
     if (this.t > this.pause) {
       if (77<=this.sprites_i<=82 && this.sprites_j== 1) {
-          window.open("/end.html", "_self");
+        socket.emit("finished");
+        window.open("/end.html", "_self");
       }
     }
   }
