@@ -9,6 +9,7 @@
 
 body{
   background-color: white;
+  cursor: grab;
 }
 
 .texts h1 {
@@ -16,10 +17,12 @@ body{
   top: 5%;
   left: 50%;
   transform: translate(-50%, -50%);
-  color: black;
+  mix-blend-mode: exclusion;
+  color: white;
   font-family: latin;
   font-size: 14px;
   overflow: hidden;
+  user-select: none;
 }
 
 .texts instructions {
@@ -35,8 +38,9 @@ body{
   margin: 0 auto; /* Gives that scrolling effect as the typing happens */
   letter-spacing: .075em; /* Adjust as needed */
   animation:
-    typing 12s steps(90, end),
+    typing 7s steps(70, end),
     blink-caret .13s step-end;
+  user-select: none;
 }
 .texts instructions1 {
   position: absolute;
@@ -51,14 +55,15 @@ body{
   margin: 0 auto; /* Gives that scrolling effect as the typing happens */
   letter-spacing: .075em; /* Adjust as needed */
   animation:
-    typing1 12s steps(90, end),
+    typing1 7s steps(70, end),
     blink-caret .13s step-end;
+  user-select: none;
 }
 
 /* The typing effect */
 @keyframes typing {
   from { width: 0 }
-  to { width: 80% }
+  to { width: 48% }
 }
 @keyframes blink-caret {
   from, to { border-color: transparent }
@@ -66,5 +71,5 @@ body{
 }
 @keyframes typing1 {
   from { width: 0 }
-  to { width: 62% }
+  to { width: 39% }
 }

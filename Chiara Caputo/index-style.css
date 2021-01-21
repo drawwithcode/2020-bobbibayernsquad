@@ -20,6 +20,8 @@ body{
   font-family: latin;
   font-size: 14px;
   overflow: hidden;
+  cursor: default;
+  user-select: none;
 }
 
 .texts instructions {
@@ -37,6 +39,8 @@ body{
   animation:
     typing 5s steps(70, end),
     blink-caret .12s step-end;
+  cursor: default;
+  user-select: none;
 }
 .texts instructions1 {
   position: absolute;
@@ -53,6 +57,8 @@ body{
   animation:
     typing1 5s steps(70, end),
     blink-caret .12s step-end;
+  cursor: default;
+  user-select: none;
 }
 
 /* The typing effect */

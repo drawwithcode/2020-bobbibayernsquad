@@ -15,15 +15,11 @@ class Item {
 
   show(imgw, imgh, ref) {
     imageMode(CENTER);
-    //let scale1 = 0.25; //scaling based on the image saving settings
     let scale = width / (1280 / ref * imgw); //scaling based on the window width and a reference proportion
     this.w = imgw * scale;
     this.h = this.w * imgh / imgw; //the height of the image always stays proportional to its width
     image(this.img, this.x, this.y, this.w, this.h); //draw the image with the new set values
-    noLoop();
-  }
-
-  intersects(other) {
+    //noLoop();
   }
 
   clicked() {
