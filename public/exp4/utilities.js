@@ -34,6 +34,8 @@ let pinSound, trafficNoise, accidentNoise, carHorn, cowBell; // sounds and audio
 
 let speaker = new p5.Speech();
 
+let sightedCol = 0;
+
 // Draws map, characters and entities
 function drawMap(limits = [0,mapBoard.length,0,mapBoard[0].length]) { // limits selects which tiles to show
   push();
@@ -153,16 +155,16 @@ class character {
       if(this.pos[1]>camPos[1]+windowHeight*2/3){
         camPos[1] += this.pos[1]-camPos[1]-windowHeight*2/3;
       }
-      if (keyIsDown(LEFT_ARROW)) {
+      if (keyIsDown(65) || keyIsDown(LEFT_ARROW)) {
         this.moveTile([-1,0]);
       }
-      else if (keyIsDown(RIGHT_ARROW)) {
+      else if (keyIsDown(68) || keyIsDown(RIGHT_ARROW)) {
         this.moveTile([1,0]);
       }
-      else if (keyIsDown(UP_ARROW)) {
+      else if (keyIsDown(87) || keyIsDown(UP_ARROW)) {
         this.moveTile([0,-1]);
       }
-      else if (keyIsDown(DOWN_ARROW)) {
+      else if (keyIsDown(83) || keyIsDown(DOWN_ARROW)) {
         this.moveTile([0,1]);
       }
     }
@@ -238,7 +240,7 @@ class character {
   // Movement: updateTiles
   updateTile(newGridPos, newpos) {
     this.gridPos = newGridPos;
-    if (this.gridPos[0]>=35) {
+    if (this.gridPos[0][1]>=35 && success < 0 && !canSee) {
       success = 0;
     }
     this.pos = newpos;
@@ -418,7 +420,7 @@ class Entity {
       this.gridPos[0] += side*mapW;
       this.pos[0] += side*mapW*tileSize;
     }
-    if (accident < 0 && this.collision()){
+    if (accident < 0 && this.collision() && !canSee){
       accident = 0.0;
       accidentNoise.play();
       accidentNoise.setVolume(1);

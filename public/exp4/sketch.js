@@ -18,7 +18,12 @@ socket.on("connect", function () {
 socket.on("start", setOtherId);
 
 function setOtherId(id) {
-  speaker.speak("Yo guys, how are you doing? I think we can start this!");
+  if (canSee) {
+    speaker.speak("Click on the map to guide the blind person!");
+  }
+  else {
+    speaker.speak("The assistant will guide you with a beep sound, use the arrows to move!");
+  }
   otherId = id;
   preLobby = false;
   console.log(otherId);
@@ -38,6 +43,8 @@ socket.on("pingInfo", function (info) {
 
 socket.on("frameCountInfo", function (info) {
   frameCount = info.count;
+  accident = info.accidentCount;
+  success = info.successCount;
 });
 
 socket.on("entityInfo", function (info) {
@@ -129,27 +136,29 @@ function setup() {
 
   createCanvas(windowWidth,windowHeight);
   frameRate(fps);
+  if (canSee) {
+    sightedCol = 255;
+  }
 }
 
 function draw() {
 
   if (preLobby) {
     if (frameCount == 1) {
-      speaker.speak("Hi dude, we need to wait someone else to connect!");
-      background(0);
+      speaker.speak("Waiting for someone else to connect!");
+      background(sightedCol);
     }
-
     push();
+    noStroke();
     translate(windowWidth/2,windowHeight/2);
-    fill(0);
+    fill(sightedCol);
     ellipse(0,0,50);
     fill(255,0,0);
     ellipse(0,0,50*sin(2*PI*frameCount/fps));
-    fill(0,0,0,100/fps);
-    noStroke();
+    fill(sightedCol,sightedCol,sightedCol,100/fps);
     ellipse(0,0,windowWidth*sin(2*PI*frameCount/fps));
-    stroke(255);
-    fill(255,255,255,100/fps);
+    stroke(255-sightedCol);
+    fill(255-sightedCol,255-sightedCol,255-sightedCol,100/fps);
     strokeWeight(1);
     ellipse(200*cos(2*PI*frameCount/fps/7),200*sin(2*PI*frameCount/fps/7),sin(2*PI*frameCount/fps/5)**2*200,cos(2*PI*frameCount/fps/4)**2*200);
     pop();
@@ -163,23 +172,29 @@ function draw() {
   else {
 
   if (canSee){
-    if (keyIsDown(65) || keyIsDown(LEFT_ARROW)){ //(mouseX<windowWidth/5) {
-      camPos[0]-=200/fps;
+    if (keyIsDown(65) || keyIsDown(LEFT_ARROW) || (mouseX<windowWidth/5)) {
+      if (camPos[0] > -windowWidth/2)
+        camPos[0]-=200/fps;
     }
-    if (keyIsDown(87) || keyIsDown(UP_ARROW)){ //(mouseY<windowHeight/5) {
-      camPos[1]-=200/fps;
+    if (keyIsDown(87) || keyIsDown(UP_ARROW) || (mouseY<windowHeight/5)) {
+      if (camPos[1] > -windowHeight/2)
+        camPos[1]-=200/fps;
     }
-    if (keyIsDown(68) || keyIsDown(RIGHT_ARROW)){ //(mouseX>windowWidth*4/5) {
-      camPos[0]+=200/fps;
+    if (keyIsDown(68) || keyIsDown(RIGHT_ARROW) || (mouseX>windowWidth*4/5)) {
+      if (camPos[0] < mapBoard.length*tileSize+windowWidth/2)
+        camPos[0]+=200/fps;
     }
-    if (keyIsDown(83) || keyIsDown(DOWN_ARROW)){ //(mouseY>windowHeight*4/5) {
-      camPos[1]+=200/fps;
+    if (keyIsDown(83) || keyIsDown(DOWN_ARROW) || (mouseY>windowHeight*4/5)) {
+      if (camPos[0] < mapBoard[0].length*tileSize+windowHeight/2)
+        camPos[1]+=200/fps;
     }
   }
   else {
-    if (frameCount % round(fps*2) == 1) { // every 2 seconds updates frameCount
+    if (frameCount % round(fps*0.5) == 1) { // every 0.5 seconds updates frameCount
       let message = {
         count : frameCount,
+        accidentCount: accident,
+        successCount: success,
         recipient : otherId
       }
       socket.emit("forwardFrameCount", message);
@@ -210,19 +225,23 @@ function draw() {
   drawMap();
 
   push();
-  fill(0);
+  let sightedCol = 0;
+  if (canSee) {
+    sightedCol = 255;
+  }
+  fill(sightedCol);
   noStroke();
   if (camPos[0]<0) {
-    rect(0,0,-camPos[0],windowHeight)
+    rect(0,0,-camPos[0],windowHeight);
   }
   if (camPos[1]<0) {
-    rect(0,0,windowWidth,-camPos[1])
+    //rect(0,0,windowWidth,-camPos[1])
   }
   if (camPos[0]+windowWidth>(mapBoard.length-8)*tileSize) {
-    rect((mapBoard.length-8)*tileSize-camPos[0],0,camPos[0]+windowWidth-(mapBoard.length-8)*tileSize,windowHeight)
+    rect((mapBoard.length-8)*tileSize-camPos[0],0,camPos[0]+windowWidth-(mapBoard.length-8)*tileSize,windowHeight);
   }
   if (camPos[1]+windowHeight>mapBoard[0].length*tileSize) {
-    rect(0,mapBoard[0].length*tileSize-camPos[1],windowWidth,camPos[1]+windowHeight-mapBoard[0].length*tileSize)
+    rect(0,mapBoard[0].length*tileSize-camPos[1],windowWidth,camPos[1]+windowHeight-mapBoard[0].length*tileSize);
   }
   pop();
 
@@ -238,24 +257,49 @@ function draw() {
   });
   if(shift>=0) mousePointing.splice(shift,1);
 
-  if(success>=0) {
+  if(success >= 0) {
     if (success == 0) {
       speaker.speak("Success: you reached the end of the experience!");
     }
+    else if (success >= 5) {
+      if (canSee) {
+        window.open('assistant/finale.html', '_self');
+      }
+      else {
+        window.open('blind/finale.html', '_self');
+      }
+      success = 0.1;
+    }
+
     success += 1/fps;
     push();
-    fill(255,255,255,min(accident*20,100));
+    fill(255,255,255,100);
     rect(0,0,windowWidth,windowHeight);
     pop();
+    for (var i = 0; i < 100; i++) {
+        push();
+        fill(0);
+        translate(windowWidth/2, windowHeight/2);
+        rotate((success%10+i)*PI);
+        rect(noise(i)*sin(success*PI/4)*windowWidth*cos((noise(i)-0.5)*(frameCount/fps)*PI),noise(i)*sin(success*PI/4)*windowHeight*sin((noise(i)-0.5)*(frameCount/fps)*PI),10,4);
+        pop();
+    }
   }
   else if(accident>=0){
+    if (accident == 0) {
+      speaker.speak("You have been run over, retry!");
+    }
     accident += 1/fps;
     push();
     fill(255,0,0,max(100-accident*10,0));
     rect(0,0,windowWidth,windowHeight);
     pop();
-    if (100-accident*10<=0) {
-      //location.reload();
+    if (accident >= 5 && !canSee) {
+      frameCount = 0;
+      accident = -1;
+      main.gridPos = [[7,1]]; // position on the grid
+      main.pos = [(main.gridPos[0][0]+0.5)*tileSize,(main.gridPos[0][1]+0.5)*tileSize]; // center of grid tile
+      this.moveTile([1,0]);
     }
   }
   else if (!canSee)
