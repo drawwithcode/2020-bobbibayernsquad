@@ -242,11 +242,27 @@ function draw() {
     if (success == 0) {
       speaker.speak("Success: you reached the end of the experience!");
     }
+    else if (success >= 10) {
+      if (canSee) {
+        window.open('assistant/finale.html', '_self');
+      }
+      else {
+        window.open('blind/finale.html', '_self');
+      }
+    }
     success += 1/fps;
     push();
     fill(255,255,255,min(accident*20,100));
     rect(0,0,windowWidth,windowHeight);
     pop();
+    for (var i = 0; i < 100; i++) {
+        push();
+        fill(0);
+        translate(windowWidth/2, windowHeight/2);
+        rotate((success%10+i)*PI);
+        rect(200*sin(success*PI)*cos((i+frameCount/fps)*PI),200*sin(success*PI)*sin((i+frameCount/fps)*PI),10,4);
+        pop();
+    }
   }
   else if(accident>=0){
     accident += 1/fps;
