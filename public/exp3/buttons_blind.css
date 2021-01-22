@@ -12,7 +12,7 @@ body{
 }
 
 
-.warning {
+#warning {
   border: none;
   background-color: transparent;
   position: absolute;
