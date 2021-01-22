@@ -13,68 +13,116 @@ body{
 
 .texts h1 {
   position: absolute;
-  top: 5%;
+  top: 7%;
   left: 50%;
   transform: translate(-50%, -50%);
   color: white;
   font-family: latin;
-  font-size: 14px;
+  font-size: 1.2vw;
   overflow: hidden;
 }
 
-.texts instructions {
+.texts h2 {
   position: absolute;
-  top: 49%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  color: white;
-  font-family: braille;
-  font-size: 12px;
-  overflow: hidden;
-  white-space: nowrap; /* Keeps the content on a single line */
-  margin: 0 auto; /* Gives that scrolling effect as the typing happens */
-  letter-spacing: .075em; /* Adjust as needed */
-  animation:
-    typing 12s steps(90, end),
-    blink-caret .13s step-end;
-}
-.texts instructions1 {
-  position: absolute;
-  top: 46%;
+  top: 44%;
   left: 50%;
   transform: translate(-50%, -50%);
   color: grey;
   font-family: latin;
-  font-size: 12px;
-  overflow: hidden;
+  font-size: 1vw;
+  overflow: hidden; /* Ensures the content is not revealed until the animation */
   white-space: nowrap; /* Keeps the content on a single line */
   margin: 0 auto; /* Gives that scrolling effect as the typing happens */
   letter-spacing: .075em; /* Adjust as needed */
   animation:
-    typing1 12s steps(90, end),
+    typing1 3s steps(86, end),
     blink-caret .13s step-end;
 }
 
-/* The typing effect */
-@keyframes typing {
-  from { width: 0 }
-  to { width: 57% }
+.texts h3 {
+  position: absolute;
+  top: 46.5%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-family: braille;
+  font-size: 1vw;
+  overflow: hidden; /* Ensures the content is not revealed until the animation */
+  white-space: nowrap; /* Keeps the content on a single line */
+  margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+  letter-spacing: .075em; /* Adjust as needed */
+  animation:
+    typing2 3s steps(110, end),
+    blink-caret .13s step-end;
 }
+
+.texts h4 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: grey;
+  font-family: latin;
+  font-size: 1vw;
+  overflow: hidden; /* Ensures the content is not revealed until the animation */
+  white-space: nowrap; /* Keeps the content on a single line */
+  margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+  letter-spacing: .075em; /* Adjust as needed */
+  animation:
+    typing3 2s steps(56, end),
+    blink-caret .13s step-end;
+}
+
+.texts h5 {
+  position: absolute;
+  top: 52.5%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-family: braille;
+  font-size: 1vw;
+  overflow: hidden; /* Ensures the content is not revealed until the animation */
+  white-space: nowrap; /* Keeps the content on a single line */
+  margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+  letter-spacing: .075em; /* Adjust as needed */
+  animation:
+    typing4 2s steps(70, end),
+    blink-caret .13s step-end;
+}
+
+
+/* The typing effect */
+@keyframes typing1 {
+  from { width: 0 }
+  to { width: 43% }
+}
+
+@keyframes typing2 {
+  from { width: 0 }
+  to { width: 55% }
+}
+
+@keyframes typing3 {
+  from { width: 0 }
+  to { width: 28% }
+}
+
+@keyframes typing4 {
+  from { width: 0 }
+  to { width: 35% }
+}
+
+/* The typewriter cursor effect */
 @keyframes blink-caret {
   from, to { border-color: transparent }
   50% { border-color: grey }
 }
-@keyframes typing1 {
-  from { width: 0 }
-  to { width: 44% }
-}
-
 
 .start {
   border: none;
   background-color: #323232;
-  width: 170px;
-  height: 50px;
+  width: 13%;
+  height: 5%;
   border: 0.8px solid #6E6E6E;
   position: absolute;
   color: white;
@@ -82,12 +130,12 @@ body{
   left: 50%;
   transform: translate(-50%, -50%);
   text-align: center;
-  font-size: 12px;
+  font-size: 1vw;
   cursor: pointer;
   font-family: braille;
   transition: 0.2s ease-in-out;
-  animation:13.5s ease 0s normal forwards 1 fadein;
-  -webkit-animation:13.5s ease 0s normal forwards 1 fadein;
+  animation:3.5s ease 0s normal forwards 1 fadein;
+  -webkit-animation:3.5s ease 0s normal forwards 1 fadein;
   opacity:0
 }
 
@@ -106,16 +154,14 @@ body{
   transition: 0.2s ease-in-out;
   background-color: #585858;
   color: white;
-  width: 175;
-  height: 52px;
-  font-size: 12px;
+  width: 13%;
+  height: 5%;
+  font-size: 1vw;
   border: 1.25px solid #fff;
   font-family: latin;
 }
 
 .back {
-  width: 60px;
-  height: 30px;
   position: absolute;
   background-color: transparent;
   border: transparent;
@@ -124,7 +170,7 @@ body{
   left: 10%;
   transform: translate(-50%, -50%);
   text-align: center;
-  font-size: 12px;
+  font-size: 1.2vw;
   cursor: pointer;
   font-family: latin;
 }
@@ -132,8 +178,6 @@ body{
 .back:hover {
   color: white;
   background-color: transparent;
-  width: 60px;
-  height: 30px;
-  font-size: 12px;
+  font-size: 1.3vw;
   font-family: latin;
 }

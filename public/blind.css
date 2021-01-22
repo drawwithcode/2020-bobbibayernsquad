@@ -13,12 +13,12 @@ background-color: black;
 
 .typewriter h1 {
 position: absolute;
-top: 46%;
+top: 46.5%;
 left: 50%;
 transform: translate(-50%, -50%);
 color: grey;
 font-family: latin;
-font-size: 12px;
+font-size: 1vw;
 overflow: hidden; /* Ensures the content is not revealed until the animation */
 white-space: nowrap; /* Keeps the content on a single line */
 margin: 0 auto; /* Gives that scrolling effect as the typing happens */
@@ -27,12 +27,12 @@ letter-spacing: .075em; /* Adjust as needed */
 
 .typewriter h2 {
 position: absolute;
-top: 48.5%;
+top: 49%;
 left: 50%;
 transform: translate(-50%, -50%);
 color: white;
 font-family: braille;
-font-size: 10px;
+font-size: 1vw;
 overflow: hidden; /* Ensures the content is not revealed until the animation */
 white-space: nowrap; /* Keeps the content on a single line */
 margin: 0 auto; /* Gives that scrolling effect as the typing happens */
@@ -41,70 +41,68 @@ letter-spacing: .075em; /* Adjust as needed */
 
 
 .blind {
-border: none;
-background-color: #323232;
-width: 10%;
-height: 5%;
-border: 0.8px solid #6E6E6E;
-position: absolute;
-color: white;
-top: 55%;
-left: 45%;
-transform: translate(-50%, -50%);
-text-align: center;
-font-size: 8px;
-cursor: pointer;
-font-family: braille;
-transition: 0.2s ease-in-out;
-
+  border: none;
+  background-color: #323232;
+  width: 12.5%;
+  height: 4.5%;
+  border: 0.8px solid #6E6E6E;
+  position: absolute;
+  color: white;
+  top: 55%;
+  left: 43.5%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  font-size: 1vw;
+  cursor: pointer;
+  font-family: braille;
+  transition: 0.2s ease-in-out;
 }
 
 .blind:hover {
-transition: 0.2s ease-in-out;
-background-color: #585858;
-color: white;
-width: 10%;
-height: 5%;
-font-size: 8px;
-border: 1.25px solid #fff;
-font-family: latin;
+  transition: 0.2s ease-in-out;
+  background-color: #585858;
+  color: white;
+  width: 12.5%;
+  height: 4.5%;
+  font-size: 1vw;
+  border: 1.25px solid #fff;
+  font-family: latin;
 }
 
 .assistant {
-border: none;
-background-color: #d2d2d2;
-width: 10%;
-height: 5%;
-border: 0.8px solid #ffffff;
-position: absolute;
-color: #323232;
-top: 55%;
-left: 55%;
-transform: translate(-50%, -50%);
-text-align: center;
-font-size: 8px;
-cursor: pointer;
-font-family: braille;
-transition: 0.2s ease-in-out;
-
+  border: none;
+  background-color: #d2d2d2;
+  width: 12.5%;
+  height: 4.5%;
+  border: 0.8px solid #ffffff;
+  position: absolute;
+  color: #323232;
+  top: 55%;
+  left: 56.25%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  font-size: 1vw;
+  cursor: pointer;
+  font-family: braille;
+  transition: 0.2s ease-in-out;
 }
 
 .assistant:hover {
-transition: 0.2s ease-in-out;
-background-color: #ffffff;
-color: #323232;
-width: 10%;
-height: 5%;
-font-size: 8px;
-border: 1.25px solid #fff;
-font-family: latin;
+  transition: 0.2s ease-in-out;
+  background-color: #ffffff;
+  color: #323232;
+  width: 12.5%;
+  height: 4.5%;
+  font-size: 1vw;
+  border: 1.25px solid #fff;
+  font-family: latin;
 }
 
 .exp1 {
 border: none;
 background-color: #323232;
-width: 170px;
-height: 50px;
+width: 15%;
+height: 7.5%;
 border: 0.8px solid #6E6E6E;
 position: absolute;
 color: white;
@@ -112,7 +110,7 @@ top: 25%;
 left: 25%;
 transform: translate(-50%, -50%);
 text-align: center;
-font-size: 12px;
+font-size: 1vw;
 cursor: pointer;
 font-family: braille;
 transition: 0.2s ease-in-out;
@@ -122,9 +120,9 @@ transition: 0.2s ease-in-out;
 transition: 0.2s ease-in-out;
 background-color: #585858;
 color: white;
-width: 175;
-height: 52px;
-font-size: 12px;
+width: 15%;
+height: 7.5%;
+font-size: 1vw;
 border: 1.25px solid #fff;
 font-family: latin;
 }
@@ -132,8 +130,8 @@ font-family: latin;
 .exp2 {
 border: none;
 background-color: #323232;
-width: 170px;
-height: 50px;
+width: 15%;
+height: 7.5%;
 border: 0.8px solid #6E6E6E;
 position: absolute;
 color: white;
@@ -141,7 +139,7 @@ top: 25%;
 left: 75%;
 transform: translate(-50%, -50%);
 text-align: center;
-font-size: 12px;
+font-size: 1vw;
 cursor: pointer;
 font-family: braille;
 transition: 0.2s ease-in-out;
@@ -151,9 +149,9 @@ transition: 0.2s ease-in-out;
 transition: 0.2s ease-in-out;
 background-color: #585858;
 color: white;
-width: 175;
-height: 52px;
-font-size: 12px;
+width: 15%;
+height: 7.5%;
+font-size: 1vw;
 border: 1.25px solid #fff;
 font-family: latin;
 }
@@ -161,8 +159,8 @@ font-family: latin;
 .exp3 {
 border: none;
 background-color: #323232;
-width: 170px;
-height: 50px;
+width: 15%;
+height: 7.5%;
 border: 0.8px solid #6E6E6E;
 position: absolute;
 color: white;
@@ -170,7 +168,7 @@ top: 75%;
 left: 25%;
 transform: translate(-50%, -50%);
 text-align: center;
-font-size: 12px;
+font-size: 1vw;
 cursor: pointer;
 font-family: braille;
 transition: 0.2s ease-in-out;
@@ -180,9 +178,9 @@ transition: 0.2s ease-in-out;
 transition: 0.2s ease-in-out;
 background-color: #585858;
 color: white;
-width: 175;
-height: 52px;
-font-size: 12px;
+width: 15%;
+height: 7.5%;
+font-size: 1vw;
 border: 1.25px solid #fff;
 font-family: latin;
 }
@@ -190,8 +188,8 @@ font-family: latin;
 .exp4 {
 border: none;
 background-color: #323232;
-width: 170px;
-height: 50px;
+width: 15%;
+height: 7.5%;
 border: 0.8px solid #6E6E6E;
 position: absolute;
 color: white;
@@ -199,7 +197,7 @@ top: 75%;
 left: 75%;
 transform: translate(-50%, -50%);
 text-align: center;
-font-size: 12px;
+font-size: 1vw;
 cursor: pointer;
 font-family: braille;
 transition: 0.2s ease-in-out;
@@ -209,9 +207,9 @@ transition: 0.2s ease-in-out;
 transition: 0.2s ease-in-out;
 background-color: #585858;
 color: white;
-width: 175;
-height: 52px;
-font-size: 12px;
+width: 15%;
+height: 7.5%;
+font-size: 1vw;
 border: 1.25px solid #fff;
 font-family: latin;
 }
@@ -240,7 +238,7 @@ font-family: latin;
   left: 90%;
   transform: translate(-50%, -50%);
   text-align: center;
-  font-size: 12px;
+  font-size: 1.2vw;
   cursor: pointer;
   font-family: latin;
   transition: 0.2s ease-in-out;
@@ -252,7 +250,7 @@ font-family: latin;
   color: white;
   width: 60px;
   height: 30px;
-  font-size: 12px;
+  font-size: 1.3vw;
   border: transparent;
   font-family: latin;
 }
@@ -327,8 +325,6 @@ font-family: latin;
 }
 
 .back {
-  width: 60px;
-  height: 30px;
   position: absolute;
   background-color: transparent;
   border: transparent;
@@ -337,7 +333,7 @@ font-family: latin;
   left: 10%;
   transform: translate(-50%, -50%);
   text-align: center;
-  font-size: 12px;
+  font-size: 1.2vw;
   cursor: pointer;
   font-family: latin;
   transition: 0.2s ease-in-out;
@@ -347,8 +343,6 @@ font-family: latin;
   transition: 0.2s ease-in-out;
   color: white;
   background-color: transparent;
-  width: 60px;
-  height: 30px;
-  font-size: 12px;
+  font-size: 1.3vw;
   font-family: latin;
 }

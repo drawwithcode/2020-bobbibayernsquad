@@ -22,7 +22,7 @@ body{
   transform: translate(-50%, -50%);
 	font-weight: normal;
 	font-family: latin;
-	font-size: 4.2vw;
+	font-size: 4vw;
   float: left;
   color: white;
   text-align: center;
@@ -30,35 +30,69 @@ body{
 
 .typewriter h1 {
   position: absolute;
-  top: 46%;
+  top: 44%;
   left: 50%;
   transform: translate(-50%, -50%);
   color: grey;
   font-family: latin;
-  font-size: 1.2vw;
+  font-size: 1vw;
   overflow: hidden; /* Ensures the content is not revealed until the animation */
   white-space: nowrap; /* Keeps the content on a single line */
   margin: 0 auto; /* Gives that scrolling effect as the typing happens */
   letter-spacing: .075em; /* Adjust as needed */
   animation:
-    typing1 3s steps(90, end),
+    typing1 1.5s steps(30, end),
     blink-caret .13s step-end;
 }
 
 .typewriter h2 {
   position: absolute;
-  top: 49%;
+  top: 46.5%;
   left: 50%;
   transform: translate(-50%, -50%);
   color: white;
   font-family: braille;
-  font-size: 1.2vw;
+  font-size: 1vw;
   overflow: hidden; /* Ensures the content is not revealed until the animation */
   white-space: nowrap; /* Keeps the content on a single line */
   margin: 0 auto; /* Gives that scrolling effect as the typing happens */
   letter-spacing: .075em; /* Adjust as needed */
   animation:
-    typing2 3s steps(90, end),
+    typing2 1.5s steps(40, end),
+    blink-caret .13s step-end;
+}
+
+.typewriter h3 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: grey;
+  font-family: latin;
+  font-size: 1vw;
+  overflow: hidden; /* Ensures the content is not revealed until the animation */
+  white-space: nowrap; /* Keeps the content on a single line */
+  margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+  letter-spacing: .075em; /* Adjust as needed */
+  animation:
+    typing3 3s steps(100, end),
+    blink-caret .13s step-end;
+}
+
+.typewriter h4 {
+  position: absolute;
+  top: 52.5%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-family: braille;
+  font-size: 1vw;
+  overflow: hidden; /* Ensures the content is not revealed until the animation */
+  white-space: nowrap; /* Keeps the content on a single line */
+  margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+  letter-spacing: .075em; /* Adjust as needed */
+  animation:
+    typing4 3s steps(130, end),
     blink-caret .13s step-end;
 }
 
@@ -66,12 +100,22 @@ body{
 /* The typing effect */
 @keyframes typing1 {
   from { width: 0 }
-  to { width: 62% }
+  to { width: 16% }
 }
 
 @keyframes typing2 {
   from { width: 0 }
-  to { width: 72% }
+  to { width: 21% }
+}
+
+@keyframes typing3 {
+  from { width: 0 }
+  to { width: 51% }
+}
+
+@keyframes typing4 {
+  from { width: 0 }
+  to { width: 65% }
 }
 
 /* The typewriter cursor effect */
@@ -85,7 +129,7 @@ body{
   border: none;
   position: absolute;
   color: white;
-   top: 35%;
+   top: 38%;
    left: 50%;
    transform: translate(-50%, -50%);
    text-align: center;
@@ -109,7 +153,7 @@ body{
   left: 50%;
   transform: translate(-50%, -50%);
   text-align: center;
-  font-size: 1.2vw;
+  font-size: 1vw;
   cursor: pointer;
   font-family: braille;
   transition: 0.2s ease-in-out;
@@ -135,7 +179,7 @@ body{
   color: white;
   width: 13%;
   height: 5%;
-  font-size: 1.2vw;
+  font-size: 1vw;
   border: 1.25px solid #fff;
   font-family: latin;
 }
@@ -164,7 +208,7 @@ body{
   transition: 0.2s ease-in-out;
   background-color: transparent;;
   color: white;
-  font-size: 1.2vw;
+  font-size: 1.3vw;
   border: transparent;;
   font-family: latin;
 }
