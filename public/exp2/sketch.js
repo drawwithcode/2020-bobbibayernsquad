@@ -109,7 +109,9 @@ function mousePressed() {
         ib.hide();
         let anim = select('#anim');
         anim.style('filter', 'invert(100%)');
-
+        document.getElementById("infoBtn").style.color = "#323232";
+        document.getElementById("bk").style.color = "#323232";
+        document.getElementById("fin").style.display = "block";
       }
     }
   }

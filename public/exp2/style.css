@@ -87,7 +87,7 @@ html, body{
   border: 0.8px solid #6E6E6E;
   position: absolute;
   color: white;
-  top: 62%;
+  top: 60%;
   left: 50%;
   transform: translate(-50%, -50%);
   text-align: center;
@@ -95,8 +95,8 @@ html, body{
   cursor: pointer;
   font-family: braille;
   transition: 0.2s ease-in-out;
-  animation:10.5s ease 0s normal forwards 1 fadein;
-  -webkit-animation:5.5s ease 0s normal forwards 1 fadein;
+  animation:13.5s ease 0s normal forwards 1 fadein;
+  -webkit-animation:13.5s ease 0s normal forwards 1 fadein;
   opacity:0
 }
 
@@ -119,4 +119,32 @@ html, body{
   height: 52px;
   font-size: 12px;
   border: 1.25px solid #fff;
+  font-family: latin;
+}
+
+
+/*    BACK BUTTON    */
+.back {
+  width: 60px;
+  height: 30px;
+  position: absolute;
+  background-color: transparent;
+  border: transparent;
+  color: #d2d2d2;
+  top: 7%;
+  left: 10%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  font-size: 12px;
+  cursor: pointer;
+  font-family: latin;
+}
+
+.back:hover {
+  color: white;
+  background-color: transparent;
+  width: 60px;
+  height: 30px;
+  font-size: 12px;
+  font-family: latin;
 }
