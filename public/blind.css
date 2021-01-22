@@ -39,6 +39,17 @@ margin: 0 auto; /* Gives that scrolling effect as the typing happens */
 letter-spacing: .075em; /* Adjust as needed */
 }
 
+.typewriter h3 {
+  position: absolute;
+  top: 7%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-family: latin;
+  font-size: 1.2vw;
+  overflow: hidden;
+}
+
 
 .blind {
   border: none;

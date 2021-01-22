@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Beyond screened</title>
     <meta charset="utf-8">
     <meta name="viewport" width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0>
     <style> body {padding: 0; margin: 0;} </style>
@@ -15,6 +14,7 @@
     <link rel="stylesheet" type="text/css" href="main.css">
     <script>
     let speaker = new p5.Speech();
+    speaker.setLang("en-UK");
 
     speaker.speak("Try to find the bell");
 
@@ -25,11 +25,15 @@
     function read_start(){
       speaker.speak("help");
     }
+
+    function read_continue(){
+      speaker.speak("continue");
+    }
     </script>
   </head>
 
   <button class="btn back" id="bk" onmouseover="read_back();" onclick="window.open('index.html', '_self')">⬅ BACK</button>
-  <button class="btn continue" id="fin" onclick="window.open('finale.html', '_self')">continue</button>
+  <button class="btn continue" id="fin" onmouseover="read_continue();" onclick= "window.open('finale.html', '_self')">continue</button>
 
   <body>
 

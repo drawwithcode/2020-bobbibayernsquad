@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Beyond screened</title>
     <meta charset="utf-8">
     <meta name="viewport" width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0>
     <style> body {padding: 0; margin: 0;} </style>
@@ -15,6 +14,7 @@
         beep.play();
       }
       let speaker = new p5.Speech();
+      speaker.setLang("en-UK");
 
       speaker.speak("There's a table in front of you... pat it until you find what you're looking for");
 

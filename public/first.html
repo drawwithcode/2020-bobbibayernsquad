@@ -19,11 +19,14 @@
     function read2(){
       speaker.speak("PROJECT INFO");
     }
-
+    let bool3=true;
     function read3(){
-    speaker.speak("Loss of Senses is a project ideated by a group of four students at  Milan Polytechnic."+
-          " The aim of the project is to create an interactive and collaborative web experience on the theme"+
-          " of accessibility for blind people");
+      if (bool3) {
+        speaker.speak("Loss of Senses is a project ideated by a group of four students at  Milan Polytechnic."+
+              " The aim of the project is to create an interactive and collaborative web experience on the theme"+
+              " of accessibility for blind people");
+      }
+      bool3=false;
     }
     function read4(){
       speaker.speak("CLOSE");
@@ -41,7 +44,7 @@
     </style>
   </head>
 
-  <div class="typewriter" onmouseover="read0();">
+  <div class="typewriter">
     <h1> welcome to Loss of Senses </h1>
     <h2> welcome to Loss of Senses </h2>
     <h3> move the mouse around the screen and over the buttons to hear the instructions </h3>
@@ -53,7 +56,7 @@
   <body>
 
   <!-- Trigger/Open The Modal -->
-  <button id="infoBtn" onmouseover="read2();" onmouseclick="read3();">PROJECT INFO</button>
+  <button id="infoBtn" onmouseover="read2();">PROJECT INFO</button>
 
   <!-- The Modal -->
   <div id="myPopup" class="popup">
@@ -64,7 +67,7 @@
       <span class="close" onmouseover="read4();">&times; </span>
       <h2>LOSS OF SENSES PROJECT</h2>
     </div>
-    <div class="popup-body" onmouseover="read3();">
+    <div class="popup-body"  onmouseover="read3();">
       <p>Loss of Senses is a project ideated by a group of four students at Milan Polytechnic.
         The aim of the project is to create an interactive and collaborative web experience on the theme
         of accessibility for blind people...
