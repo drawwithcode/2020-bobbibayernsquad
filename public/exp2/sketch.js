@@ -86,6 +86,7 @@ function setup() {
     autoplay: true,
     path: 'pat-animation-wh.json'
   })
+  cursor('assets/cursor-wh.png',3.5,3.5);
 }
 
 function mousePressed() {
@@ -112,6 +113,8 @@ function mousePressed() {
         document.getElementById("infoBtn").style.color = "#323232";
         document.getElementById("bk").style.color = "#323232";
         document.getElementById("fin").style.display = "block";
+        cursor('assets/cursor-bl.png',3.5,3.5);
+
       }
     }
   }

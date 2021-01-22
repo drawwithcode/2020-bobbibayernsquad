@@ -7,9 +7,10 @@
   src: url("assets/fonts/AHAMONO-Monospaced.otf");
 }
 
-body{
+body {
   background-color: white;
-  cursor: grab;
+  cursor: none;
+  /*cursor: url(assets/cursor.png), auto;*/
 }
 
 
@@ -268,4 +269,22 @@ img {
   font-size: 12px;
   border: 1.25px solid #fff;
   font-family: latin;
+}
+
+
+/*    CUSTOM CURSOR    */
+.cursor-dot {
+    pointer-events: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    border-radius: 50%;
+    opacity: 0;
+    transform: translate(-50%, -50%);
+    transition: opacity 0.3s ease-in-out,
+                transform 0.3s ease-in-out;
+    $size: 8px;
+    width: $size;
+    height: $size;
+    background-color: black;
 }
