@@ -1,7 +1,9 @@
 
+
 function preload(){
   audio = loadSound('assets/sounds/beach.mp3');
 }
+
 
 function setup(){
   createCanvas(windowWidth, windowHeight);

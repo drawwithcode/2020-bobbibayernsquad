@@ -24,8 +24,8 @@ body{
 
 .it {
   background-color: #323232;
-  width: 175px;
-  height: 57.5px;
+  width: 14%;
+  height: 7.5%;
   border: 0.8px solid #6E6E6E;
   position: absolute;
   color: white;
@@ -33,18 +33,17 @@ body{
   left: 40%;
   transform: translate(-50%, -50%);
   text-align: center;
-  font-size: 12px;
+  font-size: 1vw;
   cursor: pointer;
   font-family: braille;
-  transition: 0.2s ease-in-out;
-  opacity: 0.5;
+  opacity: 0.3;
 }
 
 .th {
   border: none;
   background-color: #323232;
-  width: 175px;
-  height: 57.5px;
+  width: 14%;
+  height: 7.5%;
   border: 0.8px solid #6E6E6E;
   position: absolute;
   color: white;
@@ -52,135 +51,174 @@ body{
   left: 60%;
   transform: translate(-50%, -50%);
   text-align: center;
-  font-size: 12px;
+  font-size: 1vw;
   cursor: pointer;
   font-family: braille;
-  transition: 0.2s ease-in-out;
+}
+
+.ma {
+  border: none;
+  background-color: #323232;
+  width: 14%;
+  height: 7.5%;
+  border: 0.8px solid #6E6E6E;
+  position: absolute;
+  color: white;
+  top: 50%;
+  left: 40%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  font-size: 1vw;
+  cursor: pointer;
+  font-family: braille;
+}
+
+.us {
+  border: none;
+  background-color: #323232;
+  width: 14%;
+  height: 7.5%;
+  border: 0.8px solid #6E6E6E;
+  position: absolute;
+  color: white;
+  top: 50%;
+  left: 60%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  font-size: 1vw;
+  cursor: pointer;
+  font-family: braille;
+}
+
+.au {
+  border: none;
+  background-color: #323232;
+  width: 14%;
+  height: 7.5%;
+  border: 0.8px solid #6E6E6E;
+  position: absolute;
+  color: white;
+  top: 75%;
+  left: 40%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  font-size: 1vw;
+  cursor: pointer;
+  font-family: braille;
+}
+
+.ru {
+  border: none;
+  background-color: #323232;
+  width: 14%;
+  height: 7.5%;
+  border: 0.8px solid #6E6E6E;
+  position: absolute;
+  color: white;
+  top: 75%;
+  left: 60%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  font-size: 1vw;
+  cursor: pointer;
+  font-family: braille;
 }
 
 .th:hover {
   transition: 0.2s ease-in-out;
   background-color: #585858;
   color: white;
-  width: 175px;
-  height: 57.5px;
-  font-size: 12px;
+  width: 14%;
+  height: 7.5%;
+  font-size: 1vw;
   border: 1.25px solid #fff;
   font-family: latin;
-}
-
-.ma {
-  border: none;
-  background-color: #323232;
-  width: 175px;
-  height: 57.5px;
-  border: 0.8px solid #6E6E6E;
-  position: absolute;
-  color: white;
-  top: 50%;
-  left: 40%;
-  transform: translate(-50%, -50%);
-  text-align: center;
-  font-size: 12px;
-  cursor: pointer;
-  font-family: braille;
-  transition: 0.2s ease-in-out;
 }
 
 .ma:hover {
   transition: 0.2s ease-in-out;
   background-color: #585858;
   color: white;
-  width: 175px;
-  height: 57.5px;
-  font-size: 12px;
+  width: 14%;
+  height: 7.5%;
+  font-size: 1vw;
   border: 1.25px solid #fff;
   font-family: latin;
-}
-
-.us {
-  border: none;
-  background-color: #323232;
-  width: 175px;
-  height: 57.5px;
-  border: 0.8px solid #6E6E6E;
-  position: absolute;
-  color: white;
-  top: 50%;
-  left: 60%;
-  transform: translate(-50%, -50%);
-  text-align: center;
-  font-size: 12px;
-  cursor: pointer;
-  font-family: braille;
-  transition: 0.2s ease-in-out;
 }
 
 .us:hover {
   transition: 0.2s ease-in-out;
   background-color: #585858;
   color: white;
-  width: 175px;
-  height: 57.5px;
-  font-size: 12px;
+  width: 14%;
+  height: 7.5%;
+  font-size: 1vw;
   border: 1.25px solid #fff;
   font-family: latin;
-}
-
-.au {
-  border: none;
-  background-color: #323232;
-  width: 175px;
-  height: 57.5px;
-  border: 0.8px solid #6E6E6E;
-  position: absolute;
-  color: white;
-  top: 75%;
-  left: 40%;
-  transform: translate(-50%, -50%);
-  text-align: center;
-  font-size: 12px;
-  cursor: pointer;
-  font-family: braille;
-  transition: 0.2s ease-in-out;
 }
 
 .au:hover {
   transition: 0.2s ease-in-out;
   background-color: #585858;
   color: white;
-  width: 175px;
-  height: 57.5px;
-  font-size: 12px;
+  width: 14%;
+  height: 7.5%;
+  font-size: 1vw;
   border: 1.25px solid #fff;
   font-family: latin;
-}
-
-.ru {
-  border: none;
-  background-color: #323232;
-  width: 175px;
-  height: 57.5px;
-  border: 0.8px solid #6E6E6E;
-  position: absolute;
-  color: white;
-  top: 75%;
-  left: 60%;
-  transform: translate(-50%, -50%);
-  text-align: center;
-  font-size: 12px;
-  cursor: pointer;
-  font-family: braille;
-  transition: 0.2s ease-in-out;
 }
 
 .ru:hover {
   transition: 0.2s ease-in-out;
   background-color: #585858;
   color: white;
-  width: 175px;
-  height: 57.5px;
-  font-size: 12px;
+  width: 14%;
+  height: 7.5%;
+  font-size: 1vw;
   border: 1.25px solid #fff;
+  font-family: latin;
+}
+
+.au:active {
+  transition: 0.2s ease-in-out;
+  background-color: rgba(255, 0, 0, 0.5);
+  color: red;
+  width: 14%;
+  height: 7.5%;
+  font-size: 1vw;
+  border: 1.25px solid red;
+  font-family: latin;
+}
+
+.th:active {
+  transition: 0.2s ease-in-out;
+  background-color: rgba(255, 0, 0, 0.5);
+  color: red;
+  width: 14%;
+  height: 7.5%;
+  font-size: 1vw;
+  border: 1.25px solid red;
+  font-family: latin;
+}
+
+.ma:active {
+  transition: 0.2s ease-in-out;
+  background-color: rgba(255, 0, 0, 0.5);
+  color: red;
+  width: 14%;
+  height: 7.5%;
+  font-size: 1vw;
+  border: 1.25px solid red;
+  font-family: latin;
+}
+
+.us:active {
+  transition: 0.2s ease-in-out;
+  background-color: rgba(255, 0, 0, 0.5);
+  color: red;
+  width: 14%;
+  height: 7.5%;
+  font-size: 1vw;
+  border: 1.25px solid red;
   font-family: latin;
 }

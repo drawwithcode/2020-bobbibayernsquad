@@ -13,12 +13,12 @@ body{
 
 .texts h1 {
   position: absolute;
-  top: 5%;
+  top: 7%;
   left: 50%;
   transform: translate(-50%, -50%);
   color: white;
   font-family: latin;
-  font-size: 14px;
+  font-size: 1.2vw;
   overflow: hidden;
 }
 
@@ -29,10 +29,11 @@ body{
   transform: translate(-50%, -50%);
   font-family: latin;
   color: white;
-  font-size: 12px;
+  font-size: 1vw;
   overflow: hidden;
   animation-name: textin2;
   animation-duration: 16s;
+  opacity: 0;
 }
 
 .texts h3 {
@@ -42,40 +43,41 @@ body{
   color: grey;
   transform: translate(-50%, -50%);
   font-family: braille;
-  font-size: 12px;
+  font-size: 1vw;
   overflow: hidden;
   animation-name: textin3;
   animation-duration: 16s;
+  opacity: 0;
 }
 
 
 @keyframes textin2 {
-  0% {color: black;}
-  10% {color: grey;}
-  95% {color: grey;}
-  100% {color: black;}
+  0% {opacity: 0;}
+  10% {opacity: 1;}
+  95% {opacity: 1;}
+  100% {opacity: 0;}
 }
 
 @keyframes textin3 {
-  0% {color: black;}
-  10% {color: white;}
-  95% {color: white;}
-  100% {color: black;}
+  0% {opacity: 0;}
+  10% {opacity: 1;}
+  95% {opacity: 1;}
+  100% {opacity: 0;}
 }
 
 .again {
   border: none;
   background-color: #323232;
-  width: 150px;
-  height: 50px;
+  width: 14%;
+  height: 7.5%;
   border: 0.8px solid #6E6E6E;
   position: absolute;
   color: white;
   top: 47.5%;
-  left: 42.5%;
+  left: 42%;
   transform: translate(-50%, -50%);
   text-align: center;
-  font-size: 12px;
+  font-size: 1vw;
   cursor: pointer;
   font-family: braille;
   transition: 0.2s ease-in-out;
@@ -87,16 +89,16 @@ body{
 .ready {
   border: none;
   background-color: #323232;
-  width: 150px;
-  height: 50px;
+  width: 14%;
+  height: 7.5%;
   border: 0.8px solid #6E6E6E;
   position: absolute;
   color: white;
   top: 47.5%;
-  left: 57.5%;
+  left: 58%;
   transform: translate(-50%, -50%);
   text-align: center;
-  font-size: 12px;
+  font-size: 1vw;
   cursor: pointer;
   font-family: braille;
   transition: 0.2s ease-in-out;
@@ -109,9 +111,9 @@ body{
   transition: 0.2s ease-in-out;
   background-color: #585858;
   color: white;
-  width: 150px;
-  height: 50px;
-  font-size: 12px;
+  width: 14%;
+  height: 7.5%;
+  font-size: 1vw;
   border: 1.25px solid #fff;
   font-family: latin;
 }
@@ -120,9 +122,9 @@ body{
   transition: 0.2s ease-in-out;
   background-color: #585858;
   color: white;
-  width: 150px;
-  height: 50px;
-  font-size: 12px;
+  width: 14%;
+  height: 7.5%;
+  font-size: 1vw
   border: 1.25px solid #fff;
   font-family: latin;
 }

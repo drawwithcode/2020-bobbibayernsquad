@@ -7,11 +7,17 @@
     <script src="p5.min.js"></script>
     <script src="p5.sound.min.js"></script>
     <script src="round2.js"></script>
+    <script src="p5.speech.js"></script>
     <script>
+
+    let speaker = new p5.Speech("Google UK English Female");
+    speaker.speak("Great, you guessed! Let's move on. Second round");
+
       function beep() {
         var beep = document.getElementById("beep");
         beep.play();
       }
+
     </script>
     <link rel="stylesheet" type="text/css" href="round2.css">
     <audio id="source" src="assets/sounds/beach.mp3"></audio>
@@ -21,8 +27,8 @@
   </body>
   <div class="texts">
     <h1> LOSS OF SENSES </h1>
-    <h2> Great! Let's move on </h2>
-    <h3> Great! Let's move on </h3>
+    <h2> Great, you guessed! Let's move on </h2>
+    <h3> Great, you guessed! Let's move on </h3>
     <h4> second round </h4>
     <h5> second round </h5>
   </div>

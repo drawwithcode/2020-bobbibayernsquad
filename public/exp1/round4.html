@@ -6,8 +6,12 @@
     <style> body {padding: 0; margin: 0;} </style>
     <script src="p5.min.js"></script>
     <script src="p5.sound.min.js"></script>
+    <script src="p5.speech.js"></script>
     <script src="round4.js"></script>
     <script>
+    let speaker = new p5.Speech("Google UK English Female");
+    speaker.speak("Amazing! Where else can we go? Fourth round");
+
       function beep() {
         var beep = document.getElementById("beep");
         beep.play();

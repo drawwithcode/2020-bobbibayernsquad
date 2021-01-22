@@ -11,9 +11,14 @@
         var beep = document.getElementById("beep");
         beep.play();
       }
+      function wrong() {
+        var wrong = document.getElementById("wrong");
+        wrong.play();
+      }
     </script>
     <link rel="stylesheet" type="text/css" href="choice5.css">
     <audio id="beep" src="assets/sounds/beep.mp3"></audio>
+    <audio id="wrong" src="assets/sounds/wrong.mp3"></audio>
   </head>
   <body>
   </body>
@@ -21,9 +26,9 @@
     <h1> LOSS OF SENSES </h1>
   </div>
   <button class="btn it">At the beach, Italy</button>
-  <button class="btn th"onclick="window.open('finale.html', '_self');">In a public office, Thailand</button>
+  <button class="btn th"onclick="beep(); window.open('finale.html', '_self');">In a public office, Thailand</button>
   <button class="btn ma">In a bazaar, Morocco</button>
-  <button class="btn us" onclick="beep();">In Times Square, NYC</button>
+  <button class="btn us" onclick="wrong();">In Times Square, NYC</button>
   <button class="btn au">At the park, in Australia</button>
   <button class="btn ru">At the lake, Russia</button>
 </html>
