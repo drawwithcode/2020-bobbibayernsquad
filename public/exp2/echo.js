@@ -13,6 +13,7 @@ class Echo {
     this.size += 5; // gets bigger
     this.opacity -= 11; // fades out
     this.strokeweight += 0.2; // gets thicker
+    push();
     noFill();
     strokeWeight(this.strokeweight);
     if (!success) {
@@ -21,5 +22,6 @@ class Echo {
       stroke(211, 211, 211, this.opacity);
     }
     ellipse(this.x, this.y, this.size);
+    pop();
   }
 }

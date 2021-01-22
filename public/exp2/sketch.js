@@ -141,9 +141,11 @@ function draw() {
 
   //covering the canvas so that the user does not see the items on the table
   if (!success) {
+    push();
     fill("black");
     //fill('rgba(0,0,0,0.2)'); //for testing
-    rect(0, 0, windowWidth*2, windowHeight*2);
+    rect(-windowWidth/2, -windowHeight/2, windowWidth*2, windowHeight*2);
+    pop();
   }
 
   //echos
