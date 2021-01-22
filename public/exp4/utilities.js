@@ -27,6 +27,7 @@ let entities = []; // list of Entity objects (cars and trams)
 let entityImages = {}; // dict of strings mapping to mapImageLoader objects
 
 let accident = -1; // == -1: there was no accident, >= 0: seconds since accident
+let success = -1; // == -1: base, >= 0: seconds since end
 let firstMove = false; // has pressed any key (to activate audio)
 
 let pinSound, trafficNoise, accidentNoise, carHorn, cowBell; // sounds and audios
@@ -237,6 +238,9 @@ class character {
   // Movement: updateTiles
   updateTile(newGridPos, newpos) {
     this.gridPos = newGridPos;
+    if (this.gridPos[0]>=35) {
+      success = 0;
+    }
     this.pos = newpos;
     this.timeStartMovement = frameCount/fps;
     for (var i = 0; i < streetsStart.length; i++)
