@@ -22,7 +22,7 @@ body{
   left: 90%;
   transform: translate(-50%, -50%);
   text-align: center;
-  font-size: 1vw;
+  font-size: 1.2vw;
   cursor: pointer;
   font-family: latin;
   transition: 0.2s ease-in-out;
@@ -34,7 +34,7 @@ body{
   width: 13%;
   height: 5%;
   color: #323232;
-  font-size: 1vw;
+  font-size: 1.3vw;
   border: transparent;
   font-family: latin;
 }
@@ -117,7 +117,7 @@ body{
   left: 10%;
   transform: translate(-50%, -50%);
   text-align: center;
-  font-size: 1vw;
+  font-size: 1.2vw;
   cursor: pointer;
   font-family: latin;
   transition: 0.2s ease-in-out;
@@ -128,7 +128,7 @@ body{
   background-color: transparent;
   border: transparent;
   color: #323232;
-  font-size: 1vw;
+  font-size: 1.3vw;
   border: 1.25px solid #fff;
   font-family: latin;
 }

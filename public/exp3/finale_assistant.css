@@ -65,7 +65,7 @@ body{
   left: 42.5%;
   transform: translate(-50%, -50%);
   text-align: center;
-  font-size: 1vw;
+  font-size: 1.2vw;
   cursor: pointer;
   font-family: braille;
   transition: 0.2s ease-in-out;
@@ -86,7 +86,7 @@ body{
   left: 57.5%;
   transform: translate(-50%, -50%);
   text-align: center;
-  font-size: 1vw;
+  font-size: 1.2vw;
   cursor: pointer;
   font-family: braille;
   transition: 0.2s ease-in-out;
@@ -101,7 +101,7 @@ body{
   color: white;
   width: 13%;
   height: 5%;
-  font-size: 1vw;
+  font-size: 1.3vw;
   border: 1.25px solid #fff;
   font-family: latin;
 }
@@ -111,7 +111,7 @@ body{
   color: white;
   width: 13%;
   height: 5%;
-  font-size: 1vw;
+  font-size: 1.3vw;
   border: 1.25px solid #fff;
   font-family: latin;
 }
