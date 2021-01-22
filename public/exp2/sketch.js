@@ -50,8 +50,6 @@ function preload() {
   sounds.push(loadSound("assets/sounds/bell.mp3")); //6
   sounds.push(loadSound("assets/sounds/keys.mp3"));
   sounds.push(loadSound("assets/sounds/coins.mp3"));
-
-
   for (let i = 0; i < 2; i++) {
     sndTable[i] = loadSound("assets/sounds/table" + i + ".mp3");
   }
@@ -93,14 +91,14 @@ function setup() {
 function mousePressed() {
   ////////// CLICK EVENTS //////////
   //whenever an object is clicked, its specific sound is played
-  //items that are shown on top of others are played first, as they are the ones to be touched by the user in an overlapping scenario
   let soundPlayed = false;
   for (let i=0;i<items.length;i++) {
     if (items[i].clicked()) {
       items[i].play();
       soundPlayed=true;
       if (i==6) {
-        //the page changes since the activity has finished
+
+        //*--Success!--* the page changes since the activity has finished
         success = true;
         //document.getElementById("t").style.color = "black";
         let t = select('#t');
@@ -111,6 +109,7 @@ function mousePressed() {
         ib.hide();
         let anim = select('#anim');
         anim.style('filter', 'invert(100%)');
+
       }
     }
   }
@@ -119,7 +118,7 @@ function mousePressed() {
     anySndTable.play();
   }
 
-  //new sound echo shows on touch
+  //new sound echo shows on click
   let clickEcho = new Echo();
   echos.push(clickEcho);
   if (echos.length > 20) {

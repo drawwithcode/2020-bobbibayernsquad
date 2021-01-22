@@ -11,6 +11,8 @@ html, body{
   background-color: black;
 }
 
+
+/*    TEXTS    */
 .texts h1 {
   position: absolute;
   top: 5%;
@@ -76,6 +78,7 @@ html, body{
 }
 
 
+/*    START BUTTON    */
 .start {
   border: none;
   background-color: #323232;

@@ -12,6 +12,8 @@ body{
   cursor: grab;
 }
 
+
+/*    TEXTS    */
 .texts h1 {
   position: absolute;
   margin: 0;
@@ -75,6 +77,9 @@ body{
   to { width: 39% }
 }
 
+
+/*    GIF    */
+/*
 img {
   position: absolute;
   bottom: 10%;
@@ -85,7 +90,7 @@ img {
   filter: none;
   user-select: none;
   z-index: -1;
-}
+} */
 
 #anim {
   max-width: 55px;
