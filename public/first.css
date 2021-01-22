@@ -22,11 +22,10 @@ body{
   transform: translate(-50%, -50%);
 	font-weight: normal;
 	font-family: latin;
-	font-size: 20px;
+	font-size: 4.2vw;
   float: left;
   color: white;
   text-align: center;
-
 }
 
 .typewriter h1 {
@@ -36,13 +35,13 @@ body{
   transform: translate(-50%, -50%);
   color: grey;
   font-family: latin;
-  font-size: 12px;
+  font-size: 1.2vw;
   overflow: hidden; /* Ensures the content is not revealed until the animation */
   white-space: nowrap; /* Keeps the content on a single line */
   margin: 0 auto; /* Gives that scrolling effect as the typing happens */
   letter-spacing: .075em; /* Adjust as needed */
   animation:
-    typing 12s steps(90, end),
+    typing1 3s steps(90, end),
     blink-caret .13s step-end;
 }
 
@@ -53,26 +52,26 @@ body{
   transform: translate(-50%, -50%);
   color: white;
   font-family: braille;
-  font-size: 12px;
+  font-size: 1.2vw;
   overflow: hidden; /* Ensures the content is not revealed until the animation */
   white-space: nowrap; /* Keeps the content on a single line */
   margin: 0 auto; /* Gives that scrolling effect as the typing happens */
   letter-spacing: .075em; /* Adjust as needed */
   animation:
-    typing1 12s steps(90, end),
+    typing2 3s steps(90, end),
     blink-caret .13s step-end;
 }
 
 
 /* The typing effect */
-@keyframes typing {
-  from { width: 0 }
-  to { width: 56% }
-}
-
 @keyframes typing1 {
   from { width: 0 }
-  to { width: 60% }
+  to { width: 62% }
+}
+
+@keyframes typing2 {
+  from { width: 0 }
+  to { width: 72% }
 }
 
 /* The typewriter cursor effect */
@@ -90,20 +89,19 @@ body{
    left: 50%;
    transform: translate(-50%, -50%);
    text-align: center;
-  font-size: 45px;
+  font-size: 4.2vw;
   cursor: pointer;
   font-family: latin;
   animation-name: text;
   animation-duration: 3s;
-
 }
 
 
 .start {
   border: none;
   background-color: #323232;
-  width: 170px;
-  height: 50px;
+  width: 13%;
+  height: 5%;
   border: 0.8px solid #6E6E6E;
   position: absolute;
   color: white;
@@ -111,12 +109,12 @@ body{
   left: 50%;
   transform: translate(-50%, -50%);
   text-align: center;
-  font-size: 12px;
+  font-size: 1.2vw;
   cursor: pointer;
   font-family: braille;
   transition: 0.2s ease-in-out;
-  animation:13.2s ease 0s normal forwards 1 fadein;
-  -webkit-animation:13.2s ease 0s normal forwards 1 fadein;
+  animation:3.5s ease 0s normal forwards 1 fadein;
+  -webkit-animation:3.5s ease 0s normal forwards 1 fadein;
   opacity:0
 }
 
@@ -135,9 +133,9 @@ body{
   transition: 0.2s ease-in-out;
   background-color: #585858;
   color: white;
-  width: 175;
-  height: 52px;
-  font-size: 12px;
+  width: 13%;
+  height: 5%;
+  font-size: 1.2vw;
   border: 1.25px solid #fff;
   font-family: latin;
 }
@@ -147,16 +145,18 @@ body{
   border: transparent;
   position: absolute;
   color: #d2d2d2;
+  width: 13%;
+  height: 5%;
   top: 7%;
   left: 90%;
   transform: translate(-50%, -50%);
   text-align: center;
-  font-size: 12px;
+  font-size: 1.2vw;
   cursor: pointer;
   font-family: latin;
   transition: 0.2s ease-in-out;
-  animation:13.2s ease 0s normal forwards 1 fadein;
-  -webkit-animation:13.2s ease 0s normal forwards 1 fadein;
+  animation:3.5s ease 0s normal forwards 1 fadein;
+  -webkit-animation:3.5s ease 0s normal forwards 1 fadein;
   opacity:0
 }
 
@@ -164,7 +164,7 @@ body{
   transition: 0.2s ease-in-out;
   background-color: transparent;;
   color: white;
-  font-size: 12px;
+  font-size: 1.2vw;
   border: transparent;;
   font-family: latin;
 }
@@ -211,7 +211,7 @@ body{
   padding-right: 5px;
   color: black;
   float: right;
-  font-size: 28px;
+  font-size: 2vw;
 
 }
 
@@ -225,7 +225,7 @@ body{
   padding-top: 2px;
   padding-left: 5px;
   font-family: latin;
-  font-size: 12px;
+  font-size: 1.2vw;
   color: black;
 }
 
@@ -233,7 +233,7 @@ body{
   padding-right: 5px;
   padding-left: 5px;
   font-family: latin;
-  font-size: 12px;
+  font-size: 1.2vw;
   color: black;
   font-weight: 25;
 }
