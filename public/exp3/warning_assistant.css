@@ -1,0 +1,95 @@
+@font-face {
+  font-family: "braille";
+  src: url("assets/BRAILLE1.ttf");
+}
+@font-face {
+  font-family: "latin";
+  src: url("assets/AHAMONO-Monospaced.otf");
+}
+
+body{
+  background-color: white;
+}
+
+.start {
+  border: none;
+  background-color: #323232;
+  width: 13%;
+  height: 5%;
+  border: 0.8px solid #6E6E6E;
+  position: absolute;
+  color: white;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  font-size: 1vw;
+  cursor: pointer;
+  font-family: braille;
+  transition: 0.2s ease-in-out;
+  animation:3.5s ease 0s normal forwards 1 fadein;
+  -webkit-animation:3.5s ease 0s normal forwards 1 fadein;
+  opacity:0
+}
+
+.warning {
+  border: none;
+  background-color: transparent;
+  position: absolute;
+  width: 50%;
+  height: 50%;
+  color: red;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  font-size: 1vw;
+  cursor: pointer;
+  font-family: latin;
+  animation:2s ease 0s normal forwards 1 fadein;
+  -webkit-animation:1.5s ease 0s normal forwards 1 fadein;
+  opacity:0
+}
+
+@keyframes fadein{
+  0% {opacity:0}
+  95%{opacity:0}
+  100%{opacity:1}
+}
+
+@-webkit-keyframes fadein{0% {opacity:0}
+95%{opacity:0}
+100%{opacity:1}
+}
+
+.start:hover {
+  transition: 0.2s ease-in-out;
+  background-color: #585858;
+  color: white;
+  width: 13%;
+  height: 5%;
+  font-size: 1vw;
+  border: 1.25px solid #fff;
+  font-family: latin;
+}
+
+.back {
+  position: absolute;
+  background-color: transparent;
+  border: transparent;
+  color: #323232;
+  top: 7%;
+  left: 10%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  font-size: 1.2vw;
+  cursor: pointer;
+  font-family: latin;
+}
+
+.back:hover {
+  color: black;
+  background-color: transparent;
+  font-size: 1.3vw;
+  font-family: latin;
+}
