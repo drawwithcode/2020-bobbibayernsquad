@@ -1,10 +1,10 @@
 @font-face {
   font-family: "braille";
-  src: url("assets/BRAILLE1.ttf");
+  src: url("assets/fonts/BRAILLE1.ttf");
 }
 @font-face {
   font-family: "latin";
-  src: url("assets/AHAMONO-Monospaced.otf");
+  src: url("assets/fonts/AHAMONO-Monospaced.otf");
 }
 
 body{
