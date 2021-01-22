@@ -35,7 +35,7 @@ socket.on("spriteInfo", function (info) {
 });
 
 socket.on("warning", function () {
-  window.open("warning.html", "_self");
+  window.open("warning_assistant.html", "_self");
 });
 
 

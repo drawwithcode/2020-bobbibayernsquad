@@ -13,15 +13,22 @@
   <script src="/socket.io/socket.io.js"></script>
   <script src="p5.min.js"></script>
   <script src="p5.sound.min.js"></script>
+  <script>
+      function beep() {
+        var beep = document.getElementById("beep");
+        beep.play();
+      }
+  </script>
+  <audio id="beep" src="../assets/beep.mp3"></audio>
   <script src="warning_assistant.js"></script>
   <link rel="stylesheet" type="text/css" href="warning_assistant.css">
 </head>
 
 <body>
 
-  <button id="infoBtn">HELP</button>
+  <button id="infoBtn" onclick="beep();">HELP</button>
 
-  <button class="btn warning" onclick="window.open('../assistant.html', '_self')">It seems like your mate left the lobby <br> Click here to return at the menu </button>
+  <button class="btn warning" onclick="beep(); window.open('../assistant.html', '_self')">It seems like your mate left the lobby <br> Click here to return at the menu </button>
 
   <div id="myPopup" class="popup">
 
@@ -66,6 +73,6 @@
   </script>
 </body>
 
-<button class="btn back" onclick="window.open('../assistant.html', '_self')">⬅ BACK</button>
+<button class="btn back" onclick="beep(); window.open('../assistant.html', '_self')">⬅ BACK</button>
 
 </html>
