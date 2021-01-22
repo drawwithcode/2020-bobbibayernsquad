@@ -18,7 +18,12 @@ socket.on("connect", function () {
 socket.on("start", setOtherId);
 
 function setOtherId(id) {
-  speaker.speak("Yo guys, how are you doing? I think we can start this!");
+  if (canSee) {
+    speaker.speak("Click on the map to guide the blind person!");
+  }
+  else {
+    speaker.speak("The assistant will guide you with a beep sound, use the arrows to move!");
+  }
   otherId = id;
   preLobby = false;
   console.log(otherId);
@@ -135,7 +140,7 @@ function draw() {
 
   if (preLobby) {
     if (frameCount == 1) {
-      speaker.speak("Hi dude, we need to wait someone else to connect!");
+      speaker.speak("Waiting for someone else to connect!");
       background(0);
     }
 
@@ -249,6 +254,7 @@ function draw() {
       else {
         window.open('blind/finale.html', '_self');
       }
+      success = 0.1;
     }
 
     success += 1/fps;
@@ -266,13 +272,19 @@ function draw() {
     }
   }
   else if(accident>=0){
+    if (accident == 0) {
+      speaker.speak("You have been run over, retry!");
+    }
     accident += 1/fps;
     push();
     fill(255,0,0,max(100-accident*10,0));
     rect(0,0,windowWidth,windowHeight);
     pop();
-    if (100-accident*10<=0) {
-      //location.reload();
+    if (accident >= 10) {
+      frameCount = 0;
+      accident = -1;
+      main = new character("assets/sprites");
+      setup();
     }
   }
   else if (!canSee)
