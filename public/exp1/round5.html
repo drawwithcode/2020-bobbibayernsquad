@@ -12,7 +12,7 @@
 
     let speaker = new p5.Speech();
     speaker.setLang("en-UK");
-    
+
     speaker.speak("Since you are so good, let's make it harder... fifth round");
 
       function beep() {
@@ -32,6 +32,7 @@
     <h4> fifth round </h4>
     <h5> fifth round </h5>
   </div>
+  <button class="btn back" onmouseover="read_back();"onclick="beep(); window.open('../blind.html', '_self');">⬅ BACK</button>
   <button class="btn again" onclick="beep(); window.open('round5.html', '_self');">listen again</button>
   <button class="btn ready" onclick="beep(); window.open('choice5.html', '_self');">i'm ready</button>
 </html>
