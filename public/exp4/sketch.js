@@ -238,7 +238,7 @@ function draw() {
   });
   if(shift>=0) mousePointing.splice(shift,1);
 
-  if(success>=0) {
+  if(success >= 0) {
     if (success == 0) {
       speaker.speak("Success: you reached the end of the experience!");
     }
@@ -250,6 +250,7 @@ function draw() {
         window.open('blind/finale.html', '_self');
       }
     }
+
     success += 1/fps;
     push();
     fill(255,255,255,min(accident*20,100));
