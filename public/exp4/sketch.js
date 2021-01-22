@@ -43,6 +43,8 @@ socket.on("pingInfo", function (info) {
 
 socket.on("frameCountInfo", function (info) {
   frameCount = info.count;
+  accident = info.accidentCount;
+  success = info.successCount;
 });
 
 socket.on("entityInfo", function (info) {
@@ -139,22 +141,25 @@ function setup() {
 function draw() {
 
   if (preLobby) {
+    let sightedCol = 0;
+    if (canSee) {
+      sightedCol = 255;
+    }
     if (frameCount == 1) {
       speaker.speak("Waiting for someone else to connect!");
-      background(0);
+      background(sightedCol);
     }
-
     push();
+    noStroke();
     translate(windowWidth/2,windowHeight/2);
-    fill(0);
+    fill(sightedCol);
     ellipse(0,0,50);
     fill(255,0,0);
     ellipse(0,0,50*sin(2*PI*frameCount/fps));
-    fill(0,0,0,100/fps);
-    noStroke();
+    fill(sightedCol,sightedCol,sightedCol,100/fps);
     ellipse(0,0,windowWidth*sin(2*PI*frameCount/fps));
-    stroke(255);
-    fill(255,255,255,100/fps);
+    stroke(255-sightedCol);
+    fill(255-sightedCol,255-sightedCol,255-sightedCol,100/fps);
     strokeWeight(1);
     ellipse(200*cos(2*PI*frameCount/fps/7),200*sin(2*PI*frameCount/fps/7),sin(2*PI*frameCount/fps/5)**2*200,cos(2*PI*frameCount/fps/4)**2*200);
     pop();
@@ -182,9 +187,11 @@ function draw() {
     }
   }
   else {
-    if (frameCount % round(fps*2) == 1) { // every 2 seconds updates frameCount
+    if (frameCount % round(fps*0.5) == 1) { // every 0.5 seconds updates frameCount
       let message = {
         count : frameCount,
+        accidentCount: accident,
+        successCount: success,
         recipient : otherId
       }
       socket.emit("forwardFrameCount", message);
@@ -267,7 +274,7 @@ function draw() {
         fill(0);
         translate(windowWidth/2, windowHeight/2);
         rotate((success%10+i)*PI);
-        rect(sin(success*PI/4)*200*cos((noise(i)-0.5)*(frameCount/fps)*PI),sin(success*PI/4)*200*sin((noise(i)-0.5)*(frameCount/fps)*PI),10,4);
+        rect(noise(i)*sin(success*PI/4)*200*cos((noise(i)-0.5)*(frameCount/fps)*PI),noise(i)*sin(success*PI/4)*200*sin((noise(i)-0.5)*(frameCount/fps)*PI),10,4);
         pop();
     }
   }
@@ -283,8 +290,8 @@ function draw() {
     if (accident >= 10) {
       frameCount = 0;
       accident = -1;
-      main = new character("assets/sprites");
-      setup();
+      main.gridPos = [[7,1]]; // position on the grid
+      main.pos = [(main.gridPos[0][0]+0.5)*tileSize,(main.gridPos[0][1]+0.5)*tileSize]; // center of grid tile
     }
   }
   else if (!canSee)
