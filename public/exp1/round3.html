@@ -10,7 +10,9 @@
     <script src="round3.js"></script>
     <script>
 
-    let speaker = new p5.Speech("Google UK English Female");
+    let speaker = new p5.Speech();
+    speaker.setLang("en-UK");
+
     speaker.speak("Correct! Let's explore a bit more. Third round");
 
       function beep() {

@@ -10,7 +10,9 @@
     <script src="p5.speech.js"></script>
     <script>
 
-    let speaker = new p5.Speech("Google UK English Female");
+    let speaker = new p5.Speech();
+    speaker.setLang("en-UK");
+    
     speaker.speak("Great, you guessed! Let's move on. Second round");
 
       function beep() {

@@ -10,6 +10,8 @@
     <script src="p5.speech.js"></script>
     <script>
     let speaker = new p5.Speech();
+    speaker.setLang("en-UK");
+
     function beep() {
       var beep = document.getElementById("beep");
       beep.play();

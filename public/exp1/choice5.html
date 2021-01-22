@@ -6,7 +6,19 @@
     <style> body {padding: 0; margin: 0;} </style>
     <script src="p5.min.js"></script>
     <script src="p5.sound.min.js"></script>
+    <script src="p5.speech.js"></script>
     <script>
+    let speaker = new p5.Speech();
+    speaker.setLang("en-UK");
+
+    function read_th(){
+      speaker.speak("a Thai public office");
+    }
+
+    function read_us(){
+      speaker.speak("the NYC subway");
+    }
+
       function beep() {
         var beep = document.getElementById("beep");
         beep.play();
@@ -25,10 +37,10 @@
   <div class="texts">
     <h1> LOSS OF SENSES </h1>
   </div>
-  <button class="btn it">At the beach, Italy</button>
-  <button class="btn th"onclick="beep(); window.open('finale.html', '_self');">In a public office, Thailand</button>
-  <button class="btn ma">In a bazaar, Morocco</button>
-  <button class="btn us" onclick="wrong();">In Times Square, NYC</button>
-  <button class="btn au">At the park, in Australia</button>
-  <button class="btn ru">At the lake, Russia</button>
+  <button class="btn it">an Italian beach</button>
+  <button class="btn th" onmouseover="read_th()" onclick="beep(); window.open('finale.html', '_self');">a Thai public office</button>
+  <button class="btn ma">a Moroccan bazaar</button>
+  <button class="btn us" onmouseover="read_us()" onclick="wrong();">the NYC subway</button>
+  <button class="btn au">an Australian park</button>
+  <button class="btn ru">a Russian lake</button>
 </html>

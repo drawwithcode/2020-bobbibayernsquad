@@ -6,7 +6,31 @@
     <style> body {padding: 0; margin: 0;} </style>
     <script src="p5.min.js"></script>
     <script src="p5.sound.min.js"></script>
+    <script src="p5.speech.js"></script>
     <script>
+    let speaker = new p5.Speech();
+    speaker.setLang("en-UK");
+
+    function read_th(){
+      speaker.speak("a Thai public office");
+    }
+
+    function read_ma(){
+      speaker.speak("a Moroccan bazaar");
+    }
+
+    function read_us(){
+      speaker.speak("the NYC subway");
+    }
+
+    function read_au(){
+      speaker.speak("an Australian park");
+    }
+
+    function read_ru(){
+      speaker.speak("a Russian lake");
+    }
+
       function beep() {
         var beep = document.getElementById("beep");
         beep.play();
@@ -26,9 +50,9 @@
     <h1> LOSS OF SENSES </h1>
   </div>
   <button class="btn it">an Italian beach</button>
-  <button class="btn th" onclick="wrong();">a Thai public office</button>
-  <button class="btn ma" onclick="wrong();">a Moroccan bazaar</button>
-  <button class="btn us" onclick="wrong();">the NYC subway </button>
-  <button class="btn au" onclick="wrong();">an Australian park</button>
-  <button class="btn ru" onclick="beep(); window.open('round3.html', '_self');">a Russian lake</button>
+  <button class="btn th" onmouseover="read_th()" onclick="wrong();">a Thai public office</button>
+  <button class="btn ma" onmouseover="read_ma()" onclick="wrong();">a Moroccan bazaar</button>
+  <button class="btn us" onmouseover="read_us()" onclick="wrong();">the NYC subway </button>
+  <button class="btn au" onmouseover="read_au()" onclick="wrong();">an Australian park</button>
+  <button class="btn ru" onmouseover="read_ru()" onclick="beep(); window.open('round3.html', '_self');">a Russian lake</button>
 </html>
