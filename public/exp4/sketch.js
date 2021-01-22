@@ -173,16 +173,16 @@ function draw() {
   else {
 
   if (canSee){
-    if (keyIsDown(65) || keyIsDown(LEFT_ARROW)){ //(mouseX<windowWidth/5) {
+    if (keyIsDown(65) || keyIsDown(LEFT_ARROW) || (mouseX<windowWidth/5)) {
       camPos[0]-=200/fps;
     }
-    if (keyIsDown(87) || keyIsDown(UP_ARROW)){ //(mouseY<windowHeight/5) {
+    if (keyIsDown(87) || keyIsDown(UP_ARROW) || (mouseY<windowHeight/5)) {
       camPos[1]-=200/fps;
     }
-    if (keyIsDown(68) || keyIsDown(RIGHT_ARROW)){ //(mouseX>windowWidth*4/5) {
+    if (keyIsDown(68) || keyIsDown(RIGHT_ARROW) || (mouseX>windowWidth*4/5)) {
       camPos[0]+=200/fps;
     }
-    if (keyIsDown(83) || keyIsDown(DOWN_ARROW)){ //(mouseY>windowHeight*4/5) {
+    if (keyIsDown(83) || keyIsDown(DOWN_ARROW) || (mouseY>windowHeight*4/5)) {
       camPos[1]+=200/fps;
     }
   }
@@ -222,7 +222,11 @@ function draw() {
   drawMap();
 
   push();
-  fill(0);
+  let colSighted = 0;
+  if (canSee) {
+    colSighted = 255;
+  }
+  fill(colSighted);
   noStroke();
   if (camPos[0]<0) {
     rect(0,0,-camPos[0],windowHeight)
@@ -254,7 +258,7 @@ function draw() {
     if (success == 0) {
       speaker.speak("Success: you reached the end of the experience!");
     }
-    else if (success >= 10) {
+    else if (success >= 5) {
       if (canSee) {
         window.open('assistant/finale.html', '_self');
       }
@@ -274,7 +278,7 @@ function draw() {
         fill(0);
         translate(windowWidth/2, windowHeight/2);
         rotate((success%10+i)*PI);
-        rect(noise(i)*sin(success*PI/4)*200*cos((noise(i)-0.5)*(frameCount/fps)*PI),noise(i)*sin(success*PI/4)*200*sin((noise(i)-0.5)*(frameCount/fps)*PI),10,4);
+        rect(noise(i)*sin(success*PI/4)*windowWidth*cos((noise(i)-0.5)*(frameCount/fps)*PI),noise(i)*sin(success*PI/4)*windowHeight*sin((noise(i)-0.5)*(frameCount/fps)*PI),10,4);
         pop();
     }
   }
@@ -287,11 +291,12 @@ function draw() {
     fill(255,0,0,max(100-accident*10,0));
     rect(0,0,windowWidth,windowHeight);
     pop();
-    if (accident >= 10) {
+    if (accident >= 5 && !canSee) {
       frameCount = 0;
       accident = -1;
       main.gridPos = [[7,1]]; // position on the grid
       main.pos = [(main.gridPos[0][0]+0.5)*tileSize,(main.gridPos[0][1]+0.5)*tileSize]; // center of grid tile
+      this.moveTile([1,0]);
     }
   }
   else if (!canSee)

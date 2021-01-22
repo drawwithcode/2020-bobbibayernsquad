@@ -153,16 +153,16 @@ class character {
       if(this.pos[1]>camPos[1]+windowHeight*2/3){
         camPos[1] += this.pos[1]-camPos[1]-windowHeight*2/3;
       }
-      if (keyIsDown(LEFT_ARROW)) {
+      if (keyIsDown(65) || keyIsDown(LEFT_ARROW)) {
         this.moveTile([-1,0]);
       }
-      else if (keyIsDown(RIGHT_ARROW)) {
+      else if (keyIsDown(68) || keyIsDown(RIGHT_ARROW)) {
         this.moveTile([1,0]);
       }
-      else if (keyIsDown(UP_ARROW)) {
+      else if (keyIsDown(87) || keyIsDown(UP_ARROW)) {
         this.moveTile([0,-1]);
       }
-      else if (keyIsDown(DOWN_ARROW)) {
+      else if (keyIsDown(83) || keyIsDown(DOWN_ARROW)) {
         this.moveTile([0,1]);
       }
     }
