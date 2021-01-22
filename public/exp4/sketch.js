@@ -253,7 +253,7 @@ function draw() {
 
     success += 1/fps;
     push();
-    fill(255,255,255,min(accident*20,100));
+    fill(255,255,255,100);
     rect(0,0,windowWidth,windowHeight);
     pop();
     for (var i = 0; i < 100; i++) {
@@ -261,7 +261,7 @@ function draw() {
         fill(0);
         translate(windowWidth/2, windowHeight/2);
         rotate((success%10+i)*PI);
-        rect(200*sin(success*PI)*cos((i+frameCount/fps)*PI),200*sin(success*PI)*sin((i+frameCount/fps)*PI),10,4);
+        rect(200*cos(success*PI)*cos((i+frameCount/fps)*PI),200*sin(success*PI)*sin((i+frameCount/fps)*PI),10,4);
         pop();
     }
   }

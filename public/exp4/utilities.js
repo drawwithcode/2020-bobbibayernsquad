@@ -238,7 +238,7 @@ class character {
   // Movement: updateTiles
   updateTile(newGridPos, newpos) {
     this.gridPos = newGridPos;
-    if (this.gridPos[0][1]>=35) {
+    if (this.gridPos[0][1]>=35 && success < 0) {
       success = 0;
     }
     this.pos = newpos;
