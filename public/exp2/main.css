@@ -18,50 +18,46 @@ body {
 .texts h1 {
   position: absolute;
   margin: 0;
-  top: 5%;
+  top: 7%;
   left: 50%;
   transform: translate(-50%, -50%);
   text-align: center;
   mix-blend-mode: exclusion;
   color: white;
   font-family: latin;
-  font-size: 14px;
+  font-size: 1.2vw;
   overflow: hidden;
   user-select: none;
 }
 
 .texts instructions {
   position: absolute;
-  top: 50%;
+  top: 49%;
   left: 50%;
   transform: translate(-50%, -50%);
   color: white;
   font-family: braille;
-  font-size: 15px;
+  font-size: 1vw;
   overflow: hidden;
   white-space: nowrap; /* Keeps the content on a single line */
   margin: 0 auto; /* Gives that scrolling effect as the typing happens */
   letter-spacing: .075em; /* Adjust as needed */
-  animation:
-    typing 7s steps(70, end),
-    blink-caret .13s step-end;
+  animation: fadein 1s;
   user-select: none;
 }
 .texts instructions1 {
   position: absolute;
-  top: 45%;
+  top: 46%;
   left: 50%;
   transform: translate(-50%, -50%);
   color: grey;
   font-family: latin;
-  font-size: 15px;
+  font-size: 1vw;
   overflow: hidden;
   white-space: nowrap; /* Keeps the content on a single line */
   margin: 0 auto; /* Gives that scrolling effect as the typing happens */
   letter-spacing: .075em; /* Adjust as needed */
-  animation:
-    typing1 7s steps(70, end),
-    blink-caret .13s step-end;
+  animation: fadein 1s;
   user-select: none;
 }
 
@@ -117,8 +113,6 @@ img {
 
 #infoBtn{
   background-color: transparent;
-  width: 60px;
-  height: 30px;
   border: transparent;
   position: absolute;
   color: #d2d2d2;
@@ -126,7 +120,7 @@ img {
   left: 90%;
   transform: translate(-50%, -50%);
   text-align: center;
-  font-size: 12px;
+  font-size: 1.2vw;
   cursor: pointer;
   font-family: latin;
   transition: 0.2s ease-in-out;
@@ -136,9 +130,7 @@ img {
   transition: 0.2s ease-in-out;
   background-color: transparent;
   color: white;
-  width: 60px;
-  height: 30px;
-  font-size: 12px;
+  font-size: 1.2vw;
   border: transparent;
   font-family: latin;
 }
@@ -213,8 +205,6 @@ img {
 }
 
 .back {
-  width: 60px;
-  height: 30px;
   position: absolute;
   background-color: transparent;
   border: transparent;
@@ -223,7 +213,7 @@ img {
   left: 10%;
   transform: translate(-50%, -50%);
   text-align: center;
-  font-size: 12px;
+  font-size: 1.2vw;
   cursor: pointer;
   font-family: latin;
   transition: 0.2s ease-in-out;
@@ -233,9 +223,7 @@ img {
   transition: 0.2s ease-in-out;
   color: white;
   background-color: transparent;
-  width: 60px;
-  height: 30px;
-  font-size: 12px;
+  font-size: 1.2vw;
   font-family: latin;
 }
 
@@ -245,8 +233,8 @@ img {
   display: none;
   border: none;
   background-color: #323232;
-  width: 170px;
-  height: 50px;
+  width: 13%;
+  height: 5%;
   border: 0.8px solid #6E6E6E;
   position: absolute;
   color: white;
@@ -254,21 +242,29 @@ img {
   left: 50%;
   transform: translate(-50%, -50%);
   text-align: center;
-  font-size: 12px;
+  font-size: 1vw;
   cursor: pointer;
   font-family: braille;
-  transition: 0.2s ease-in-out;
+  animation:1s ease 0s normal forwards 1 fadein;
+  -webkit-animation:1s ease 0s normal forwards 1 fadein;
+  opacity:0
 }
 
 .continue:hover {
   transition: 0.2s ease-in-out;
   background-color: #585858;
   color: white;
-  width: 175;
-  height: 52px;
-  font-size: 12px;
+  width: 13%;
+  height: 5%;
+  font-size: 1vw;
   border: 1.25px solid #fff;
   font-family: latin;
+}
+
+@keyframes fadein{
+  0% {opacity:0}
+  95%{opacity:0}
+  100%{opacity:1}
 }
 
 

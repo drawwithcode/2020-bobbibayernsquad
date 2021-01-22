@@ -4,13 +4,24 @@
     <meta charset="utf-8">
     <meta name="viewport" width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0>
     <style> body {padding: 0; margin: 0; overflow: hidden;} </style>
-    <script src="p5.min.js"></script>
-    <script src="p5.sound.min.js"></script>
-    <script src="sketch1.js"></script>
+    <script src="../p5.min.js"></script>
+    <script src="../p5.sound.min.js"></script>
+    <script src="../p5.speech.js"></script>
     <script>
       function beep() {
         var beep = document.getElementById("beep");
         beep.play();
+      }
+      let speaker = new p5.Speech();
+
+      speaker.speak("By following the sounds emitted by the assistant, try to cross the street and avoid the vehicles.");
+
+      function read_back(){
+        speaker.speak("back");
+      }
+
+      function read_start(){
+        speaker.speak("start");
       }
     </script>
     <link rel="stylesheet" type="text/css" href="blind.css">

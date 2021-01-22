@@ -7,13 +7,31 @@
     <script src="p5.min.js"></script>
     <script src="p5.sound.min.js"></script>
     <script src="sketch.js"></script>
+    <script src="p5.speech.js"></script>
     <link rel="stylesheet" type="text/css" href="assistant.css">
     <style>
     </style>
     <script>
+    let speaker = new p5.Speech();
+
     function beep() {
       var beep = document.getElementById("beep");
       beep.play();
+    }
+    function read_exp1(){
+      speaker.speak("the first experience is available only in blind mode");
+    }
+    function read_exp2(){
+      speaker.speak("the second experience is available only in blind mode");
+    }
+    function read_exp3(){
+      speaker.speak("third experience");
+    }
+    function read_exp4(){
+      speaker.speak("fourth experience");
+    }
+    function read_blind(){
+      speaker.speak("blind mode");
     }
     </script>
     <audio id="beep" src="assets/beep.mp3"></audio>
@@ -22,13 +40,13 @@
     <h1> select a modality </h1>
     <h2> select a modality </h2>
   </div>
-  <button class="btn blind" onclick="beep(); window.open('blind.html', '_self')">blind person</button>
-  <button class="btn assistant" onclick="beep();">assistant</button>
+  <button class="btn blind" onmouseover="read_blind();"onclick="beep(); window.open('blind.html', '_self')">blind mode</button>
+  <button class="btn assistant" onclick="beep();">assistant mode</button>
 
-  <button class="btn exp1">AVAILABLE ONLY IN BLIND MODE</button>
-  <button class="btn exp2">AVAILABLE ONLY IN BLIND MODE</button>
-  <button class="btn exp3" onclick="beep(); window.open('exp3/index_assistant.html', '_self')">3rd experience</button>
-  <button class="btn exp4" onclick="beep(); window.open('exp4/assistant/index.html', '_self')">4th experience</button>
+  <button class="btn exp1" onmouseover="read_exp1();">AVAILABLE ONLY IN BLIND MODE</button>
+  <button class="btn exp2" onmouseover="read_exp2();">AVAILABLE ONLY IN BLIND MODE</button>
+  <button class="btn exp3" onmouseover="read_exp3();" onclick="beep(); window.open('exp3/index_assistant.html', '_self')">3rd experience</button>
+  <button class="btn exp4" onmouseover="read_exp4();" onclick="beep(); window.open('exp4/assistant/index.html', '_self')">4th experience</button>
 
   <button class="btn back" onclick="beep(); window.open('index.html', '_self')">⬅ BACK</button>
 

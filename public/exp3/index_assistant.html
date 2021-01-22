@@ -6,10 +6,22 @@
     <style> body {padding: 0; margin: 0;} </style>
     <script src="p5.min.js"></script>
     <script src="p5.sound.min.js"></script>
+    <script src="p5.speech.js"></script>
     <script>
       function beep() {
         var beep = document.getElementById("beep");
         beep.play();
+      }
+      let speaker = new p5.Speech();
+
+      speaker.speak("By clicking on the screen, emit sounds in order to guide the blind person exiting the maze.");
+
+      function read_back(){
+        speaker.speak("back");
+      }
+
+      function read_start(){
+        speaker.speak("start");
       }
     </script>
     <link rel="stylesheet" type="text/css" href="assistant.css">
@@ -22,6 +34,6 @@
     <instructions1> By clicking on the screen, emit sounds in order to guide the blind person exiting the maze. </instructions1>
     <instructions> By clicking on the screen, emit sounds in order to guide the blind person exiting the maze. </instructions>
   </div>
-  <button class="btn start" onclick="beep(); window.open('sighted.html', '_self');">start</button>
-  <button class="btn back" onclick="beep(); window.open('../assistant.html', '_self');">⬅ BACK</button>
+  <button class="btn start" onmouseover="read_start();" onclick="beep(); window.open('sighted.html', '_self');">start</button>
+  <button class="btn back" onmouseover="read_back();"  onclick="beep(); window.open('../assistant.html', '_self');">⬅ BACK</button>
 </html>

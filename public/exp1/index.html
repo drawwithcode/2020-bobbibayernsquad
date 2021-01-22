@@ -7,11 +7,25 @@
     <script src="p5.min.js"></script>
     <script src="p5.sound.min.js"></script>
     <script src="sketch1.js"></script>
+    <script src="p5.speech.js"></script>
     <script>
-      function beep() {
+    let speaker = new p5.Speech();
+
+    speaker.speak("You'll hear sounds recorded in different places all over the world, match each one with the corresponding label");
+
+    function read_back(){
+      speaker.speak("back");
+    }
+
+    function read_start(){
+      speaker.speak("start");
+    }
+
+    function beep() {
         var beep = document.getElementById("beep");
         beep.play();
       }
+
     </script>
     <link rel="stylesheet" type="text/css" href="style.css">
     <audio id="beep" src="assets/sounds/beep.mp3"></audio>
@@ -25,6 +39,6 @@
     <h4> Match each one with the corresponding label</h4>
     <h5> Match each one with the corresponding label</h5>
   </div>
-<button class="btn start" onclick="beep(); window.open('round1.html', '_self');">start</button>
-<button class="btn back" onclick="beep(); window.open('../blind.html', '_self');">⬅ BACK</button>
+<button class="btn start" onmouseover="read_start();" onclick="beep(); window.open('round1.html', '_self');">start</button>
+<button class="btn back" onmouseover="read_back();"onclick="beep(); window.open('../blind.html', '_self');">⬅ BACK</button>
 </html>

@@ -11,13 +11,28 @@
     <script src="scenesetting.js"></script>
     <script src="echo.js"></script>
     <script src="lottie.js"></script>
+    <script src="p5.speech.js"></script>
     <link rel="stylesheet" type="text/css" href="main.css">
+    <script>
+    let speaker = new p5.Speech();
+
+    speaker.speak("Try to find the bell");
+
+    function read_back(){
+      speaker.speak("back");
+    }
+
+    function read_start(){
+      speaker.speak("help");
+    }
+    </script>
   </head>
 
-  <button class="btn back" id="bk" onclick="window.open('index.html', '_self')">⬅ BACK</button>
+  <button class="btn back" id="bk" onmouseover="read_back();" onclick="window.open('index.html', '_self')">⬅ BACK</button>
   <button class="btn continue" id="fin" onclick="window.open('finale.html', '_self')">continue</button>
 
   <body>
+
 
     <div class="texts">
     <h1 id="t"> LOSS OF SENSES </h1>
@@ -30,7 +45,7 @@
 
 
   <!-- Trigger/Open The Modal -->
-  <button id="infoBtn">HELP</button>
+  <button id="infoBtn" onmouseover="read_help();" >HELP</button>
 
   <!-- The Modal -->
   <div id="myPopup" class="popup">
@@ -82,5 +97,5 @@
   </body>
 
   <div class="cursor-dot"></div>
-  
+
 </html>

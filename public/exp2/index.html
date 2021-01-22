@@ -7,11 +7,23 @@
     <style> body {padding: 0; margin: 0;} </style>
     <script src="p5.min.js"></script>
     <script src="p5.sound.min.js"></script>
+    <script src="p5.speech.js"></script>
     <link rel="stylesheet" type="text/css" href="style.css">
     <script>
       function beep() {
         var beep = document.getElementById("beep");
         beep.play();
+      }
+      let speaker = new p5.Speech();
+
+      speaker.speak("There's a table in front of you... pat it until you find what you're looking for");
+
+      function read_back(){
+        speaker.speak("back");
+      }
+
+      function read_start(){
+        speaker.speak("start");
       }
     </script>
     <audio id="beep" src="assets/beep.mp3"></audio>
@@ -23,6 +35,6 @@
     <instructions1>There's a table in front of you... pat it until you find what you're looking for.</instructions1>
     <instructions>There's a table in front of you... pat it until you find what you're looking for.</instructions>
   </div>
-  <button class="btn start" onclick="beep(); window.open('main.html', '_self')">start</button>
-  <button class="btn back" onclick="beep(); window.open('../blind.html', '_self');">⬅ BACK</button>
+  <button class="btn start" onmouseover="read_start();" onclick="beep(); window.open('main.html', '_self')">start</button>
+  <button class="btn back" onmouseover="read_back();"onclick="beep(); window.open('../blind.html', '_self');">⬅ BACK</button>
 </html>
