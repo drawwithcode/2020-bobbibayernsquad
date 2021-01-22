@@ -238,7 +238,7 @@ class character {
   // Movement: updateTiles
   updateTile(newGridPos, newpos) {
     this.gridPos = newGridPos;
-    if (this.gridPos[0][1]>=35 && success < 0) {
+    if (this.gridPos[0][1]>=35 && success < 0 && !canSee) {
       success = 0;
     }
     this.pos = newpos;
@@ -418,7 +418,7 @@ class Entity {
       this.gridPos[0] += side*mapW;
       this.pos[0] += side*mapW*tileSize;
     }
-    if (accident < 0 && this.collision()){
+    if (accident < 0 && this.collision() && !canSee){
       accident = 0.0;
       accidentNoise.play();
       accidentNoise.setVolume(1);

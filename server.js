@@ -165,7 +165,9 @@ function newConnection(socket) {
 
   socket.on("forwardFrameCount", function (message){
     let info = {
-      count: message.count
+      count: message.count,
+      accidentCount: message.accidentCount,
+      successCount: message.successCount
     };
     io.to(message.recipient).emit("frameCountInfo", info);
   });

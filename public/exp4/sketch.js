@@ -43,6 +43,8 @@ socket.on("pingInfo", function (info) {
 
 socket.on("frameCountInfo", function (info) {
   frameCount = info.count;
+  accident = info.accidentCount;
+  success = info.successCount;
 });
 
 socket.on("entityInfo", function (info) {
@@ -139,22 +141,22 @@ function setup() {
 function draw() {
 
   if (preLobby) {
-    if (frameCount == 1) {
-      speaker.speak("Waiting for someone else to connect!");
-      background(0);
-    }
     let sightedCol = 0;
     if (canSee) {
       sightedCol = 255;
     }
+    if (frameCount == 1) {
+      speaker.speak("Waiting for someone else to connect!");
+      background(sightedCol);
+    }
     push();
+    noStroke();
     translate(windowWidth/2,windowHeight/2);
     fill(sightedCol);
     ellipse(0,0,50);
     fill(255,0,0);
     ellipse(0,0,50*sin(2*PI*frameCount/fps));
     fill(sightedCol,sightedCol,sightedCol,100/fps);
-    noStroke();
     ellipse(0,0,windowWidth*sin(2*PI*frameCount/fps));
     stroke(255-sightedCol);
     fill(255-sightedCol,255-sightedCol,255-sightedCol,100/fps);
@@ -185,9 +187,11 @@ function draw() {
     }
   }
   else {
-    if (frameCount % round(fps*2) == 1) { // every 2 seconds updates frameCount
+    if (frameCount % round(fps*0.5) == 1) { // every 0.5 seconds updates frameCount
       let message = {
         count : frameCount,
+        accidentCount: accident,
+        successCount: success,
         recipient : otherId
       }
       socket.emit("forwardFrameCount", message);
@@ -287,7 +291,7 @@ function draw() {
       frameCount = 0;
       accident = -1;
       main.gridPos = [[7,1]]; // position on the grid
-      main.pos = [(this.gridPos[0][0]+0.5)*tileSize,(this.gridPos[0][1]+0.5)*tileSize]; // center of grid tile
+      main.pos = [(main.gridPos[0][0]+0.5)*tileSize,(main.gridPos[0][1]+0.5)*tileSize]; // center of grid tile
     }
   }
   else if (!canSee)
