@@ -13,6 +13,8 @@ body{
 
 #infoBtn{
   background-color: transparent;
+  width: 13%;
+  height: 5%;
   border: transparent;
   position: absolute;
   color: #323232;
@@ -29,6 +31,8 @@ body{
 #infoBtn:hover {
   transition: 0.2s ease-in-out;
   background-color: transparent;
+  width: 13%;
+  height: 5%;
   color: #323232;
   font-size: 1vw;
   border: transparent;
@@ -104,6 +108,8 @@ body{
 
 .back{
   background-color: transparent;
+  width: 13%;
+  height: 5%;
   border: transparent;
   position: absolute;
   color: #323232;
