@@ -6,10 +6,22 @@
     <style> body {padding: 0; margin: 0;} </style>
     <script src="p5.min.js"></script>
     <script src="p5.sound.min.js"></script>
+    <script src="p5.speech.js"></script>
     <script>
       function beep() {
         var beep = document.getElementById("beep");
         beep.play();
+      }
+      let speaker = new p5.Speech();
+
+      speaker.speak("Great job! You guided the blind person throughout the maze.");
+
+      function read_again(){
+        speaker.speak("let's do this again");
+      }
+
+      function read_back(){
+        speaker.speak("try new experiences");
       }
     </script>
     <link rel="stylesheet" type="text/css" href="finale_assistant.css">
@@ -22,6 +34,6 @@
     <h2> Great job! You guided the blind person throughout the maze. </h2>
     <h3> Great job! You guided the blind person throughout the maze. </h3>
   </div>
-  <button class="btn again" onclick="beep(); window.open('sighted.html', '_self');">let's do this again</button>
-  <button class="btn back" onclick="beep(); window.open('../assistant.html', '_self');">try new experiences</button>
+  <button class="btn again" onmouseover="read_again();" onclick="beep(); window.open('sighted.html', '_self');">let's do this again</button>
+  <button class="btn back" onmouseover="read_back();" onclick="beep(); window.open('../assistant.html', '_self');">try new experiences</button>
 </html>
