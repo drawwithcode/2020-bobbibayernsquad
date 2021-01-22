@@ -34,6 +34,8 @@ let pinSound, trafficNoise, accidentNoise, carHorn, cowBell; // sounds and audio
 
 let speaker = new p5.Speech();
 
+let sightedCol = 0;
+
 // Draws map, characters and entities
 function drawMap(limits = [0,mapBoard.length,0,mapBoard[0].length]) { // limits selects which tiles to show
   push();

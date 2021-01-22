@@ -136,15 +136,14 @@ function setup() {
 
   createCanvas(windowWidth,windowHeight);
   frameRate(fps);
+  if (canSee) {
+    sightedCol = 255;
+  }
 }
 
 function draw() {
 
   if (preLobby) {
-    let sightedCol = 0;
-    if (canSee) {
-      sightedCol = 255;
-    }
     if (frameCount == 1) {
       speaker.speak("Waiting for someone else to connect!");
       background(sightedCol);
@@ -174,16 +173,20 @@ function draw() {
 
   if (canSee){
     if (keyIsDown(65) || keyIsDown(LEFT_ARROW) || (mouseX<windowWidth/5)) {
-      camPos[0]-=200/fps;
+      if (camPos[0] > -windowWidth/2)
+        camPos[0]-=200/fps;
     }
     if (keyIsDown(87) || keyIsDown(UP_ARROW) || (mouseY<windowHeight/5)) {
-      camPos[1]-=200/fps;
+      if (camPos[1] > -windowHeight/2)
+        camPos[1]-=200/fps;
     }
     if (keyIsDown(68) || keyIsDown(RIGHT_ARROW) || (mouseX>windowWidth*4/5)) {
-      camPos[0]+=200/fps;
+      if (camPos[0] < mapBoard.length*tileSize+windowWidth/2)
+        camPos[0]+=200/fps;
     }
     if (keyIsDown(83) || keyIsDown(DOWN_ARROW) || (mouseY>windowHeight*4/5)) {
-      camPos[1]+=200/fps;
+      if (camPos[0] < mapBoard[0].length*tileSize+windowHeight/2)
+        camPos[1]+=200/fps;
     }
   }
   else {
@@ -222,23 +225,23 @@ function draw() {
   drawMap();
 
   push();
-  let colSighted = 0;
+  let sightedCol = 0;
   if (canSee) {
-    colSighted = 255;
+    sightedCol = 255;
   }
-  fill(colSighted);
+  fill(sightedCol);
   noStroke();
   if (camPos[0]<0) {
-    rect(0,0,-camPos[0],windowHeight)
+    rect(0,0,-camPos[0],windowHeight);
   }
   if (camPos[1]<0) {
-    rect(0,0,windowWidth,-camPos[1])
+    //rect(0,0,windowWidth,-camPos[1])
   }
   if (camPos[0]+windowWidth>(mapBoard.length-8)*tileSize) {
-    rect((mapBoard.length-8)*tileSize-camPos[0],0,camPos[0]+windowWidth-(mapBoard.length-8)*tileSize,windowHeight)
+    rect((mapBoard.length-8)*tileSize-camPos[0],0,camPos[0]+windowWidth-(mapBoard.length-8)*tileSize,windowHeight);
   }
   if (camPos[1]+windowHeight>mapBoard[0].length*tileSize) {
-    rect(0,mapBoard[0].length*tileSize-camPos[1],windowWidth,camPos[1]+windowHeight-mapBoard[0].length*tileSize)
+    rect(0,mapBoard[0].length*tileSize-camPos[1],windowWidth,camPos[1]+windowHeight-mapBoard[0].length*tileSize);
   }
   pop();
 
