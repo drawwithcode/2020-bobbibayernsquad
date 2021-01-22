@@ -12,6 +12,25 @@ body{
 }
 
 
+.warning {
+  border: none;
+  background-color: transparent;
+  position: absolute;
+  width: 50%;
+  height: 50%;
+  color: red;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  font-size: 1vw;
+  cursor: pointer;
+  font-family: latin;
+  animation:2s ease 0s normal forwards 1 fadein;
+  -webkit-animation:1.5s ease 0s normal forwards 1 fadein;
+  opacity:0
+}
+
 #infoBtn{
   background-color: transparent;
   width: 60px;
