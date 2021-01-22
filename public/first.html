@@ -36,8 +36,14 @@
       speaker.speak("CLOSE");
     }
 
+    function beep() {
+      var beep = document.getElementById("beep");
+      beep.play();
+    }
+
     </script>
     <link rel="stylesheet" type="text/css" href="first.css">
+    <audio id="beep" src="assets/beep.mp3"></audio>
     <style>
     </style>
   </head>
@@ -48,7 +54,7 @@
     <h3> move the mouse around the screen and over the buttons to hear the instructions </h3>
     <h4> move the mouse around the screen and over the buttons to hear the instructions </h4>
   </div>
-  <button class="btn start" onmouseover="read1();" onclick="window.open('map.html', '_self')">continue</button>
+  <button class="btn start" onmouseover="read1();" onclick="beep(); window.open('map.html', '_self')">continue</button>
   <button class="btn title">LOSS OF SENSES</button>
 
   <body>

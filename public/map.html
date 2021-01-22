@@ -7,7 +7,14 @@
     <script src="p5.min.js"></script>
     <script src="p5.sound.min.js"></script>
     <script src="sketch.js"></script>
+    <script>
+    function beep() {
+      var beep = document.getElementById("beep");
+      beep.play();
+    }
+    </script>
     <link rel="stylesheet" type="text/css" href="map.css">
+    <audio id="beep" src="assets/beep.mp3"></audio>
     <style>
     </style>
   </head>
@@ -15,8 +22,8 @@
     <h1> select a modality </h1>
     <h2> select a modality </h2>
   </div>
-  <button class="btn blind" onclick="window.open('blind.html', '_self')">blind person</button>
-  <button class="btn assistant" onclick="window.open('assistant.html', '_self')">assistant</button>
+  <button class="btn blind" onclick="beep(); window.open('blind.html', '_self')">blind person</button>
+  <button class="btn assistant" onclick="beep(); window.open('assistant.html', '_self')">assistant</button>
 
   <body>
   </body>

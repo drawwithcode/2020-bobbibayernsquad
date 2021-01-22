@@ -8,6 +8,13 @@
     <script src="p5.min.js"></script>
     <script src="p5.sound.min.js"></script>
     <link rel="stylesheet" type="text/css" href="style.css">
+    <script>
+      function beep() {
+        var beep = document.getElementById("beep");
+        beep.play();
+      }
+    </script>
+    <audio id="beep" src="assets/beep.mp3"></audio>
   </head>
   <body>
   </body>
@@ -16,6 +23,6 @@
     <instructions1>There's a table in front of you... pat it until you find what you're looking for.</instructions1>
     <instructions>There's a table in front of you... pat it until you find what you're looking for.</instructions>
   </div>
-  <button class="btn start" onclick="window.open('main.html', '_self')">start</button>
-  <button class="btn back" onclick="beep(); window.open('file:///Users/chiaracozzarini/Desktop/simulation_Loss%20of%20Senses/welcome_screen/blind.html', '_self');">⬅ BACK</button>
+  <button class="btn start" onclick="beep(); window.open('main.html', '_self')">start</button>
+  <button class="btn back" onclick="beep(); window.open('../blind.html', '_self');">⬅ BACK</button>
 </html>

@@ -10,20 +10,27 @@
     <link rel="stylesheet" type="text/css" href="blind.css">
     <style>
     </style>
+    <script>
+    function beep() {
+      var beep = document.getElementById("beep");
+      beep.play();
+    }
+    </script>
+    <audio id="beep" src="assets/beep.mp3"></audio>
   </head>
   <div class="typewriter">
     <h1> select a modality </h1>
     <h2> select a modality </h2>
   </div>
   <button class="btn blind">blind person</button>
-  <button class="btn assistant" onclick="window.open('assistant.html', '_self')">assistant</button>
+  <button class="btn assistant" onclick="beep(); window.open('assistant.html', '_self')">assistant</button>
 
-  <button class="btn exp1" onclick="window.open('exp1/index.html', '_self')">1st experience</button>
-  <button class="btn exp2" onclick="window.open('exp2/index.html', '_self')">2nd experience</button>
-  <button class="btn exp3" onclick="window.open('exp3/index_blind.html', '_self')">3rd experience</button>
-  <button class="btn exp4" onclick="window.open('exp4/blind/index.html', '_self')">4th experience</button>
+  <button class="btn exp1" onclick="beep(); window.open('exp1/index.html', '_self')">1st experience</button>
+  <button class="btn exp2" onclick="beep(); window.open('exp2/index.html', '_self')">2nd experience</button>
+  <button class="btn exp3" onclick="beep(); window.open('exp3/index_blind.html', '_self')">3rd experience</button>
+  <button class="btn exp4" onclick="beep(); window.open('exp4/blind/index.html', '_self')">4th experience</button>
 
-  <button class="btn back" onclick="window.open('index.html', '_self')">⬅ BACK</button>
+  <button class="btn back" onclick="beep(); window.open('index.html', '_self')">⬅ BACK</button>
 
   <body>
 
