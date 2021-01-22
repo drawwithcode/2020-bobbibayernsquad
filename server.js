@@ -1,3 +1,4 @@
+
 console.log("node server is running");
 
 // load express library
@@ -16,10 +17,11 @@ let socket = require("socket.io");
 // create a socket connection
 let io = socket(server);
 
-
-
 let labyrinth = [];
 let labyrinthMain = [];
+
+let street = [];
+let streetMain = [];
 
 // define which function should be called when a new connection is opened from client
 io.on("connection", newConnection);
@@ -31,8 +33,9 @@ function newConnection(socket) {
   let side;
 
   socket.on("welcome", function (dataReceived){
-    switch (dataReceived.room) {
-      case "labyrinth":
+
+    // #############
+    if (dataReceived.room == "labyrinth") {
         room="labyrinth";
         let matched = false;
         let index=NaN;
@@ -81,8 +84,63 @@ function newConnection(socket) {
           labyrinthMain.push(labyrinth[index]); //add pair to the main lobby
           labyrinth.splice(index,1); //delete pair from the queue
         }
-        break;
-    }
+      }
+
+      // #############
+      if (dataReceived.room == "street") {
+        room = "street";
+        let matched = false;
+        let index=NaN;
+
+        //blind side
+        if (dataReceived.side == "blind") {
+          console.log("street blind socket:", socket.id);
+          side="blind";
+
+          // If there is someone waiting then I pair them
+          for (let i = 0; i < street.length; i++) {
+            if (street[i].blind == undefined) {
+              street[i].blind = socket.id;
+              matched = true;
+              index = i;
+              break;
+            }
+          }
+          // Otherwise i create a new lobby
+          if (!matched) {
+            let el = { blind: socket.id }
+            street.push(el);
+          }
+        }
+
+        //sighted side
+        if (dataReceived.side == "sighted") {
+          console.log("street sighted socket:", socket.id);
+          side="sighted";
+          // If there is someone waiting then I pair them
+          for (let i = 0; i < street.length; i++) {
+            if (street[i].sighted == undefined) {
+              street[i].sighted = socket.id;
+              matched = true;
+              index = i;
+              break;
+            }
+          }
+          // Otherwise i create a new lobby
+          if (!matched) {
+            let el = { sighted: socket.id }
+            street.push(el);
+          }
+        }
+
+        //If matched, start the experience
+        if (matched) {
+          io.to(street[index].blind).emit("start", street[index].sighted);
+          io.to(street[index].sighted).emit("start", street[index].blind);
+          streetMain.push(street[index]); //add pair to the main lobby
+          street.splice(index,1); //delete pair from the queue
+        }
+      }
 
   });
 
@@ -94,6 +152,22 @@ function newConnection(socket) {
       sound : message.sound
     };
     io.to(message.recipient).emit("spriteInfo", info);
+  });
+
+  socket.on("forwardEntityMsg", function (message){
+    let info = {
+      gridPos : message.gridPos,
+      pos : message.pos,
+      name: message.name
+    };
+    io.to(message.recipient).emit("entityInfo", info);
+  });
+
+  socket.on("forwardFrameCount", function (message){
+    let info = {
+      count: message.count
+    };
+    io.to(message.recipient).emit("frameCountInfo", info);
   });
 
   socket.on("forwardPingMsg", function (message){
@@ -126,6 +200,8 @@ function newConnection(socket) {
 
     console.log(labyrinth);
     console.log(labyrinthMain);
+    console.log(street);
+    console.log(streetMain);
   });
 
 
@@ -155,9 +231,31 @@ function newConnection(socket) {
           }
         }
         break;
-
-        default:
-          return 0;
+      if (room == "street") {
+        if (side == "blind") {
+          for (let i = 0; i < streetMain.length; i++) {
+            if (streetMain[i].blind == socket.id) {
+              if (sendWarning) {
+                io.to(streetMain[i].sighted).emit("warning");
+              }
+              streetMain.splice(i, 1);
+            }
+            return 1;
+          }
+        }
+        if (side == "sighted") {
+          for (let i = 0; i < streetMain.length; i++) {
+            if (streetMain[i].sighted == socket.id) {
+              if (sendWarning) {
+                io.to(streetMain[i].blind).emit("warning");
+              }
+              streetMain.splice(i, 1);
+            }
+            return 1;
+          }
+        }
+      }
+      return 0;
     }
   }
 
@@ -184,9 +282,28 @@ function newConnection(socket) {
         }
         break;
 
-        default:
+      if (room == "street") {
+        if (side == "blind") {
+          for (let i = 0; i < street.length; i++) {
+            if (street[i].blind == socket.id) {
+              street.splice(i, 1);
+            }
+            found_in_queue = true;
+            return 1;
+          }
+        }
+        if (side == "sighted") {
+          for (let i = 0; i < street.length; i++) {
+            if (street[i].sighted == socket.id) {
+              street.splice(i, 1);
+            }
+            found_in_queue = true;
+            return 1;
+          }
+        }
+      }
+
           return 0;
     }
   }
-
 }
