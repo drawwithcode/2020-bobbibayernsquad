@@ -261,7 +261,7 @@ function draw() {
         fill(0);
         translate(windowWidth/2, windowHeight/2);
         rotate((success%10+i)*PI);
-        rect(200*cos(success*PI)*cos((i+frameCount/fps)*PI),200*sin(success*PI)*sin((i+frameCount/fps)*PI),10,4);
+        rect(sin(success*PI/4)*200*cos((noise(i)-0.5)*(frameCount/fps)*PI),sin(success*PI/4)*200*sin((noise(i)-0.5)*(frameCount/fps)*PI),10,4);
         pop();
     }
   }
