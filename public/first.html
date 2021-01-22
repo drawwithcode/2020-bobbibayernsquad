@@ -9,28 +9,21 @@
     <script src="p5.speech.js"></script>
     <script>
     let speaker = new p5.Speech();
+    speaker.setLang("en-UK");
 
-    let bool0 = true;
-    function read0(){
-      if (bool0) {
-        speaker.speak("Welcome to loss of senses. Move the mouse around the screen and over the buttons to hear the instructions.");
-      }
-      bool0=false;
-    }
+    speaker.speak("Welcome to loss of senses. Move the mouse around the screen and over the buttons to hear the instructions.");
+
     function read1(){
       speaker.speak("continue");
     }
     function read2(){
       speaker.speak("PROJECT INFO");
     }
-    let bool3 = true;
+
     function read3(){
-      if (bool3) {
-        speaker.speak("Loss of Senses is a project ideated by a group of four students at  Milan Polytechnic."+
+    speaker.speak("Loss of Senses is a project ideated by a group of four students at  Milan Polytechnic."+
           " The aim of the project is to create an interactive and collaborative web experience on the theme"+
           " of accessibility for blind people");
-      }
-      bool3=false;
     }
     function read4(){
       speaker.speak("CLOSE");
@@ -60,7 +53,7 @@
   <body>
 
   <!-- Trigger/Open The Modal -->
-  <button id="infoBtn" onmouseover="read2();">PROJECT INFO</button>
+  <button id="infoBtn" onmouseover="read2();" onmouseclick="read3();">PROJECT INFO</button>
 
   <!-- The Modal -->
   <div id="myPopup" class="popup">

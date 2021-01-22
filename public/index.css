@@ -64,6 +64,7 @@ body{
   animation:2s ease 0s normal forwards 1 fadein;
   -webkit-animation:1.5s ease 0s normal forwards 1 fadein;
   opacity:0
+  outline: none !important;
 }
 
 @keyframes fadein{
