@@ -94,8 +94,8 @@ function draw() {
       gif_loading.remove(); //remove GIF
       main.pinOn(); //start pin
       main.gridOn(160, 120, mapTopLeft_x, mapTopLeft_y, mapDownRight_x, mapDownRight_y); //initialize grid
-      main.spritesOn(80, 3, windowDiagonal/45, 6); //uncomment this to start near the finish
-      //main.spritesOn(80, 119, windowDiagonal/45, 6); //initialize sprites
+      //main.spritesOn(80, 3, windowDiagonal/45, 6); //uncomment this to start near the finish
+      main.spritesOn(80, 119, windowDiagonal/45, 6); //initialize sprites
       main.loadCollisions(); //load the collision map
       firstLobbyFrame=false;
     }
