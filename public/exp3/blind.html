@@ -7,6 +7,13 @@
     <script src="/socket.io/socket.io.js"></script>
     <script src="p5.min.js"></script>
     <script src="p5.sound.min.js"></script>
+    <script>
+      function beep() {
+        var beep = document.getElementById("beep");
+        beep.play();
+      }
+    </script>
+    <audio id="beep" src="../assets/beep.mp3"></audio>
     <script src="blind.js"></script>
     <link rel="stylesheet" type="text/css" href="buttons_blind.css">
   </head>
@@ -16,7 +23,7 @@
       <h1> LOSS OF SENSES </h1>
     </div>
 
-    <button id="infoBtn">HELP</button>
+    <button id="infoBtn" onclick="beep();">HELP</button>
 
     <div id="myPopup" class="popup">
 
@@ -61,5 +68,5 @@
     </script>
     </body>
 
-  <button class="btn back" onclick="window.open('../blind.html', '_self')">⬅ BACK</button>
+  <button class="btn back" onclick="beep(); window.open('../blind.html', '_self')">⬅ BACK</button>
 </html>
