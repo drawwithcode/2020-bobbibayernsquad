@@ -37,7 +37,7 @@ socket.on("pingInfo", function (info) {
 
 
 socket.on("warning", function () {
-  window.open("warning.html", "_self");
+  window.open("warning_blind.html", "_self");
 });
 
 
