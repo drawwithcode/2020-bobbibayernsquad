@@ -109,8 +109,6 @@ function mousePressed() {
         ia.hide();
         let ib = select('#ib');
         ib.hide();
-        let pat = select('#pat');
-        pat.style('filter', 'invert(100%)');
         let anim = select('#anim');
         anim.style('filter', 'invert(100%)');
       }
