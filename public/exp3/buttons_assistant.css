@@ -11,7 +11,7 @@ body{
   background-color: white;
 }
 
-#warning {
+.warning {
   border: none;
   background-color: transparent;
   position: absolute;
