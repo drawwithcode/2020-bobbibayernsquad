@@ -28,7 +28,7 @@ body{
   left: 50%;
   transform: translate(-50%, -50%);
   font-family: latin;
-  font-size: 0.9vw;
+  font-size: 1vw;
   overflow: hidden;
   animation-name: textin;
   animation-duration: 2s;
