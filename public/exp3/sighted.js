@@ -3,11 +3,12 @@ let blindId = undefined;
 let windowDiagonal;
 let preLobby = true;
 let firstLobbyFrame = true;
-let labyrinth;
+let labyrinth=[];
 let main;
 let gif_loading;
 let spriteSharedInfo = undefined;
 let cnv;
+let rand;
 
 // Create a new connection using socket.io (imported in index.html)
 let socket = io();
@@ -23,9 +24,10 @@ socket.on("connect", function () {
   socket.emit("welcome", message);
 });
 
-socket.on("start", setBlindId);
-function setBlindId(id) {
-  blindId = id;
+socket.on("start", setStart);
+function setStart(message) {
+  blindId = message.id;
+  rand = message.rand;
   console.log(blindId);
   console.log("START SIGHTED!!!!");
 }
@@ -44,7 +46,10 @@ socket.on("warning", function () {
 function preload(){
   windowDiagonal = pow(pow(windowHeight,2)+pow(windowWidth,2),0.5);
   //Load map
-  labyrinth = loadImage("assets/Images/Sighted/labyrinth.png");
+  labyrinth.push(loadImage("assets/Images/Sighted/labyrinth_0.png"));
+  labyrinth.push(loadImage("assets/Images/Sighted/labyrinth_1.png"));
+  labyrinth.push(loadImage("assets/Images/Sighted/labyrinth_2.png"));
+  labyrinth.push(loadImage("assets/Images/Sighted/labyrinth_3.png"));
   //Load characters sprites & sounds
   main = new character("assets/Images/Sighted/Sprites","assets/Sounds/wall_bump.m4a","assets/Sounds/pin.mp3","assets/Sounds/cartoon_cowbell.ogg");
   //Load loading GIF
@@ -85,8 +90,8 @@ function draw() {
     let mapCenter_x = windowWidth/2;
     let mapCenter_y = windowHeight/2+windowHeight/30;
     let map_diagonal = windowDiagonal/10*6;
-    let map_height = map_diagonal/pow(pow(labyrinth.height,2)+pow(labyrinth.width,2),0.5)*labyrinth.height;
-    let map_width = labyrinth.width/labyrinth.height*map_height;
+    let map_height = map_diagonal/pow(pow(labyrinth[rand].height,2)+pow(labyrinth[rand].width,2),0.5)*labyrinth[rand].height;
+    let map_width = labyrinth[rand].width/labyrinth[rand].height*map_height;
     let mapTopLeft_x = mapCenter_x-map_width/2;
     let mapTopLeft_y = mapCenter_y-map_height/2;
     let mapDownRight_x = mapCenter_x+map_width/2;
@@ -95,7 +100,7 @@ function draw() {
     // Draw map
     push();
     imageMode(CENTER);
-    image(labyrinth, mapCenter_x, mapCenter_y, map_width, map_height);
+    image(labyrinth[rand], mapCenter_x, mapCenter_y, map_width, map_height);
     pop();
 
     //If it is the first frame of the lobby

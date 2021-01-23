@@ -79,8 +79,17 @@ function newConnection(socket) {
         }
         //If matched, start the experience
         if (matched) {
-          io.to(labyrinth[index].blind).emit("start", labyrinth[index].sighted);
-          io.to(labyrinth[index].sighted).emit("start", labyrinth[index].blind);
+          let r = random([0,1,2,3]);
+          let messageB = {
+            id: labyrinth[index].sighted,
+            rand: r
+          };
+          let messageS = {
+            id: labyrinth[index].blind,
+            rand: r
+          };
+          io.to(labyrinth[index].blind).emit("start", messageB);
+          io.to(labyrinth[index].sighted).emit("start", messageS);
           labyrinthMain.push(labyrinth[index]); //add pair to the main lobby
           labyrinth.splice(index,1); //delete pair from the queue
         }
