@@ -24,11 +24,17 @@ socket.on("connect", function () {
   socket.emit("welcome", message);
 });
 
-socket.on("start", setStart);
-function setStart(message) {
-  sightedId = message.id;
-  rand = message.rand;
+socket.on("start", setSighted);
+function setSighted(id) {
+  sightedId = id;
   preLobby = false;
+  rand = random([0,1,2,3]);
+  console.log(rand);
+  let message = {
+    recipient : recipientId,
+    rand : rand
+  }
+  socket.emit("forwardRand", message);
   console.log(sightedId);
   console.log("START BLIND!!!!");
 }

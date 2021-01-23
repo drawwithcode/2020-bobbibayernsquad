@@ -24,10 +24,9 @@ socket.on("connect", function () {
   socket.emit("welcome", message);
 });
 
-socket.on("start", setStart);
-function setStart(message) {
-  blindId = message.id;
-  rand = message.rand;
+socket.on("start", setBlind);
+function setBlind(id) {
+  blindId = id;
   console.log(blindId);
   console.log("START SIGHTED!!!!");
 }
@@ -35,6 +34,11 @@ function setStart(message) {
 socket.on("spriteInfo", function (info) {
   spriteSharedInfo=info;
   preLobby=false; //exit from the prelobby when the first message arrives
+});
+
+socket.on("rand", function (receivedRand){
+  rand = receivedRand;
+  console.log(rand);
 });
 
 socket.on("warning", function () {

@@ -79,17 +79,8 @@ function newConnection(socket) {
         }
         //If matched, start the experience
         if (matched) {
-          let r = random([0,1,2,3]);
-          let messageB = {
-            id: labyrinth[index].sighted,
-            rand: r
-          };
-          let messageS = {
-            id: labyrinth[index].blind,
-            rand: r
-          };
-          io.to(labyrinth[index].blind).emit("start", messageB);
-          io.to(labyrinth[index].sighted).emit("start", messageS);
+          io.to(labyrinth[index].blind).emit("start", labyrinth[index].sighted);
+          io.to(labyrinth[index].sighted).emit("start", labyrinth[index].blind);
           labyrinthMain.push(labyrinth[index]); //add pair to the main lobby
           labyrinth.splice(index,1); //delete pair from the queue
         }
@@ -161,6 +152,10 @@ function newConnection(socket) {
       sound : message.sound
     };
     io.to(message.recipient).emit("spriteInfo", info);
+  });
+
+  socket.on("forwardRand", function (message){
+    io.to(message.recipient).emit("rand", message.rand);
   });
 
   socket.on("forwardEntityMsg", function (message){
