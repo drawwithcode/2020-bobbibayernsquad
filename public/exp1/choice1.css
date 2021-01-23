@@ -188,3 +188,45 @@ body{
   border: 1.25px solid red;
   font-family: latin;
 }
+
+.back {
+  position: absolute;
+  background-color: transparent;
+  border: transparent;
+  color: #d2d2d2;
+  top: 7%;
+  left: 10%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  font-size: 1.2vw;
+  cursor: pointer;
+  font-family: latin;
+}
+
+.back:hover {
+  color: white;
+  background-color: transparent;
+  font-size: 1.3vw;
+  font-family: latin;
+}
+
+.back {
+  position: absolute;
+  background-color: transparent;
+  border: transparent;
+  color: #d2d2d2;
+  top: 7%;
+  left: 10%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  font-size: 1.2vw;
+  cursor: pointer;
+  font-family: latin;
+}
+
+.back:hover {
+  color: white;
+  background-color: transparent;
+  font-size: 1.3vw;
+  font-family: latin;
+}

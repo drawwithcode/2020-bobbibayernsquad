@@ -13,12 +13,12 @@ body{
 
 .texts h1 {
   position: absolute;
-  top: 7%;
+  top: 5%;
   left: 50%;
   transform: translate(-50%, -50%);
   color: white;
   font-family: latin;
-  font-size: 1.2vw;
+  font-size: 14px;
   overflow: hidden;
 }
 
@@ -220,5 +220,47 @@ body{
   height: 7.5%;
   font-size: 1vw;
   border: 1.25px solid red;
+  font-family: latin;
+}
+
+.back {
+  position: absolute;
+  background-color: transparent;
+  border: transparent;
+  color: #d2d2d2;
+  top: 7%;
+  left: 10%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  font-size: 1.2vw;
+  cursor: pointer;
+  font-family: latin;
+}
+
+.back:hover {
+  color: white;
+  background-color: transparent;
+  font-size: 1.3vw;
+  font-family: latin;
+}
+
+.back {
+  position: absolute;
+  background-color: transparent;
+  border: transparent;
+  color: #d2d2d2;
+  top: 7%;
+  left: 10%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  font-size: 1.2vw;
+  cursor: pointer;
+  font-family: latin;
+}
+
+.back:hover {
+  color: white;
+  background-color: transparent;
+  font-size: 1.3vw;
   font-family: latin;
 }

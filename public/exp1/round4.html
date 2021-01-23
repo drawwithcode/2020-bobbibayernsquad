@@ -18,6 +18,14 @@
         var beep = document.getElementById("beep");
         beep.play();
       }
+
+      function read_ready(){
+        speaker.speak("i'm ready");
+      }
+      function read_again(){
+        speaker.speak("listen again");
+      }
+
     </script>
     <link rel="stylesheet" type="text/css" href="round2.css">
     <audio id="beep" src="assets/sounds/beep.mp3"></audio>
@@ -31,6 +39,7 @@
     <h4> fourth round </h4>
     <h5> fourth round </h5>
   </div>
-  <button class="btn again" onclick="beep(); window.open('round4.html', '_self');">listen again</button>
-  <button class="btn ready" onclick="beep(); window.open('choice4.html', '_self');">i'm ready</button>
+  <button class="btn back" onmouseover="read_back();"onclick="beep(); window.open('../blind.html', '_self');">⬅ BACK</button>
+  <button class="btn again" onmouseover="read_again();"onclick="beep(); window.open('round4.html', '_self');">listen again</button>
+  <button class="btn ready" onmouseover="read_ready();"onclick="beep(); window.open('choice4.html', '_self');">i'm ready</button>
 </html>
