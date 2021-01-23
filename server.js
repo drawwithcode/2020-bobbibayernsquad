@@ -33,6 +33,8 @@ function newConnection(socket) {
   let side;
   let experienceEnded = false;
 
+  let rand = second()%4;
+
   socket.on("welcome", function (dataReceived){
 
     // #############
@@ -88,7 +90,7 @@ function newConnection(socket) {
       }
 
       // #############
-      if (dataReceived.room == "street") {
+    if (dataReceived.room == "street") {
         room = "street";
         let matched = false;
         let index=NaN;
