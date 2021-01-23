@@ -22,6 +22,9 @@
       function read_back(){
         speaker.speak("BACK");
       }
+      function read_help(){
+        speaker.speak("You can move using the 4 arrows on your keyboard. The assistant have a whole view on the maze and will guide you with some sound advices. The sound will change according to the relative position of the ping and the character. Good luck!")
+      }
     </script>
     <audio id="beep" src="../assets/beep.mp3"></audio>
     <script src="blind.js"></script>
@@ -42,8 +45,8 @@
         <span class="close">&times;</span>
         <h2>HELP</h2>
       </div>
-      <div class="popup-body">
-        <p>write help info here</p>
+      <div class="popup-body" onmouseover="read_help();">
+        <p>You can move using the 4 arrows on your keyboard. The assistant have a whole view on the maze and will guide you with some sound advices. The sound will change according to the relative position of the ping and the character. Good luck!</p>
       </div>
     </div>
 

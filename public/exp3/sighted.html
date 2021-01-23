@@ -29,6 +29,10 @@
       function read_back(){
         speaker.speak("BACK");
       }
+      function read_help(){
+        speaker.speak("By clicking on the screen you can interact with him, he will hear the same sounds as you. The sound will change according to the relative position of the ping and the character. Be careful: your mate is blind so he will not be able to see the maze walls outside of a small circle around him. Good luck!")
+      }
+
     </script>
     <audio id="beep" src="../assets/beep.mp3"></audio>
     <link rel="stylesheet" type="text/css" href="buttons_assistant.css">
@@ -49,8 +53,8 @@
             <span class="close">&times;</span>
             <h2>HELP</h2>
           </div>
-          <div class="popup-body">
-            <p>write help info here</p>
+          <div class="popup-body" onmouseover="read_help();">
+            <p>By clicking on the screen you can interact with him, he will hear the same sounds as you. The sound will change according to the relative position of the ping and the character. Be careful: your mate is blind so he will not be able to see the maze walls outside of a small circle around him. Good luck!</p>
           </div>
         </div>
 
