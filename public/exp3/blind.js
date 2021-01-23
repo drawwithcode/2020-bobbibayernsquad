@@ -28,7 +28,7 @@ socket.on("start", setSighted);
 function setSighted(id) {
   sightedId = id;
   preLobby = false;
-  rand = random([0,1,2,3]);
+  rand = second()%4;
   console.log(rand);
   let message = {
     recipient : sightedId,
