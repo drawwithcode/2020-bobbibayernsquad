@@ -22,8 +22,18 @@
       speaker.speak("back");
     }
 
-    function read_start(){
+    function read_help(){
       speaker.speak("help");
+    }
+    function read_content(){
+      speaker.speak("Imagine you're standing in front of your desk. "+
+      "It's completely dark and you need to find a bell, placed somewhere on it. "+
+      "So you start patting the surface to sense the different objects that your hands can reach: "+
+      "their shape, the sound they make... until you know that you found what you were looking for." +
+      "It's not impossible, you just have to look without using your eyes!");
+    }
+    function read_close(){
+      speaker.speak("close");
     }
 
     function read_continue(){
@@ -55,9 +65,9 @@
   <div id="myPopup" class="popup">
 
   <!-- Modal content -->
-  <div class="popup-content">
+  <div class="popup-content" onmouseover="read_content();">
     <div class="popup-header">
-      <span class="close">&times;</span>
+      <span class="close" onmouseover="read_close();">&times;</span>
       <h2>HOW DOES IT WORK?</h2>
     </div>
     <div class="popup-body">
