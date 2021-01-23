@@ -157,7 +157,7 @@ body{
   left: 50%;
   transform: translate(-50%, -50%);
   text-align: center;
-  font-size: 1vw;
+  font-size: 1.2vw;
   cursor: pointer;
   font-family: latin;
   transition: 0.2s ease-in-out;
