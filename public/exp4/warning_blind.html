@@ -23,7 +23,7 @@
       beep.play();
     }
 
-    speaker.speak("It seems like your mate left the lobby. Click here to return at the menu");
+    speaker.speak("It seems like your mate left the lobby. Click on the screen to return at the menu");
     function read_info(){
       speaker.speak("HELP");
     }
@@ -36,7 +36,7 @@
 </head>
 
 <button id="infoBtn" onmouseover="read_info();" onclick="beep();">HELP</button>
-<button id="message" onclick="beep(); window.open('../blind.html', '_self');">It seems like your mate left the lobby <br> Click here to return at the menu </button>
+<button id="message" onclick="beep(); window.open('../blind.html', '_self');">It seems like your mate left the lobby <br> Click on the screen to return at the menu </button>
 
 
 <body>
