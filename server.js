@@ -143,6 +143,10 @@ function newConnection(socket) {
         }
       }
 
+  console.log(labyrinth);
+  console.log(labyrinthMain);
+  console.log(street);
+  console.log(streetMain);
   });
 
   socket.on("forwardSpriteMsg", function (message){
