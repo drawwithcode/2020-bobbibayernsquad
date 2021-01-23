@@ -69,10 +69,10 @@ function draw() {
     push();
     textSize(windowDiagonal/100);
     imageMode(CENTER);
-    textAlign(CENTER);
+    textAlign(CENTER, CENTER);
     fill(255);
     textFont(latin);
-    text("waiting for an assistant to join", windowWidth/2, windowHeight/6, windowWidth/2, windowHeight/3);
+    text("waiting for an assistant to join", windowWidth/2, windowHeight/6);
     pop();
     let gifWidth=windowDiagonal/3;
     let gifHeight=gifWidth/gif_loading.width*gif_loading.height;
