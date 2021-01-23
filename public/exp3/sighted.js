@@ -65,7 +65,8 @@ function draw() {
   //Pre Lobby
   if (preLobby) {
     push();
-    textSize(pow(pow(windowHeight,2)+pow(windowWidth,2), 0.5)/40);
+    textSize(pow(pow(windowHeight,2)+pow(windowWidth,2), 0.5)/80);
+    textAlign(CENTER);
     fill(0);
     textFont(latin);
     text("waiting for a blind person to join", width/2, height/4, windowWidth/3*2, windowHeight/2);
