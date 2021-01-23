@@ -190,19 +190,19 @@ function draw() {
 
   if (canSee){
     if (keyIsDown(65) || keyIsDown(LEFT_ARROW) || (mouseX<windowWidth/5)) {
-      if (camPos[0] > -windowWidth/2)
+      if (camPos[0] > -windowWidth/4)
         camPos[0]-=200/fps;
     }
     if (keyIsDown(87) || keyIsDown(UP_ARROW) || (mouseY<windowHeight/5)) {
-      if (camPos[1] > -windowHeight/2)
+      if (camPos[1] > -windowHeight/4)
         camPos[1]-=200/fps;
     }
     if (keyIsDown(68) || keyIsDown(RIGHT_ARROW) || (mouseX>windowWidth*4/5)) {
-      if (camPos[0] < mapBoard.length*tileSize+windowWidth/2)
+      if (camPos[0] < mapBoard.length*tileSize+windowWidth/4)
         camPos[0]+=200/fps;
     }
     if (keyIsDown(83) || keyIsDown(DOWN_ARROW) || (mouseY>windowHeight*4/5)) {
-      if (camPos[0] < mapBoard[0].length*tileSize+windowHeight/2)
+      if (camPos[0] < mapBoard[0].length*tileSize+windowHeight/4)
         camPos[1]+=200/fps;
     }
   }
