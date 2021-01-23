@@ -1,4 +1,5 @@
 
+
 console.log("node server is running");
 
 // load express library
@@ -28,9 +29,9 @@ io.on("connection", newConnection);
 
 // callback function: the paramenter (in this case socket) will contain all the information on the new connection
 function newConnection(socket) {
-
   let room;
   let side;
+  let experienceEnded = false;
 
   socket.on("welcome", function (dataReceived){
 
@@ -142,30 +143,6 @@ function newConnection(socket) {
         }
       }
 
-      let experienceEnded = false;
-      socket.on("finished", function (){
-        experienceEnded=true;
-        //Remove pair from the main lobby
-        find_main(false);
-      });
-
-      socket.on('disconnect', function () {
-        console.log("disconnection: "+ socket.id);
-
-        //Unexpected disconnection
-        if (!experienceEnded) {
-          let found_in_queue = find_queue();
-          if (!found_in_queue) {
-            find_main(true);
-          }
-        }
-
-        console.log(labyrinth);
-        console.log(labyrinthMain);
-        console.log(street);
-        console.log(streetMain);
-      });
-
   });
 
   socket.on("forwardSpriteMsg", function (message){
@@ -176,10 +153,6 @@ function newConnection(socket) {
       sound : message.sound
     };
     io.to(message.recipient).emit("spriteInfo", info);
-  });
-
-  socket.on("forwardRand", function (message){
-    io.to(message.recipient).emit("rand", message.rand);
   });
 
   socket.on("forwardEntityMsg", function (message){
@@ -210,9 +183,29 @@ function newConnection(socket) {
   });
 
 
+  socket.on("finished", function (){
+    experienceEnded=true;
+    //Remove pair from the main lobby
+    find_main(false);
+  });
 
 
+  socket.on('disconnect', function () {
+    console.log("disconnection: "+ socket.id);
 
+    //Unexpected disconnection
+    if (!experienceEnded) {
+      let found_in_queue = find_queue();
+      if (!found_in_queue) {
+        find_main(true);
+      }
+    }
+
+    console.log(labyrinth);
+    console.log(labyrinthMain);
+    console.log(street);
+    console.log(streetMain);
+  });
 
 
   function find_main (sendWarning) {
@@ -224,8 +217,8 @@ function newConnection(socket) {
                 io.to(labyrinthMain[i].sighted).emit("warning");
               }
               labyrinthMain.splice(i, 1);
+              return 1;
             }
-            return 1;
           }
         }
         if (side == "sighted") {
@@ -235,8 +228,8 @@ function newConnection(socket) {
                 io.to(labyrinthMain[i].blind).emit("warning");
               }
               labyrinthMain.splice(i, 1);
+              return 1;
             }
-            return 1;
           }
         }
       }
@@ -248,8 +241,8 @@ function newConnection(socket) {
                 io.to(streetMain[i].sighted).emit("warning");
               }
               streetMain.splice(i, 1);
+              return 1;
             }
-            return 1;
           }
         }
         if (side == "sighted") {
@@ -259,8 +252,8 @@ function newConnection(socket) {
                 io.to(streetMain[i].blind).emit("warning");
               }
               streetMain.splice(i, 1);
+              return 1;
             }
-            return 1;
           }
         }
       }
@@ -273,18 +266,16 @@ function newConnection(socket) {
           for (let i = 0; i < labyrinth.length; i++) {
             if (labyrinth[i].blind == socket.id) {
               labyrinth.splice(i, 1);
+              return 1;
             }
-            found_in_queue = true;
-            return 1;
           }
         }
         if (side == "sighted") {
           for (let i = 0; i < labyrinth.length; i++) {
             if (labyrinth[i].sighted == socket.id) {
               labyrinth.splice(i, 1);
+              return 1;
             }
-            found_in_queue = true;
-            return 1;
           }
         }
     }
@@ -293,18 +284,16 @@ function newConnection(socket) {
           for (let i = 0; i < street.length; i++) {
             if (street[i].blind == socket.id) {
               street.splice(i, 1);
+              return 1;
             }
-            found_in_queue = true;
-            return 1;
           }
         }
         if (side == "sighted") {
           for (let i = 0; i < street.length; i++) {
             if (street[i].sighted == socket.id) {
               street.splice(i, 1);
+              return 1;
             }
-            found_in_queue = true;
-            return 1;
           }
         }
       }
