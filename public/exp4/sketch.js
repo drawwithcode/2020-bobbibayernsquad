@@ -313,7 +313,7 @@ function draw() {
       accident = -1;
       main.gridPos = [[7,1]]; // position on the grid
       main.pos = [(main.gridPos[0][0]+0.5)*tileSize,(main.gridPos[0][1]+0.5)*tileSize]; // center of grid tile
-      this.moveTile([1,0]);
+      main.moveTile([1,0]);
     }
   }
   else if (!canSee)

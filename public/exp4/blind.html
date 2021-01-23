@@ -23,12 +23,12 @@
 
     <div id="myPopup" class="popup">
 
-    <div class="popup-content" onmouseover="speaker.speak('By following the sounds emitted by the assistant, try to cross the street and avoid the vehicles.')">
+    <div class="popup-content">
       <div class="popup-header">
         <span class="close">&times;</span>
         <h2>HELP</h2>
       </div>
-      <div class="popup-body">
+      <div class="popup-body" onmouseover="speaker.speak('By following the sounds emitted by the assistant, try to cross the street and avoid the vehicles.')">
         <p>By following the sounds emitted by the assistant, try to cross the street and avoid the vehicles.</p>
       </div>
     </div>
@@ -64,5 +64,5 @@
     </script>
     </body>
 
-  <button class="btn back" onmouseover="speaker.speak('back')" onclick="window.open('sighted/index.html', '_self')">⬅ BACK</button>
+  <button class="btn back" onmouseover="speaker.speak('back')" onclick="window.open('../blind.html', '_self')">⬅ BACK</button>
 </html>
