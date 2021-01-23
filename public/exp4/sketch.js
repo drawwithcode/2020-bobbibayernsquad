@@ -33,7 +33,13 @@ function setOtherId(id) {
 
 
 socket.on("warning", function () {
-  window.open("warning.html", "_self");
+  speaker.speak("Connection lost");
+  if (canSee) {
+    setTimeout(function(){window.location="warning_assistant.html";}, 3000);
+  }
+  else {
+    setTimeout(function(){window.location="warning_blind.html";}, 3000);
+  }
 });
 
 socket.on("pingInfo", function (info) {
@@ -146,6 +152,8 @@ function draw() {
     if (frameCount == 1) {
       speaker.speak("Waiting for someone else to connect!");
       background(sightedCol);
+      textFont('latin');
+      text('Waiting for someone else to connect!', windowWidth/2, windowHeight/2);
     }
     push();
     noStroke();
@@ -224,10 +232,6 @@ function draw() {
   drawMap();
 
   push();
-  let sightedCol = 0;
-  if (canSee) {
-    sightedCol = 255;
-  }
   fill(sightedCol);
   noStroke();
   if (camPos[0]<0) {
