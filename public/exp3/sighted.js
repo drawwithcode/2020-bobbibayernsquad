@@ -7,6 +7,7 @@ let labyrinth;
 let main;
 let gif_loading;
 let spriteSharedInfo = undefined;
+let cnv;
 
 // Create a new connection using socket.io (imported in index.html)
 let socket = io();
@@ -54,7 +55,7 @@ function preload(){
 }
 
 function setup() {
-  createCanvas(windowWidth,windowHeight);
+  cnv=createCanvas(windowWidth,windowHeight);
 }
 
 function draw() {
@@ -70,7 +71,7 @@ function draw() {
     textAlign(CENTER);
     fill(0);
     textFont(latin);
-    text("waiting for a blind person to join", windowWidth/2, windowHeight/5);
+    text("waiting for a blind person to join", windowWidth/2, windowHeight/5*4);
     pop();
     let gifWidth=windowDiagonal/3;
     let gifHeight=gifWidth/gif_loading.width*gif_loading.height;
@@ -82,7 +83,7 @@ function draw() {
   else {
     // Compute map parameters
     let mapCenter_x = windowWidth/2;
-    let mapCenter_y = windowHeight/2;
+    let mapCenter_y = windowHeight/2+windowHeight/30;
     let map_diagonal = windowDiagonal/10*6;
     let map_height = map_diagonal/pow(pow(labyrinth.height,2)+pow(labyrinth.width,2),0.5)*labyrinth.height;
     let map_width = labyrinth.width/labyrinth.height*map_height;

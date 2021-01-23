@@ -50,6 +50,7 @@ body{
   height: 100%; /* Full height */
   overflow: auto; /* Enable scroll if needed */
   background-color: white;
+  z-index: 1;
 }
 
 /* Modal Content */
@@ -62,11 +63,12 @@ body{
   margin: auto;
   padding: 0;
   border: 0.8px solid white;
-  width: 500px;
-  height: 165px;
+  width: 50%;
+  height: 13%;
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
   animation-name: text;
   animation-duration: 1s;
+  z-index: 1;
 }
 
 @keyframes text{
@@ -135,7 +137,7 @@ body{
 
 .texts h1 {
   position: absolute;
-  top: 5%;
+  top: 7%;
   left: 50%;
   transform: translate(-50%, -50%);
   color: black;

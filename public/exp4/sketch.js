@@ -152,14 +152,16 @@ function draw() {
     if (frameCount == 1) {
       speaker.speak("Waiting for someone else to connect!");
       background(sightedCol);
-      stroke(255-sightedCol);
+      noStroke();
       fill(255-sightedCol);
       textFont('latin');
-      text('Waiting for someone else to connect!', windowWidth/2, windowHeight/2);
+      textAlign(CENTER);
+      textSize(16);
+      text('Waiting for someone else to connect!', windowWidth/2, windowHeight*3/4);
     }
     push();
     noStroke();
-    translate(windowWidth/2,windowHeight/2);
+    translate(windowWidth/2,windowHeight/2);/*
     fill(sightedCol);
     ellipse(0,0,50);
     fill(255,0,0);
@@ -170,6 +172,12 @@ function draw() {
     fill(255-sightedCol,255-sightedCol,255-sightedCol,100/fps);
     strokeWeight(1);
     ellipse(100*cos(2*PI*frameCount/fps/7),100*sin(2*PI*frameCount/fps/7),sin(2*PI*frameCount/fps/5)**2*200,cos(2*PI*frameCount/fps/4)**2*200);
+    */
+    fill(255-sightedCol);
+    ellipse(0,0,100+10*sin(frameCount/fps*PI));
+    fill(sightedCol);
+    ellipse(0,0,100-10*sin(frameCount/fps*PI));
+
     pop();
     /*let gifWidth=windowDiagonal/3;
     let gifHeight=gifWidth/gif_loading.width*gif_loading.height;

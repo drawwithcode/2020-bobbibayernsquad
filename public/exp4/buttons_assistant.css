@@ -8,11 +8,13 @@
 }
 
 body{
-  background-color: white;
+  background-color: transparent;
 }
 
 #infoBtn{
   background-color: transparent;
+  width: 13%;
+  height: 7%;
   border: transparent;
   position: absolute;
   color: #323232;
@@ -20,7 +22,7 @@ body{
   left: 90%;
   transform: translate(-50%, -50%);
   text-align: center;
-  font-size: 12px;
+  font-size: 1.2vw;
   cursor: pointer;
   font-family: latin;
   transition: 0.2s ease-in-out;
@@ -29,8 +31,10 @@ body{
 #infoBtn:hover {
   transition: 0.2s ease-in-out;
   background-color: transparent;
+  width: 13%;
+  height: 5%;
   color: #323232;
-  font-size: 12px;
+  font-size: 1.3vw;
   border: transparent;
   font-family: latin;
 }
@@ -46,6 +50,7 @@ body{
   height: 100%; /* Full height */
   overflow: auto; /* Enable scroll if needed */
   background-color: white;
+  z-index: 1;
 }
 
 /* Modal Content */
@@ -63,6 +68,7 @@ body{
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
   animation-name: text;
   animation-duration: 1s;
+  z-index: 1;
 }
 
 @keyframes text{
@@ -75,7 +81,7 @@ body{
   padding-right: 5px;
   color: white;
   float: right;
-  font-size: 28px;
+  font-size: 2vw;
 
 }
 
@@ -89,7 +95,7 @@ body{
   padding-top: 2px;
   padding-left: 5px;
   font-family: latin;
-  font-size: 11px;
+  font-size: 1vw;
   color: white;
 }
 
@@ -97,13 +103,15 @@ body{
   padding-right: 5px;
   padding-left: 5px;
   font-family: latin;
-  font-size: 11px;
+  font-size: 1vw;
   color: white;
   font-weight: 25;
 }
 
 .back{
   background-color: transparent;
+  width: 13%;
+  height: 5%;
   border: transparent;
   position: absolute;
   color: #323232;
@@ -111,7 +119,7 @@ body{
   left: 10%;
   transform: translate(-50%, -50%);
   text-align: center;
-  font-size: 12px;
+  font-size: 1.2vw;
   cursor: pointer;
   font-family: latin;
   transition: 0.2s ease-in-out;
@@ -122,20 +130,35 @@ body{
   background-color: transparent;
   border: transparent;
   color: #323232;
-  font-size: 12px;
+  font-size: 1.3vw;
   border: 1.25px solid #fff;
   font-family: latin;
 }
 
 .texts h1 {
   position: absolute;
-  top: 5%;
+  top: 7%;
   left: 50%;
   transform: translate(-50%, -50%);
   color: black;
   font-family: latin;
-  font-size: 14px;
+  font-size: 1vw;
   overflow: hidden;
   cursor: default;
   user-select: none;
+}
+
+#message{
+  background-color: transparent;
+  border: transparent;
+  position: absolute;
+  color: red;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  font-size: 1.2vw;
+  cursor: pointer;
+  font-family: latin;
+  transition: 0.2s ease-in-out;
 }

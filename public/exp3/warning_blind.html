@@ -3,11 +3,13 @@
 
 <head>
   <meta charset="utf-8">
+    <meta http-equiv="refresh" content="5;URL=../blind.html">
   <meta name="viewport" width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0>
   <style>
     body {
       padding: 0;
       margin: 0;
+      overflow: hidden;
     }
   </style>
   <script src="/socket.io/socket.io.js"></script>
@@ -23,10 +25,8 @@
       beep.play();
     }
 
-    speaker.speak("It seems like your mate left the lobby. Click on the screen to return at the menu");
-    function read_info(){
-      speaker.speak("HELP");
-    }
+      speaker.speak("It seems like your mate left the lobby. You will be redirected at the menu.");
+
     function read_back(){
       speaker.speak("BACK");
     }
@@ -35,11 +35,9 @@
   <link rel="stylesheet" type="text/css" href="buttons_blind.css">
 </head>
 
-<button id="infoBtn" onmouseover="read_info();" onclick="beep();">HELP</button>
-<button id="message" onclick="beep(); window.open('../blind.html', '_self');">It seems like your mate left the lobby <br> Click on the screen to return at the menu </button>
-
-
 <body>
+<button id="message" onclick="beep(); window.open('../blind.html', '_self');">It seems like your mate left the lobby <br>  You will be redirected to the menu </button>
+
   <div id="myPopup" class="popup">
 
     <div class="popup-content">
@@ -81,8 +79,8 @@
       }
     }
   </script>
+  <button class="btn back" onmouseover="read_back();" onclick="beep(); window.open('../assistant.html', '_self')">⬅ BACK</button>
 </body>
 
-<button class="btn back" onmouseover="read_back();" onclick="beep(); window.open('../assistant.html', '_self')">⬅ BACK</button>
 
 </html>
