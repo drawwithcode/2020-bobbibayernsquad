@@ -13,12 +13,12 @@ body{
 
 .texts h1 {
   position: absolute;
-  top: 5%;
+  top: 7%;
   left: 50%;
   transform: translate(-50%, -50%);
   color: white;
   font-family: latin;
-  font-size: 1vw;
+  font-size: 1.2vw;
   overflow: hidden;
 }
 
@@ -101,7 +101,7 @@ body{
   color: white;
   width: 13%;
   height: 5%;
-  font-size: 1.3vw;
+  font-size: 1vw;
   border: 1.25px solid #fff;
   font-family: latin;
 }
@@ -112,7 +112,7 @@ body{
   color: white;
   width: 13%;
   height: 5%;
-  font-size: 1.3vw;
+  font-size: 1vw;
   border: 1.25px solid #fff;
   font-family: latin;
 }
