@@ -34,6 +34,22 @@
     function read_blind(){
       speaker.speak("blind mode");
     }
+    function read_back(){
+      speaker.speak("back");
+    }
+    function read_help(){
+      speaker.speak("help");
+    }
+    function read_content(){
+      speaker.speak("The first two experiences can be carried out by the user by him/herself. "+
+      "They represent brief experiences of blindness without the participation and help of a second user that provides assistance. "+
+      "They can be selected only when the blind modality is on. " +
+      "The third and fourth experiences consists in shared experiences that expect the collaboration between two users, "+
+      "one in the role of blind person, one in the role of assistant.");
+    }
+    function read_close(){
+      speaker.speak("close");
+    }
     </script>
     <audio id="beep" src="assets/beep.mp3"></audio>
   </head>
@@ -49,20 +65,20 @@
   <button class="btn exp3" onmouseover="read_exp3();" onclick="beep(); window.open('exp3/index_assistant.html', '_self')">3rd experience</button>
   <button class="btn exp4" onmouseover="read_exp4();" onclick="beep(); window.open('exp4/assistant/index.html', '_self')">4th experience</button>
 
-  <button class="btn back" onclick="beep(); window.open('index.html', '_self')">⬅ BACK</button>
+  <button class="btn back" onmouseover="read_back();" onclick="beep(); window.open('index.html', '_self')">⬅ BACK</button>
 
   <body>
 
   <!-- Trigger/Open The Modal -->
-  <button id="infoBtn">HELP</button>
+  <button id="infoBtn" onmouseover="read_help();">HELP</button>
 
   <!-- The Modal -->
   <div id="myPopup" class="popup">
 
   <!-- Modal content -->
-  <div class="popup-content">
+  <div class="popup-content" onmouseover="read_content();">
     <div class="popup-header">
-      <span class="close">&times;</span>
+      <span class="close" onmouseover="read_close();">&times;</span>
       <h2>HELP</h2>
     </div>
     <div class="popup-body">

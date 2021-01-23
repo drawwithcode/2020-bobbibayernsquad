@@ -66,7 +66,7 @@ body{
 }
 
 .again {
-  border: none;
+  display: block;
   background-color: #323232;
   width: 14%;
   height: 7.5%;
@@ -87,7 +87,7 @@ body{
 }
 
 .ready {
-  border: none;
+  display: block;
   background-color: #323232;
   width: 14%;
   height: 7.5%;
@@ -129,15 +129,14 @@ body{
   font-family: latin;
 }
 
-@keyframes fadein{
-  0% {opacity:0}
-  95%{opacity:0}
-  100%{opacity:1}
+@keyframes fadein{0% {opacity:0; top: 110%;}
+95%{opacity:0; top: 47.5%;}
+100%{opacity:1; top: 47.5%;}
 }
 
-@-webkit-keyframes fadein{0% {opacity:0}
-95%{opacity:0}
-100%{opacity:1}
+@-webkit-keyframes fadein{0% {opacity:0; top: 110%;}
+95%{opacity:0; top: 47.5%;}
+100%{opacity:1; top: 47.5%;}
 }
 
 .back {
