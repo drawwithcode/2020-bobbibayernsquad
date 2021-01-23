@@ -68,10 +68,11 @@ function draw() {
   if (preLobby) {
     push();
     textSize(windowDiagonal/100);
+    imageMode(CENTER);
     textAlign(CENTER);
     fill(255);
     textFont(latin);
-    text("waiting for an assistant to join", windowWidth/2, windowHeight/4, windowWidth/2, windowHeight/3);
+    text("waiting for an assistant to join", windowWidth/2, windowHeight/6, windowWidth/2, windowHeight/3);
     pop();
     let gifWidth=windowDiagonal/3;
     let gifHeight=gifWidth/gif_loading.width*gif_loading.height;
