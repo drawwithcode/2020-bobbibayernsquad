@@ -134,7 +134,6 @@ body{
    transform: translate(-50%, -50%);
    text-align: center;
   font-size: 4.2vw;
-  cursor: pointer;
   font-family: latin;
   animation-name: text;
   animation-duration: 3s;
@@ -279,4 +278,15 @@ body{
   font-family: latin;
   font-size: 1vw;
   color: black;
+}
+
+img {
+  position: absolute;
+  bottom: 7%;
+  left: 50%;
+  width: 45px;
+  height: 45px;
+  mix-blend-mode: difference;
+  filter: none;
+  user-select: none;
 }
