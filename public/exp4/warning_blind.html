@@ -35,11 +35,11 @@
   <link rel="stylesheet" type="text/css" href="buttons_blind.css">
 </head>
 
-<button id="infoBtn" onmouseover="read_info();" onclick="beep();">HELP</button>
-<button id="message" onclick="beep(); window.open('../blind.html', '_self');">It seems like your mate left the lobby <br> Click on the screen to return at the menu </button>
-
-
 <body>
+  <div onclick="beep(); window.open('../blind.html', '_self');">
+<button id="message">It seems like your mate left the lobby <br> Click on the screen to return at the menu </button>
+
+
   <div id="myPopup" class="popup">
 
     <div class="popup-content">
@@ -81,8 +81,9 @@
       }
     }
   </script>
+  <button class="btn back" onmouseover="read_back();" onclick="beep(); window.open('../assistant.html', '_self')">⬅ BACK</button>
+</div>
 </body>
 
-<button class="btn back" onmouseover="read_back();" onclick="beep(); window.open('../assistant.html', '_self')">⬅ BACK</button>
 
 </html>
