@@ -84,7 +84,7 @@ function preload(){
   [5,8,11].forEach((yt, iyt) => {
     let xt = 5;
     while (xt<mapW) {
-      entities.push(new Entity("car",entityImages["carL"],[xt,yt],[-yt*30,0]));
+      entities.push(new Entity("car",entityImages["carL"],[xt,yt],[-yt*20,0]));
       xt += round(random(8,6+yt*3));
     }
   });
@@ -198,7 +198,7 @@ function draw() {
         camPos[1]-=200/fps;
     }
     if (keyIsDown(68) || keyIsDown(RIGHT_ARROW) || (mouseX>windowWidth*4/5)) {
-      if (camPos[0] < mapBoard.length*tileSize+windowWidth/4)
+      if (camPos[0] < mapBoard.length*tileSize+windowWidth*/4)
         camPos[0]+=200/fps;
     }
     if (keyIsDown(83) || keyIsDown(DOWN_ARROW) || (mouseY>windowHeight*4/5)) {

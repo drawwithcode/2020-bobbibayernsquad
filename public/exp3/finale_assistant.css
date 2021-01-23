@@ -41,7 +41,7 @@ body{
   left: 50%;
   transform: translate(-50%, -50%);
   font-family: braille;
-  font-size: 1vw;
+  font-size: 0.9vw;
   overflow: hidden;
   animation-name: textin;
   animation-duration: 2s;
