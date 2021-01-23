@@ -85,7 +85,7 @@ function preload(){
     let xt = 5;
     while (xt<mapW) {
       entities.push(new Entity("car",entityImages["carL"],[xt,yt],[-yt*30,0]));
-      xt += round(random(8,10+yt*2));
+      xt += round(random(8,6+yt*3));
     }
   });
 
@@ -107,7 +107,7 @@ function preload(){
     let xt =  mapW-5;
     while (xt>0) {
       entities.push(new Entity("car",entityImages["carR"],[xt,yt],[(39-yt)*30,0]));
-      xt -= round(random(8,10+(39-yt)*2));
+      xt -= round(random(8,6+(39-yt)*3));
     }
   });
 
@@ -207,7 +207,7 @@ function draw() {
     }
   }
   else {
-    if (frameCount % round(fps*0.5) == 1) { // every 0.5 seconds updates frameCount
+    if (frameCount % round(fps) == 1) { // every second updates frameCount
       let message = {
         count : frameCount,
         accidentCount: accident,

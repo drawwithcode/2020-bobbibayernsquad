@@ -154,6 +154,10 @@ function newConnection(socket) {
     io.to(message.recipient).emit("spriteInfo", info);
   });
 
+  socket.on("forwardRand", function (message){
+    io.to(message.recipient).emit("rand", message.rand);
+  });
+
   socket.on("forwardEntityMsg", function (message){
     let info = {
       gridPos : message.gridPos,
