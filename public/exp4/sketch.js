@@ -198,7 +198,7 @@ function draw() {
         camPos[1]-=200/fps;
     }
     if (keyIsDown(68) || keyIsDown(RIGHT_ARROW) || (mouseX>windowWidth*4/5)) {
-      if (camPos[0] < mapBoard.length*tileSize+windowWidth*/4)
+      if (camPos[0] < mapBoard.length*tileSize+windowWidth/4)
         camPos[0]+=200/fps;
     }
     if (keyIsDown(83) || keyIsDown(DOWN_ARROW) || (mouseY>windowHeight*4/5)) {
