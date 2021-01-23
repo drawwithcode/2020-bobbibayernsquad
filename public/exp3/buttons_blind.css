@@ -29,8 +29,8 @@ body{
 
 #infoBtn{
   background-color: transparent;
-  width: 50%;
-  height: 15%;
+  width: 13%;
+  height: 5%;
   border: transparent;
   position: absolute;
   color: #d2d2d2;
@@ -48,8 +48,8 @@ body{
   transition: 0.2s ease-in-out;
   background-color: transparent;
   color: white;
-  width: 50%;
-  height: 15%;
+  width: 13%;
+  height: 5%;
   font-size: 1.3vw;
   border: transparent;
   font-family: latin;
@@ -81,8 +81,8 @@ body{
   margin: auto;
   padding: 0;
   border: 0.8px solid white;
-  width: 500px;
-  height: 165px;
+  width: 50%;
+  height: 15%;
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
   animation-name: text;
   animation-duration: 1s;
