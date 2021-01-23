@@ -31,11 +31,10 @@ function setOtherId(id) {
 }
 
 
-/*
+
 socket.on("warning", function () {
   window.open("warning.html", "_self");
 });
-*/
 
 socket.on("pingInfo", function (info) {
   mousePointingInteraction(info.x,info.y);
@@ -202,7 +201,7 @@ function draw() {
   }
 
 
-  background("black");
+  background(sightedCol);
 
   //image(mapImage,0,0);
   //main.display();
