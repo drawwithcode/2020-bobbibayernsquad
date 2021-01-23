@@ -45,6 +45,17 @@ body{
     blink-caret .13s step-end;
 }
 
+.typewriter h3 {
+  position: absolute;
+  top: 7%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-family: latin;
+  font-size: 1.2vw;
+  overflow: hidden;
+}
+
 
 /* The typing effect */
 @keyframes typing {
