@@ -25,10 +25,12 @@
 <!--- --------------------OK------------------------- --->
 
 ## The project
-txt <br>
+Loss of Senses is a web app that goes beyond the typical digital experience. It offers you, the user, the possibility to discover a new way of seeing, that doesn't rely on the eyes - or at least not your own. There is no darkness when there is communication. <br>
 
 ### Idea
-txt <br>
+It's a visual world and people respond to visuals. We live our life through different senses, but now more than ever we are all heavy consumers of visual content. <br>
+
+More than a lot of our everyday activities, the interactions that we have with our electronic devices strongly rely on visuals and the use of sight. So, we mainly live the internet through our eyes. What if we weren’t given the possibility to use them? <br>
 
 ### Goals
 txt <br>

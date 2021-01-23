@@ -33,6 +33,7 @@ let firstMove = false; // has pressed any key (to activate audio)
 let pinSound, trafficNoise, accidentNoise, carHorn, cowBell; // sounds and audios
 
 let speaker = new p5.Speech();
+speaker.setLang("en-UK");
 
 let sightedCol = 0;
 
