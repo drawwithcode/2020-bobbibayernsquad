@@ -3,6 +3,7 @@
 
 <head>
   <meta charset="utf-8">
+    <meta http-equiv="refresh" content="5;URL=../assistant.html">
   <meta name="viewport" width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0>
   <style>
     body {
@@ -23,7 +24,7 @@
       beep.play();
     }
 
-    speaker.speak("It seems like your mate left the lobby. Click on the screen to return at the menu");
+    speaker.speak("It seems like your mate left the lobby. You will be redirected at the menu.");
     function read_info(){
       speaker.speak("HELP");
     }
@@ -37,8 +38,7 @@
 
 
 <body>
-  <div onclick="beep(); window.open('../assistant.html', '_self');">
-  <button id="message" onclick="beep(); window.open('../assistant.html', '_self');">It seems like your mate left the lobby <br> Click on the screen to return at the menu </button>
+  <button id="message" onclick="beep(); window.open('../assistant.html', '_self');">It seems like your mate left the lobby <br> You will be redirected at the menu </button>
 
 
   <div id="myPopup" class="popup">
@@ -87,5 +87,4 @@
 </body>
 <button class="btn back" onmouseover="read_back();"  onclick="beep(); window.open('../assistant.html', '_self')">⬅ BACK</button>
 
-</div>
 </html>
