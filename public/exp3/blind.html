@@ -7,10 +7,20 @@
     <script src="/socket.io/socket.io.js"></script>
     <script src="p5.min.js"></script>
     <script src="p5.sound.min.js"></script>
+    <script src="p5.speech.js"></script>
     <script>
+    let speaker = new p5.Speech();
+    speaker.setLang("en-UK");
+
       function beep() {
         var beep = document.getElementById("beep");
         beep.play();
+      }
+      function read_info(){
+        speaker.speak("HELP");
+      }
+      function read_back(){
+        speaker.speak("BACK");
       }
     </script>
     <audio id="beep" src="../assets/beep.mp3"></audio>
@@ -23,7 +33,7 @@
       <h1> LOSS OF SENSES </h1>
     </div>
 
-    <button id="infoBtn" onclick="beep();">HELP</button>
+    <button id="infoBtn" onmouseover="read_info();" onclick="beep();">HELP</button>
 
     <div id="myPopup" class="popup">
 
@@ -68,5 +78,5 @@
     </script>
     </body>
 
-  <button class="btn back" onclick="beep(); window.open('../blind.html', '_self')">⬅ BACK</button>
+  <button class="btn back" onmouseover="read_back();" onclick="beep(); window.open('../blind.html', '_self')">⬅ BACK</button>
 </html>
