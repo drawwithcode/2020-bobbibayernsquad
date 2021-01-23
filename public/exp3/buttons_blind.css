@@ -67,6 +67,7 @@ body{
   overflow: auto; /* Enable scroll if needed */
   background-color: rgb(0,0,0); /* Fallback color */
   background-color: rgba(0,0,0,1); /* Black w/ opacity */
+  z-index: 1;
 
 }
 
@@ -85,6 +86,7 @@ body{
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
   animation-name: text;
   animation-duration: 1s;
+  z-index: 1;
 }
 
 @keyframes text{
