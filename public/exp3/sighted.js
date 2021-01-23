@@ -65,11 +65,11 @@ function draw() {
   //Pre Lobby
   if (preLobby) {
     push();
-    textSize(pow(pow(windowHeight,2)+pow(windowWidth,2), 0.5)/80);
+    textSize(windowDiagonal/100);
     textAlign(CENTER);
     fill(0);
     textFont(latin);
-    text("waiting for a blind person to join", width/2, height/4, windowWidth/3*2, windowHeight/2);
+    text("waiting for a blind person to join", width/2, height/4, windowWidth/2, windowHeight/3);
     pop();
     let gifWidth=windowDiagonal/3;
     let gifHeight=gifWidth/gif_loading.width*gif_loading.height;

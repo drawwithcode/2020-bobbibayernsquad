@@ -51,6 +51,8 @@ function preload(){
   //Load loading GIF
   gif_loading = createImg("assets/Images/Blind/loading.gif");
   gif_loading.position(windowWidth,windowHeight); //move GIF outside the screen so that it is not visible while loading
+  //Load font
+  latin = loadFont("assets/AHAMONO-Monospaced.otf");
 }
 
 function setup() {
@@ -64,6 +66,13 @@ function draw() {
 
   //Pre Lobby
   if (preLobby) {
+    push();
+    textSize(windowDiagonal/100);
+    textAlign(CENTER);
+    fill(255);
+    textFont(latin);
+    text("waiting for a blind person to join", width/2, height/4, windowWidth/2, windowHeight/3);
+    pop();
     let gifWidth=windowDiagonal/3;
     let gifHeight=gifWidth/gif_loading.width*gif_loading.height;
     gif_loading.size(gifWidth,gifHeight);
