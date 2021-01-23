@@ -8,7 +8,14 @@
     <script src="p5.min.js"></script>
     <script src="p5.sound.min.js"></script>
     <script src="p5.speech.js"></script>
-    <script>var canSee=true;</script>
+    <script>var canSee=true;
+    var HelpRead = false;
+    function readHelp() {
+      if (!HelpRead) {
+        speaker.speak('By clicking on the screen, emit sounds in order to help the blind person crossing the street and avoiding the vehicles.');
+        HelpRead = true;
+      }
+    }</script>
     <script src="utilities.js"></script>
     <script src="sketch.js"></script>
     <link rel="stylesheet" type="text/css" href="buttons_assistant.css">
@@ -28,7 +35,7 @@
         <span class="close">&times;</span>
         <h2>HELP</h2>
       </div>
-      <div class="popup-body"  onmouseover="speaker.speak('By clicking on the screen, emit sounds in order to help the blind person crossing the street and avoiding the vehicles.')">
+      <div class="popup-body"  onmouseover="readHelp()">
         <p>By clicking on the screen, emit sounds in order to help the blind person crossing the street and avoiding the vehicles.</p>
       </div>
     </div>
