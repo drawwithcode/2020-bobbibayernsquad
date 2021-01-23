@@ -33,8 +33,6 @@ function newConnection(socket) {
   let side;
   let experienceEnded = false;
 
-  let rand = second()%4;
-
   socket.on("welcome", function (dataReceived){
 
     // #############
@@ -149,6 +147,10 @@ function newConnection(socket) {
   console.log(labyrinthMain);
   console.log(street);
   console.log(streetMain);
+  });
+
+  socket.on("forwardRand", function(message) {
+  io.to(message.recipient).emit("rand", message.rand);
   });
 
   socket.on("forwardSpriteMsg", function (message){
