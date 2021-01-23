@@ -81,8 +81,8 @@ function draw() {
   //Main Lobby
   else {
     // Compute map parameters
-    let mapCenter_x = windowWidth/2+windowHeight/20;
-    let mapCenter_y = windowHeight/2;
+    let mapCenter_x = windowWidth/2;
+    let mapCenter_y = windowHeight/2+windowHeight/20;
     let map_diagonal = windowDiagonal/10*6;
     let map_height = map_diagonal/pow(pow(labyrinth.height,2)+pow(labyrinth.width,2),0.5)*labyrinth.height;
     let map_width = labyrinth.width/labyrinth.height*map_height;
