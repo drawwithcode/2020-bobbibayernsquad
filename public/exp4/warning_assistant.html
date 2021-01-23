@@ -36,11 +36,11 @@
 </head>
 
 
-
-<button id="message" onclick="beep(); window.open('../assistant.html', '_self');">It seems like your mate left the lobby <br> Click on the screen to return at the menu </button>
-<button id="infoBtn" onmouseover="read_info();" onclick="beep();">HELP</button>
-
 <body>
+  <div onclick="beep(); window.open('../assistant.html', '_self');">
+  <button id="message" onclick="beep(); window.open('../assistant.html', '_self');">It seems like your mate left the lobby <br> Click on the screen to return at the menu </button>
+
+
   <div id="myPopup" class="popup">
 
     <div class="popup-content">
@@ -82,8 +82,10 @@
       }
     }
   </script>
-</body>
 
+
+</body>
 <button class="btn back" onmouseover="read_back();"  onclick="beep(); window.open('../assistant.html', '_self')">⬅ BACK</button>
 
+</div>
 </html>
