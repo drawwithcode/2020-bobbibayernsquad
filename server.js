@@ -208,8 +208,7 @@ function newConnection(socket) {
 
 
   function find_main (sendWarning) {
-    switch (room) {
-      case "labyrinth":
+    if (room == "labyrinth") {
         if (side == "blind") {
           for (let i = 0; i < labyrinthMain.length; i++) {
             if (labyrinthMain[i].blind == socket.id) {
@@ -232,7 +231,7 @@ function newConnection(socket) {
             return 1;
           }
         }
-        break;
+      }
       if (room == "street") {
         if (side == "blind") {
           for (let i = 0; i < streetMain.length; i++) {
@@ -259,11 +258,9 @@ function newConnection(socket) {
       }
       return 0;
     }
-  }
 
   function find_queue () {
-    switch (room) {
-      case "labyrinth":
+    if(room =="labyrinth") {
         if (side == "blind") {
           for (let i = 0; i < labyrinth.length; i++) {
             if (labyrinth[i].blind == socket.id) {
@@ -282,9 +279,8 @@ function newConnection(socket) {
             return 1;
           }
         }
-        break;
-
-      if (room == "street") {
+    }
+    if (room == "street") {
         if (side == "blind") {
           for (let i = 0; i < street.length; i++) {
             if (street[i].blind == socket.id) {
@@ -304,8 +300,6 @@ function newConnection(socket) {
           }
         }
       }
-
-          return 0;
+      return 0;
     }
-  }
 }

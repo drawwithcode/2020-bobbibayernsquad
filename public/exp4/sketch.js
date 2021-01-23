@@ -152,6 +152,8 @@ function draw() {
     if (frameCount == 1) {
       speaker.speak("Waiting for someone else to connect!");
       background(sightedCol);
+      stroke(255-sightedCol);
+      fill(255-sightedCol);
       textFont('latin');
       text('Waiting for someone else to connect!', windowWidth/2, windowHeight/2);
     }
@@ -167,7 +169,7 @@ function draw() {
     stroke(255-sightedCol);
     fill(255-sightedCol,255-sightedCol,255-sightedCol,100/fps);
     strokeWeight(1);
-    ellipse(200*cos(2*PI*frameCount/fps/7),200*sin(2*PI*frameCount/fps/7),sin(2*PI*frameCount/fps/5)**2*200,cos(2*PI*frameCount/fps/4)**2*200);
+    ellipse(100*cos(2*PI*frameCount/fps/7),100*sin(2*PI*frameCount/fps/7),sin(2*PI*frameCount/fps/5)**2*200,cos(2*PI*frameCount/fps/4)**2*200);
     pop();
     /*let gifWidth=windowDiagonal/3;
     let gifHeight=gifWidth/gif_loading.width*gif_loading.height;
@@ -265,6 +267,7 @@ function draw() {
       speaker.speak("Success: you reached the end of the experience!");
     }
     else if (success >= 5) {
+      socket.emit("finished");
       if (canSee) {
         window.open('assistant/finale.html', '_self');
       }
