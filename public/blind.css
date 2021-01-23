@@ -291,8 +291,8 @@ font-family: latin;
   margin: auto;
   padding: 0;
   border: 0.8px solid white;
-  width: 500px;
-  height: 165px;
+  width: 50%;
+  height: 15%;
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
   animation-name: text;
   animation-duration: 1s;
@@ -322,7 +322,7 @@ font-family: latin;
   padding-top: 2px;
   padding-left: 5px;
   font-family: latin;
-  font-size: 11px;
+  font-size: 1vw;
   color: black;
 }
 
@@ -330,7 +330,7 @@ font-family: latin;
   padding-right: 5px;
   padding-left: 5px;
   font-family: latin;
-  font-size: 11px;
+  font-size: 1vw;
   color: black;
   font-weight: 25;
 }
