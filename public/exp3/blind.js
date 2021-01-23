@@ -52,14 +52,14 @@ function preload(){
   //Load loading GIF
   gif_loading = createImg("assets/Images/Blind/loading.gif");
   gif_loading.position(windowWidth,windowHeight); //move GIF outside the screen so that it is not visible while loading
-  gif_loading.style("z-index", "-1");
+  gif_loading.style("z-index", "0");
   //Load font
   latin = loadFont("assets/AHAMONO-Monospaced.otf");
 }
 
 function setup() {
   cnv = createCanvas(windowWidth,windowHeight);
-  cnv.style("z-index", "-2");
+  //cnv.style("z-index", "-2");
 }
 
 function draw() {
