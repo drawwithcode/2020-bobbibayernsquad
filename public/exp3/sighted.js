@@ -70,7 +70,7 @@ function draw() {
     textAlign(CENTER);
     fill(0);
     textFont(latin);
-    text("waiting for a blind person to join", windowWidth/2, windowHeight/5);
+    text("waiting for a blind person to join", windowWidth/2, windowHeight/5*4);
     pop();
     let gifWidth=windowDiagonal/3;
     let gifHeight=gifWidth/gif_loading.width*gif_loading.height;
