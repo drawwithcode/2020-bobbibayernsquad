@@ -13,12 +13,12 @@ body{
 
 .texts h1 {
   position: absolute;
-  top: 5%;
+  top: 7%;
   left: 50%;
   transform: translate(-50%, -50%);
   color: white;
   font-family: latin;
-  font-size: 1vw;
+  font-size: 1.2vw;
   overflow: hidden;
 }
 
@@ -28,7 +28,7 @@ body{
   left: 50%;
   transform: translate(-50%, -50%);
   font-family: latin;
-  font-size: 1vw;
+  font-size: 0.9vw;
   overflow: hidden;
   animation-name: textin;
   animation-duration: 2s;
@@ -41,7 +41,7 @@ body{
   left: 50%;
   transform: translate(-50%, -50%);
   font-family: braille;
-  font-size: 1vw;
+  font-size: 0.9vw;
   overflow: hidden;
   animation-name: textin;
   animation-duration: 2s;
