@@ -142,6 +142,30 @@ function newConnection(socket) {
         }
       }
 
+      let experienceEnded = false;
+      socket.on("finished", function (){
+        experienceEnded=true;
+        //Remove pair from the main lobby
+        find_main(false);
+      });
+
+      socket.on('disconnect', function () {
+        console.log("disconnection: "+ socket.id);
+
+        //Unexpected disconnection
+        if (!experienceEnded) {
+          let found_in_queue = find_queue();
+          if (!found_in_queue) {
+            find_main(true);
+          }
+        }
+
+        console.log(labyrinth);
+        console.log(labyrinthMain);
+        console.log(street);
+        console.log(streetMain);
+      });
+
   });
 
   socket.on("forwardSpriteMsg", function (message){
@@ -185,30 +209,10 @@ function newConnection(socket) {
     io.to(message.recipient).emit("pingInfo", info);
   });
 
-  let experienceEnded = false;
-  socket.on("finished", function (){
-    experienceEnded=true;
-    //Remove pair from the main lobby
-    find_main(false);
-  });
 
 
-  socket.on('disconnect', function () {
-    console.log("disconnection: "+ socket.id);
 
-    //Unexpected disconnection
-    if (!experienceEnded) {
-      let found_in_queue = find_queue();
-      if (!found_in_queue) {
-        find_main(true);
-      }
-    }
 
-    console.log(labyrinth);
-    console.log(labyrinthMain);
-    console.log(street);
-    console.log(streetMain);
-  });
 
 
   function find_main (sendWarning) {
