@@ -142,7 +142,7 @@ body{
   transform: translate(-50%, -50%);
   color: black;
   font-family: latin;
-  font-size: 1vw;
+  font-size: 1.2vw;
   overflow: hidden;
   cursor: default;
   user-select: none;
