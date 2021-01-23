@@ -7,6 +7,7 @@ let labyrinth;
 let main;
 let gif_loading;
 let pingSharedInfo;
+let cnv;
 
 // Create a new connection using socket.io (imported in index.html)
 let socket = io();
@@ -57,7 +58,8 @@ function preload(){
 }
 
 function setup() {
-  createCanvas(windowWidth,windowHeight);
+  cnv = createCanvas(windowWidth,windowHeight);
+  cnv.style("z-index", "-2");
 }
 
 function draw() {
