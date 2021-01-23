@@ -31,7 +31,7 @@ function setSighted(id) {
   rand = random([0,1,2,3]);
   console.log(rand);
   let message = {
-    recipient : recipientId,
+    recipient : sightedId,
     rand : rand
   }
   socket.emit("forwardRand", message);
