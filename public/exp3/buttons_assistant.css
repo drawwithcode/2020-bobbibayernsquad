@@ -8,13 +8,13 @@
 }
 
 body{
-  background-color: transparent;
+  background-color: white;
 }
 
 #infoBtn{
   background-color: transparent;
-  width: 13%;
-  height: 5%;
+  width: 50%;
+  height: 15%;
   border: transparent;
   position: absolute;
   color: #323232;
@@ -31,8 +31,8 @@ body{
 #infoBtn:hover {
   transition: 0.2s ease-in-out;
   background-color: transparent;
-  width: 13%;
-  height: 5%;
+  width: 50%;
+  height: 15%;
   color: #323232;
   font-size: 1.3vw;
   border: transparent;
