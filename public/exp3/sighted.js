@@ -49,6 +49,8 @@ function preload(){
   //Load loading GIF
   gif_loading = createImg("assets/Images/Sighted/loading.gif");
   gif_loading.position(windowWidth,windowHeight); //move GIF outside the screen so that it is not visible while loading
+  //Load font
+  latin = loadFont("assets/AHAMONO-Monospaced.otf");
 }
 
 function setup() {
@@ -62,6 +64,13 @@ function draw() {
 
   //Pre Lobby
   if (preLobby) {
+    push();
+    textSize(windowDiagonal/100);
+    textAlign(CENTER);
+    fill(0);
+    textFont(latin);
+    text("waiting for a blind person to join", width/2, height/4, windowWidth/2, windowHeight/3);
+    pop();
     let gifWidth=windowDiagonal/3;
     let gifHeight=gifWidth/gif_loading.width*gif_loading.height;
     gif_loading.size(gifWidth,gifHeight);
@@ -73,7 +82,7 @@ function draw() {
     // Compute map parameters
     let mapCenter_x = windowWidth/2;
     let mapCenter_y = windowHeight/2;
-    let map_diagonal = windowDiagonal/10*7;
+    let map_diagonal = windowDiagonal/10*6;
     let map_height = map_diagonal/pow(pow(labyrinth.height,2)+pow(labyrinth.width,2),0.5)*labyrinth.height;
     let map_width = labyrinth.width/labyrinth.height*map_height;
     let mapTopLeft_x = mapCenter_x-map_width/2;
