@@ -55,6 +55,9 @@ The collaborative experiences pair up users who have selected different modaliti
 In the single experiences, a button allows the user to get back to the map both during and at the end of them. <br>
 
 ### Experience 1
+
+![EXP1](images/exp1.png)
+
 The first experience, carried out in blind modality, is a simple experience focused on environmental sounds recognition.
 The user will have to guess for six rounds the origin of the sounds he will hear, by matching them with the corresponding labels. The sounds are recorded in different places all over the world, both in urban and natural contexts, so the user will need to pay attention to several details, including the language of the voices, the weather conditions etc... <br>
 
