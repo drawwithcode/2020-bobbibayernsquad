@@ -35,9 +35,7 @@ More than a lot of our everyday activities, the interactions that we have with o
 Loss of Senses aims at proposing a different, innovative experience on the theme of blindness and on the more specific theme of "blind-interaction" with the digital world. The single experiences represent indeed the everyday challenges blind people have to face, or they address the thematic of assistance to blind people thanks to the collaboration between users. The website as a whole, on the other side, is itself an experience that represents a "blind-interaction" with the digital world. Loss of Senses wants to provide an uncommon, alternative, web experience, in which the sight loses power in favour of the hearing, and thus wants to show that there can be an alternative way of approaching the Internet, based on sounds rather than visuals. <br>
 
 ### Context
-Loss of Senses is thought to be used as a Desktop app rather than on mobile in order to have a more fulfilling experience. <br>
-
-It is suggested to anyone who wants to experience an alternative way of approaching the digital space without the use of the main sense usually involved, the sight. It could be also seen as a brief, limited and digital version of a more immersive and sensitive experience, like "Dialogo nel Buio". <br>
+Loss of Senses is thought to be used as a Desktop app rather than on mobile in order to have a more fulfilling experience. It is suggested to anyone who wants to experience an alternative way of approaching the digital space without the use of the main sense usually involved, the sight. It could be also seen as a brief, limited and digital version of a more immersive and sensitive experience, like "Dialogo nel Buio". <br>
 
 Since the key feature of the whole website is represented by the sound design, it would be preferable for the user to be in a quiet place where he can hear all the details of the audios. <br>
 
@@ -59,6 +57,9 @@ The first experience, carried out in blind modality, is a simple experience focu
 The user will have to guess for six rounds the origin of the sounds he will hear, by matching them with the corresponding labels. The sounds are recorded in different places all over the world, both in urban and natural contexts, so the user will need to pay attention to several details, including the language of the voices, the weather conditions etc... <br>
 
 ### Experience 2
+
+![E2](images/e2.png)
+
 The second experience is aimed at providing the user an everyday experience of blindness. The goal is to pat on a desk and find, among several objects casually placed, a target object, represented by a bell. The user will click all over the screen to attempts, and will hear different sounds according to the objects he will touch, including the desk itself. When the user finds the target object the experience is concluded and the image of the desk with all the objects in their position is displayed. <br>
 
 ### Experience 3
