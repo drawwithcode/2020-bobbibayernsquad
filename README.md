@@ -100,7 +100,9 @@ Finally, the single experiences are characterised by very different sound design
 ### Interactions
 The main interactions of the user with the screen involve the use of buttons: when the user's cursor hovers on a button, the braille text switch to latin alphabet and the screen reader renders the content as speech. When he/she clicks on it, a beep sound is emitted. <br>
 
-In many specific parts of the website, the interaction of the mouse with the screen leads to different graphic and sound effects. <br>
+In many specific parts of the website, the interaction of the mouse with the screen leads to different graphic and sound effects. 
+
+![Interactions](images/interactions.gif)
 
 For what concerns the interactions between paired users in the 3rd and 4th experiences, the user in "assistant mode" communicates with the other user emitting the aforementioned sound signals.
 On the other hand the blind user cannot communicate directly with the the assistant: however, his position will always be displayed to the him/her, who consequently decide how to guide him. <br>
