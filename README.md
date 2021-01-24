@@ -104,8 +104,8 @@ In the developing process, we inevitably encountered a few difficulties when it 
 
 - **Experience 2: scene setting** <br>
 One of the main coding challenges of the experience 2 consists in randomly setting the objects on the table avoiding overlapping.To solve this issue we load the object images in an array and we progressively place them. We use two arrays to save the positions and the dimensions of the already placed objects. The center  coordinates of each placed object are computed relying on two functions:
-- “checkOverlaps (x,y)” checks that the point with coordinates (x,y) does not overlap with any of the objects already set;
-- “getXY (margin, i) “ returns the center coordinates of where to place the i-th object by checking that the center and the four edges of the i-th image are not overlapped with already set images. The margin parameter prevents objects to be placed on the canvas border.
+  - “checkOverlaps (x,y)” checks that the point with coordinates (x,y) does not overlap with any of the objects already set;
+  - “getXY (margin, i) “ returns the center coordinates of where to place the i-th object by checking that the center and the four edges of the i-th image are not overlapped with already set images. The margin parameter prevents objects to be placed on the canvas border.
 
 ```javascript
 function checkOverlaps (x,y) {
