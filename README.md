@@ -133,16 +133,22 @@ Online tutorials on HTML and CSS have never been more useful. <br>
 
 ## Credits
 [P5js](https://p5js.org/) -
-The JavaScript library that we used to develop all the main graphics in our website, thanks to the coding techniques we learned during the course.<br>
+The JavaScript library that we used to develop all the main graphics in our website, thanks to the coding techniques we learned during the course. <br>
+
+[P5.sound](https://p5js.org/reference/#/libraries/p5.sound) -
+The p5.sound library extends p5 with Web Audio functionality and was largely used in the whole website. <br>
+
+[P5.speech](https://idmnyu.github.io/p5.js-speech/) -
+The p5.speech library is a simple p5 extension to provide Web Speech (Synthesis and Recognition) API functionality, and was used to to simulate the speech reader assistive technology. <br>
 
 [Heroku](https://www.heroku.com/) -
-The cloud platform we used to publish the website, through GitHub.<br>
+The cloud platform we used to publish the website, through GitHub. <br>
 
 [Ahamono](https://www.behance.net/gallery/19532783/AhamonoMonospaced) -
-The font we used for thw whole website, by Alfredo Marco Pradil.<br>
+The typeface we used for the whole website, by Alfredo Marco Pradil. <br>
 
 [Zasplat](https://www.zapsplat.com/) -
-The website we used to freely download sound effects.<br>
+The website we used to freely download sound effects. <br>
 
 ## Team members
 * [Jean Paul Guglielmo Baroni](https://github.com/jpgbaroni)
