@@ -35,6 +35,8 @@ More than a lot of our everyday activities, the interactions that we have with o
 Loss of Senses aims at proposing a different, innovative experience on the theme of blindness and on the more specific theme of "blind-interaction" with the digital world. The single experiences represent indeed the everyday challenges blind people have to face, or they address the thematic of assistance to blind people thanks to the collaboration between users. The website as a whole, on the other side, is itself an experience that represents a "blind-interaction" with the digital world. Loss of Senses wants to provide an uncommon, alternative, web experience, in which the sight loses power in favour of the hearing, and thus wants to show that there can be an alternative way of approaching the Internet, based on sounds rather than visuals. <br>
 
 ### Context
+![Welcome](images/welcome.png)
+
 Loss of Senses is thought to be used as a Desktop app rather than on mobile in order to have a more fulfilling experience. It is suggested to anyone who wants to experience an alternative way of approaching the digital space without the use of the main sense usually involved, the sight. It could be also seen as a brief, limited and digital version of a more immersive and sensitive experience, like "Dialogo nel Buio". <br>
 
 Since the key feature of the whole website is represented by the sound design, it would be preferable for the user to be in a quiet place where he can hear all the details of the audios. <br>
@@ -70,9 +72,7 @@ The aim for the blind user is getting out of a maze, by moving with the four arr
 The assistant has, on the other hand, a full view on the maze and on the blind user movements, and leads him by positioning sounds sources when clicking on the screen. The sound signals guide the blind user thanks to the signals emitted: these are characterised by a certain frequency, which indicates in which direction the blind user should proceed, and by the frequency of the bleeps emitted (i.e. the number of bleeps in a fixed interval of time), which increases as the blind user approaches the sound source.<br>
 
 ### Experience 4
-The fourth experience is very similar to the third one. The concept is exactly the same, i.e. one of the two users, the assistant, guides the blind user according to the aforementioned modality by positioning sound sources on the screen. <br>
-
-However, the context is different: the aim for the blind is to cross a series of streets avoiding the vehicles. Hence he will need to proceed carefully, and the assistant will need to indicate him when to stop, when to proceed and in which direction. <br>
+The fourth experience is very similar to the third one. The concept is exactly the same, i.e. one of the two users, the assistant, guides the blind user according to the aforementioned modality by positioning sound sources on the screen. However, the context is different: the aim for the blind is to cross a series of streets avoiding the vehicles. Hence he will need to proceed carefully, and the assistant will need to indicate him when to stop, when to proceed and in which direction. <br>
 
 This experience represents a more common and everyday experience with respect to the maze, and the complexity is given by the presence of moving obstacles rather than a complicated path to follow.  <br>
 
