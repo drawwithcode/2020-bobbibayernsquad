@@ -121,6 +121,8 @@ One of the main coding challenges of the experience 2 consists in randomly setti
   - “checkOverlaps (x,y)” checks that the point with coordinates (x,y) does not overlap with any of the objects already set;
   - “getXY (margin, i) “ returns the center coordinates of where to place the i-th object by checking that the center and the four edges of the i-th image are not overlapped with already set images. The margin parameter prevents objects to be placed on the canvas border.
 
+  As a further trick to improve the performances of our algorithm, we placed objects in decreasing dimension order.
+
 ```javascript
 function checkOverlaps (x,y) {
 
