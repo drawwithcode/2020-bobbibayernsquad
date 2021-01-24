@@ -222,6 +222,7 @@ One of the main coding challenges of the experience 3 and 4 consists in properly
 ```
 
 - **title** <br>
+text
 
 ```javascript
 
