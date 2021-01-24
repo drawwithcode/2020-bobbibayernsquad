@@ -30,9 +30,9 @@ Loss of Senses is a web app that goes beyond the typical digital experience. It 
 It's a visual world and people respond to visuals. We live our life through different senses, but now more than ever we are all heavy consumers of visual content. More than a lot of our everyday activities, the interactions that we have with our electronic devices strongly rely on visuals and the use of sight. So, we mainly live the internet through our eyes. What if we weren’t given the possibility to use them? <br>
 
 ### Goals
-Loss of Senses aims at proposing a different, innovative experience on the theme of blindness and on the more specific theme of "blind-interaction" with the digital world. The single experiences represent indeed the everyday challenges blind people have to face, or they address the thematic of assistance to blind people thanks to the collaboration between users. <br>
+Loss of Senses aims at proposing a different, innovative experience on the theme of blindness and on the more specific theme of "blind-interaction" with the digital world. The single experiences represent indeed the everyday challenges blind people have to face, or they address the thematic of assistance to blind people thanks to the collaboration between users. The website as a whole, on the other side, is itself an experience that represents a "blind-interaction" with the digital world. <br>
 
-The website as a whole, on the other side, is itself an experience that represents a "blind-interaction" with the digital world. Loss of Senses wants to provide an uncommon, alternative, web experience, in which the sight loses power in favour of the hearing, and thus wants to show that there can be an alternative way of approaching the Internet, based on sounds rather than visuals. <br>
+Loss of Senses wants to provide an uncommon, alternative, web experience, in which the sight loses power in favour of the hearing, and thus wants to show that there can be an alternative way of approaching the Internet, based on sounds rather than visuals. <br>
 
 ### Context
 ![Welcome](images/welcome.png)
