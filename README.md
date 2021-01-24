@@ -46,7 +46,8 @@ Moreover, an important part of the website is dedicated to shared experiences th
 ## Architecture
 The first page of the website consists in a "transition page" necessary for the activation of the sounds when entering the real website. The next page welcomes the user and it provides a brief instruction on the functioning of the whole website. <br>
 
-![SelectMode](images/selectmode.png)
+![Blindmode](images/blindmode.png)
+![Assistantmode](images/assistantmode.png)
 
 By proceeding, the user must choose between the "blind" and the "assistant" modality. This choice is functional to redirect the user to the map of the experiences he/she can access to, according to the selected modality. In both cases, the user will enter a page representing a map of the available experiences. In "blind mode" the user will be able to access all the experiences, two of which are collaborative. On the contrary, in "assistant mode" the user will be able to access only the collaborative experiences. The modality defines the role of the user in the experiences, and it can be changed whenever the user wants when he/she is on the experiences' map. <br>
 
@@ -100,7 +101,7 @@ Finally, the single experiences are characterised by very different sound design
 ### Interactions
 The main interactions of the user with the screen involve the use of buttons: when the user's cursor hovers on a button, the braille text switch to latin alphabet and the screen reader renders the content as speech. When he/she clicks on it, a beep sound is emitted. <br>
 
-In many specific parts of the website, the interaction of the mouse with the screen leads to different graphic and sound effects. 
+In many specific parts of the website, the interaction of the mouse with the screen leads to different graphic and sound effects.
 
 ![Interactions](images/interactions.gif)
 
