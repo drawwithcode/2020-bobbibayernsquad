@@ -103,7 +103,7 @@ The greatest challenge was represented by the fact that while sight is the main 
 In the developing process, we inevitably encountered a few difficulties when it was time to put ideas into code. Here are some of our major coding challenges and how we faced and solved them to achieve the final result:
 
 - **Experience 2: scene setting** <br>
-One of the main coding challenges of the experience 2 consists in randomly setting the objects on the table avoiding overlapping.To solve this issue we load the object images in an array and we progressively place them. We use two arrays to save the positions and the dimensions of the already placed objects.
+One of the main coding challenges of the experience 2 consists in randomly setting the objects on the table avoiding overlapping. To solve this issue we load the object images in an array and we progressively place them. We use two arrays to save the positions and the dimensions of the already placed objects.
 
   The center  coordinates of each placed object are computed relying on two functions:
   - “checkOverlaps (x,y)” checks that the point with coordinates (x,y) does not overlap with any of the objects already set;
@@ -151,18 +151,18 @@ function getXY (margin, i) {
 - **Experience 3/4: socket.io implementation** <br>
 One of the main coding challenges of the experience 3 and 4 consists in properly take advantage of the socket.io library to set up the server-client structure.
 
-In particular both experiences 3 and 4 require the users to be matched in pairs.
-Without loss of generalization let’s focus on one of the two experiences.
-A user can be of 4 types: assistant-matched, blind-matched, assistant-unmatched, blind-unmatched.
-The server relies on arrays to keep track of matched and unmatched users.
-When a new user connects, the server go through the unmatched-array to possibly create pairs.
-When a new pair is made, the unmatched-array is updated and the the new pair is pushed into the matched-array.
+  In particular both experiences 3 and 4 require the users to be matched in pairs.
+  Without loss of generalization let’s focus on one of the two experiences.
+  A user can be of 4 types: assistant-matched, blind-matched, assistant-unmatched, blind-unmatched.
+  The server relies on arrays to keep track of matched and unmatched users.
+  When a new user connects, the server go through the unmatched-array to possibly create pairs.
+  When a new pair is made, the unmatched-array is updated and the the new pair is pushed into the matched-array.
 
-If the experience ends the winning pair is removed from the matched-array.
-If a disconnection happens both the matched and the unmatched array are checked.
-In the case the disconnection affected a matched users, its mate is disconnected too and redirected to the menu.
-In the case the disconnection affected an unmatched-user nothing happens.
-In both cases the corresponding arrays are updated.
+  If the experience ends the winning pair is removed from the matched-array.
+  If a disconnection happens both the matched and the unmatched array are checked.
+  In the case the disconnection affected a matched users, its mate is disconnected too and redirected to the menu.
+  In the case the disconnection affected an unmatched-user nothing happens.
+  In both cases the corresponding arrays are updated.
 
 ```javascript
  socket.on("welcome", function (dataReceived){
@@ -218,6 +218,14 @@ In both cases the corresponding arrays are updated.
           labyrinth.splice(index,1); //delete pair from the queue
         }
       }
+
+```
+
+- **title** <br>
+
+```javascript
+
+  //qui il codice
 
 ```
 
