@@ -75,6 +75,9 @@ The aim for the blind user is getting out of a maze, by moving with the four arr
 The assistant has, on the other hand, a full view on the maze and on the blind user movements, and leads him by positioning sounds sources when clicking on the screen. The sound signals guide the blind user thanks to the signals emitted: these are characterised by a certain frequency, which indicates in which direction the blind user should proceed, and by the frequency of the bleeps emitted (i.e. the number of bleeps in a fixed interval of time), which increases as the blind user approaches the sound source.<br>
 
 ### Experience 4
+
+![EXP4](images/exp4.png)
+
 The fourth experience is very similar to the third one. The concept is exactly the same, i.e. one of the two users, the assistant, guides the blind user according to the aforementioned modality by positioning sound sources on the screen. However, the context is different: the aim for the blind is to cross a series of streets avoiding the vehicles. Hence he will need to proceed carefully, and the assistant will need to indicate him when to stop, when to proceed and in which direction. <br>
 
 This experience represents a more common and everyday experience with respect to the maze, and the complexity is given by the presence of moving obstacles rather than a complicated path to follow.  <br>
