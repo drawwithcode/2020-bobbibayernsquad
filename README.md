@@ -47,6 +47,8 @@ Moreover, an important part of the website is dedicated to shared experiences th
 ## Architecture
 The first page of the website consists in a "transition page" necessary for the activation of the sounds when entering the real website. The next page welcomes the user and it provides a brief instruction on the functioning of the whole website. <br>
 
+![SelectMode](images/selectmode.png)
+
 By proceeding, the user must choose between the "blind" and the "assistant" modality. This choice is functional to redirect the user to the map of the experiences he/she can access to, according to the selected modality. In both cases, the user will enter a page representing a map of the available experiences. In "blind mode" the user will be able to access all the experiences, two of which are collaborative. On the contrary, in "assistant mode" the user will be able to access only the collaborative experiences. The modality defines the role of the user in the experiences, and it can be changed whenever the user wants when he/she is on the experiences' map. <br>
 
 The collaborative experiences pair up users who have selected different modalities two by two. When only a user has entered these experiences, he/she will have to wait in a waiting room for the other user to join, or can decide whether to try the non-collaborative experiences by selecting the "blind modality". <br>
