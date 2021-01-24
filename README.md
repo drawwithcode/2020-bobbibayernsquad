@@ -58,7 +58,7 @@ The user will have to guess for six rounds the origin of the sounds he will hear
 
 ### Experience 2
 
-![E2](images/e2.png)
+![EXP2](images/exp2.png)
 
 The second experience is aimed at providing the user an everyday experience of blindness. The goal is to pat on a desk and find, among several objects casually placed, a target object, represented by a bell. The user will click all over the screen to attempts, and will hear different sounds according to the objects he will touch, including the desk itself. When the user finds the target object the experience is concluded and the image of the desk with all the objects in their position is displayed. <br>
 
@@ -102,23 +102,126 @@ The greatest challenge was represented by the fact that while sight is the main 
 ## Coding challenges
 In the developing process, we inevitably encountered a few difficulties when it was time to put ideas into code. Here are some of our major coding challenges and how we faced and solved them to achieve the final result:
 
-- **summary1** <br>
-txt
+- **Experience 2: scene setting** <br>
+One of the main coding challenges of the experience 2 consists in randomly setting the objects on the table avoiding overlapping.
+
+To solve this issue we load the object images in an array and we progressively place them. We use two arrays to save the positions and the dimensions of the already placed objects.
+
+The center  coordinates of each placed object are computed relying on two functions:
+- “checkOverlaps (x,y)” checks that the point with coordinates (x,y) does not overlap with any of the objects already set;
+- “getXY (margin, i) “ returns the center coordinates of where to place the i-th object by checking that the center and the four edges of the i-th image are not overlapped with already set images. The margin parameter prevents objects to be placed on the canvas border.
 
 ```javascript
-function setup(){
+function checkOverlaps (x,y) {
+
+  for (let i=0; i<itemsPosition.length; i++) {
+    if (x > itemsPosition[i][0] - itemsDimensions[i][0]/2 &&
+        x < itemsPosition[i][0] + itemsDimensions[i][0]/2 &&
+        y > itemsPosition[i][1] - itemsDimensions[i][1]/2 &&
+        y < itemsPosition[i][1] + itemsDimensions[i][1]/2) {
+      return true;
+    }
+  }
+  return false;
 }
 
- ```
+function getXY (margin, i) {
+  let x;
+  let y;
+  let windowDiagonal = pow(pow(windowHeight,2)+pow(windowWidth,2),0.5);
+  let scale = windowDiagonal*0.8 / (1280 / refs[i] * images[i].width);
+  let w = images[i].width*scale;
+  let h = w * images[i].height / images[i].width; //the height of the image always stays proportional to its width
+  let overlapped =true;
+  let j=0;
+  while (overlapped) {
+    x = floor(random(margin, windowWidth - margin));
+    y = floor(random(margin, windowHeight - margin));
+    if (!(checkOverlaps(x,y) ||
+        checkOverlaps(x-w/2,y-h/2) || checkOverlaps(x-w/2,y+h/2) ||
+        checkOverlaps(x+w/2,y-h/2) || checkOverlaps(x+w/2,y+h/2))) {
+          overlapped = false;
+    }
+    j++;
+    console.log(j);
+  }
+  return [x,y];
+}
 
-- **summary2** <br>
- txt
+```
 
- ```javascript
- function setup(){
- }
+- **Experience 3/4: socket.io implementation** <br>
+One of the main coding challenges of the experience 3 and 4 consists in properly take advantage of the socket.io library to set up the server-client structure.
 
-  ```
+In particular both experiences 3 and 4 require the users to be matched in pairs.
+Without loss of generalization let’s focus on one of the two experiences.
+A user can be of 4 types: assistant-matched, blind-matched, assistant-unmatched, blind-unmatched.
+The server relies on arrays to keep track of matched and unmatched users.
+When a new user connects, the server go through the unmatched-array to possibly create pairs.
+When a new pair is made, the unmatched-array is updated and the the new pair is pushed into the matched-array.
+
+If the experience ends the winning pair is removed from the matched-array.
+If a disconnection happens both the matched and the unmatched array are checked.
+In the case the disconnection affected a matched users, its mate is disconnected too and redirected to the menu.
+In the case the disconnection affected an unmatched-user nothing happens.
+In both cases the corresponding arrays are updated.
+
+```javascript
+ socket.on("welcome", function (dataReceived){
+
+    // #############
+    if (dataReceived.room == "labyrinth") {
+        room="labyrinth";
+        let matched = false;
+        let index=NaN;
+        //blind side
+        if (dataReceived.side == "blind") {
+          console.log("labyrinth blind socket:", socket.id);
+          side="blind";
+          // If there is someone waiting then I pair them
+          for (let i = 0; i < labyrinth.length; i++) {
+            if (labyrinth[i].blind == undefined) {
+              labyrinth[i].blind = socket.id;
+              matched = true;
+              index = i;
+              break;
+            }
+          }
+          // Otherwise i create a new lobby
+          if (!matched) {
+            let el = { blind: socket.id}
+            labyrinth.push(el);
+          }
+        }
+        //sighted side
+        if (dataReceived.side == "sighted") {
+          console.log("labyrinth sighted socket:", socket.id);
+          side="sighted";
+          // If there is someone waiting then I pair them
+          for (let i = 0; i < labyrinth.length; i++) {
+            if (labyrinth[i].sighted == undefined) {
+              labyrinth[i].sighted = socket.id;
+              matched = true;
+              index = i;
+              break;
+            }
+          }
+          // Otherwise i create a new lobby
+          if (!matched) {
+            let el = { sighted: socket.id}
+            labyrinth.push(el);
+          }
+        }
+        //If matched, start the experience
+        if (matched) {
+          io.to(labyrinth[index].blind).emit("start", labyrinth[index].sighted);
+          io.to(labyrinth[index].sighted).emit("start", labyrinth[index].blind);
+          labyrinthMain.push(labyrinth[index]); //add pair to the main lobby
+          labyrinth.splice(index,1); //delete pair from the queue
+        }
+      }
+
+```
 
 ## References
 [Dialogo nel Buio](https://www.dialogonelbuio.org/index.php/it/) -
