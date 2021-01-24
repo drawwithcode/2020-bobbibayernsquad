@@ -230,17 +230,49 @@ One of the main coding challenges of the experience 3 and 4 consists in properly
           labyrinth.splice(index,1); //delete pair from the queue
         }
       }
+    });
 
 ```
 
-- **title** <br>
-text
+- **Experience 4: performing well with a large amount of elements** <br>
+From the beginning we imagined the fourth experience as rich in entities and images, with both a detailed map with a view of the street and a good number of vehicles. This brought 2 major coding challenges: having good graphical performances on Canvas and having good performances in the communication between users, avoiding an overload of the server.
+
+We introduced a "grid" on which to build the experience on, both to tackle the first issue of graphics performances and also to facilitate some computations, such as collisions. Therefore, every tile of the grid contains a reference to an object with one of 11 images describing the street (eg. the traffic light, a piece of sidewalk, a piece of pedestrian crossings).     
+
+With this structure, we could assure an efficient way of drawing the map, through the function "drawMap", which draws only the tiles and the entities that are visible from the current position on the map.
 
 ```javascript
-
-  //qui il codice
-
+function drawMap(limits = [0,mapBoard.length,0,mapBoard[0].length]) { // limits selects which tiles to show
+  push();
+  let wasInTile = false; // to select last tile of main char.
+  for (var y = limits[2]; y < limits[3]; y++) {
+    for (var x = limits[0]; x < limits[1]; x++) {
+      if (isTileInCamera(x,y)) {
+        mapBoard[x][y].display(); // shows the tile
+        entities.forEach((en, ien) => { // shows entities
+          if(en.gridPos[0] == x && en.gridPos[1] == y) {
+            en.display();
+          }
+        });
+        // Displays the character in the last possible frame to avoid overlays
+        if (!wasInTile && main.isInTile(x,y)) {
+          wasInTile = true;
+        }
+        else if(wasInTile && !main.isInTile(x,y)) {
+          main.display();
+          wasInTile = false;
+        }
+      }
+    }
+  }
+  pop();
+}
 ```
+
+On the perspective of the server, we tried to reduce communications between users to the minimum, to avoid any kind of issues. By the end, the main server interactions dedicated to this experience were just 3:
+1. The coordinates of the clicks made by the assistant, generating the "pin" with the appropriate sound effect on the map.
+2. The new tile in which the blind person is moving to.
+3. A structure containing "success", "accident", "frameCount" integer variables, defining respectively the time in seconds that has passed since the completion of the experience (-1 means that the experience is still on), the time in seconds that has passed since the accident (-1 means no accident yet), and the number of frames that the blind users has displayed up to now. The synchronization of the "frameCount" is indeed essential to determine the pseudo-random position of the vehicles, so this last structure is emitted by the blind user every second.
 
 ## References
 [Dialogo nel Buio](https://www.dialogonelbuio.org/index.php/it/) -
