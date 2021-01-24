@@ -653,8 +653,10 @@ function distanceDir(posMain,posObj) {
 }
 
 function mouseClicked(){
-  main.pushPinCoords();
-  main.sharePingInfo(blindId);
+  if (!preLobby) {
+    main.pushPinCoords();
+    main.sharePingInfo(blindId);
+  }
 }
 
 function windowResized() {
