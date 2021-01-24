@@ -65,6 +65,9 @@ The user will have to guess for six rounds the origin of the sounds he will hear
 The second experience is aimed at providing the user an everyday experience of blindness. The goal is to pat on a desk and find, among several objects casually placed, a target object, represented by a bell. The user will click all over the screen to attempts, and will hear different sounds according to the objects he will touch, including the desk itself. When the user finds the target object the experience is concluded and the image of the desk with all the objects in their position is displayed. <br>
 
 ### Experience 3
+
+![EXP3](images/exp3.png)
+
 The third experience is a collaborative experience that involves users two by two, one in the role of the blind and the other in the role of the assistant. Hence, it can only be accessed when two users, who have selected complementary modalities, enter the activity at the same time. <br>
 
 The aim for the blind user is getting out of a maze, by moving with the four arrows. He will see a completely dark screen except for a short radius circle around him (which represents the area scanned with a white cane), and he will need to be guided by the assistant, through sound signals. <br>
