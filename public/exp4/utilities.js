@@ -446,7 +446,7 @@ class Entity {
   // Is it colliding with main?
   collision() {
     let result = false;
-    for (var xt = this.pos[0]-int(this.speed[0]>0)*tileSize; xt > this.pos[0]-(this.occupiedTiles[0] - int(this.speed[0]<0))*tileSize; xt-=tileSize) {
+    for (var xt = this.pos[0]-int(this.speed[0]<0)*tileSize; xt > this.pos[0]-(this.occupiedTiles[0] - int(this.speed[0]>0))*tileSize; xt-=tileSize) {
       for (var yt = this.pos[1]; yt > this.pos[1]-this.occupiedTiles[1]*tileSize; yt-=tileSize) {
         let curGrid = gridFromPos([xt,yt]);
         if(isGridInListOfGrids(curGrid,main.gridPos)) {
