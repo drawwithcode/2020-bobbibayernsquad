@@ -10,11 +10,10 @@
   2a. [Experience 1](#experience-1) <br>
   2b. [Experience 2](#experience-2) <br>
   2c. [Experience 3](#experience-3) <br>
-  2c. [Experience 4](#experience-4) <br>
+  2d. [Experience 4](#experience-4) <br>
 3. [Design](#design) <br>
-  3a. [Visuals](#visuals) <br>
-  3b. [Sounds](#sounds) <br>
-  3c. [Interactions](#interactions) <br>
+  3a. [Sounds](#sounds) <br>
+  3b. [Interactions](#interactions) <br>
   3c. [Design challenges](#design-challenges) <br>
 4. [Coding challenges](#coding-challenges) <br>
 5. [References](#references) <br>
@@ -76,7 +75,7 @@ However, the context is different: the aim for the blind is to cross a series of
 
 This experience represents a more common and everyday experience with respect to the maze, and the complexity is given by the presence of moving obstacles rather than a complicated path to follow.  <br>
 
-## Design and visuals
+## Design
 Since the visual represents a secondary feature, its design in the website is kept as minimal and simple as possible. From the very first page, the website has a dark appearance, and the only constant decorative element are the braille texts, added for symbolic and aesthetic reasons. For the texts in latin alphabet a very minimal sans serif typeface was chosen. <br>
 
 The key characteristic is represented by the fact that the website changes appearance according to the modality selected. Hence, when the "blind mode" is ON the website maintains its dark appearance, while in "assistant mode" the website switches to a white screen, opposite to the dark one. <br>
